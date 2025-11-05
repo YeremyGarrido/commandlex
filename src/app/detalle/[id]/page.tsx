@@ -42,7 +42,9 @@ export default async function DetallePage({
       <p className="mb-4 text-gray-600 dark:text-gray-400">{cmd.descripcion}</p>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        <Tag label={cmd.entorno} color="blue" />
+        {cmd.aplicaciones.map((app) => (
+          <Tag key={app} label={app} color="blue" />
+        ))}
         <Tag label={cmd.nivel} color="green" />
         {cmd.tags.map((t) => (
           <Tag key={t} label={t} color="gray" />
