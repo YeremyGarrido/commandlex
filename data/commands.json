@@ -1,5 +1,8 @@
 {
-  "dataset": { "version": "1.0", "updatedAt": "2025-01-01" },
+  "dataset": { 
+    "version": "2.0", 
+    "updatedAt": "2025-11-04" 
+  },
   "niveles": ["básico", "intermedio", "avanzado"],
   "comandos": [
     {
@@ -8,9 +11,149 @@
       "entorno": "Linux",
       "nivel": "básico",
       "descripcion": "Lista archivos y directorios del sistema.",
-      "ejemplo": ["ls -la"],
+      "ejemplo": ["ls -la", "ls -lh", "ls -R"],
       "requerimientos": "Ninguno",
-      "tags": ["listar", "archivos"]
+      "tags": ["listar", "archivos", "directorios"]
+    },
+    {
+      "id": "cd",
+      "comando": "cd",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Cambia el directorio actual de trabajo.",
+      "ejemplo": ["cd /home/usuario", "cd ..", "cd ~"],
+      "requerimientos": "Ninguno",
+      "tags": ["navegación", "directorios"]
+    },
+    {
+      "id": "pwd",
+      "comando": "pwd",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra la ruta completa del directorio actual.",
+      "ejemplo": ["pwd"],
+      "requerimientos": "Ninguno",
+      "tags": ["directorio", "ruta", "ubicación"]
+    },
+    {
+      "id": "mkdir",
+      "comando": "mkdir",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Crea uno o más directorios nuevos.",
+      "ejemplo": ["mkdir nuevo_directorio", "mkdir -p padre/hijo/nieto"],
+      "requerimientos": "Permisos de escritura",
+      "tags": ["crear", "directorios"]
+    },
+    {
+      "id": "rm",
+      "comando": "rm",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Elimina archivos o directorios. Usar con precaución.",
+      "ejemplo": ["rm archivo.txt", "rm -rf directorio/"],
+      "requerimientos": "Permisos de escritura",
+      "tags": ["eliminar", "borrar", "archivos"]
+    },
+    {
+      "id": "cp",
+      "comando": "cp",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Copia archivos o directorios.",
+      "ejemplo": ["cp origen.txt destino.txt", "cp -r directorio/ nuevo_directorio/"],
+      "requerimientos": "Permisos de lectura y escritura",
+      "tags": ["copiar", "archivos", "backup"]
+    },
+    {
+      "id": "mv",
+      "comando": "mv",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Mueve o renombra archivos y directorios.",
+      "ejemplo": ["mv viejo.txt nuevo.txt", "mv archivo.txt /otra/carpeta/"],
+      "requerimientos": "Permisos de escritura",
+      "tags": ["mover", "renombrar", "archivos"]
+    },
+    {
+      "id": "cat",
+      "comando": "cat",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra el contenido de archivos.",
+      "ejemplo": ["cat archivo.txt", "cat archivo1.txt archivo2.txt"],
+      "requerimientos": "Permisos de lectura",
+      "tags": ["leer", "archivos", "contenido"]
+    },
+    {
+      "id": "grep",
+      "comando": "grep",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Busca patrones de texto en archivos.",
+      "ejemplo": ["grep 'texto' archivo.txt", "grep -r 'patrón' directorio/", "ps aux | grep node"],
+      "requerimientos": "Ninguno",
+      "tags": ["buscar", "texto", "filtrar"]
+    },
+    {
+      "id": "find",
+      "comando": "find",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Busca archivos y directorios por diversos criterios.",
+      "ejemplo": ["find . -name '*.txt'", "find /home -type f -mtime -7"],
+      "requerimientos": "Permisos de lectura",
+      "tags": ["buscar", "archivos", "filtrar"]
+    },
+    {
+      "id": "chmod",
+      "comando": "chmod",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Cambia los permisos de archivos y directorios.",
+      "ejemplo": ["chmod 755 script.sh", "chmod +x archivo.sh", "chmod -R 644 directorio/"],
+      "requerimientos": "Ser propietario o root",
+      "tags": ["permisos", "seguridad", "archivos"]
+    },
+    {
+      "id": "chown",
+      "comando": "chown",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Cambia el propietario de archivos y directorios.",
+      "ejemplo": ["chown usuario archivo.txt", "chown -R usuario:grupo directorio/"],
+      "requerimientos": "Privilegios de root",
+      "tags": ["propietario", "permisos", "usuario"]
+    },
+    {
+      "id": "ps",
+      "comando": "ps",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra los procesos en ejecución.",
+      "ejemplo": ["ps aux", "ps -ef", "ps aux | grep python"],
+      "requerimientos": "Ninguno",
+      "tags": ["procesos", "sistema", "monitoreo"]
+    },
+    {
+      "id": "top",
+      "comando": "top",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra procesos en tiempo real y uso de recursos.",
+      "ejemplo": ["top", "top -u usuario"],
+      "requerimientos": "Ninguno",
+      "tags": ["procesos", "recursos", "monitoreo"]
+    },
+    {
+      "id": "kill",
+      "comando": "kill",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Termina procesos enviando señales.",
+      "ejemplo": ["kill 1234", "kill -9 1234", "killall firefox"],
+      "requerimientos": "Permisos sobre el proceso",
+      "tags": ["procesos", "terminar", "señales"]
     },
     {
       "id": "git-status",
@@ -18,9 +161,419 @@
       "entorno": "Git",
       "nivel": "básico",
       "descripcion": "Muestra el estado actual del repositorio Git.",
-      "ejemplo": ["git status"],
+      "ejemplo": ["git status", "git status -s"],
       "requerimientos": "Git instalado",
       "tags": ["git", "repositorio", "estado"]
+    },
+    {
+      "id": "git-clone",
+      "comando": "git clone",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Clona un repositorio Git existente.",
+      "ejemplo": ["git clone https://github.com/user/repo.git", "git clone --depth 1 url"],
+      "requerimientos": "Git instalado",
+      "tags": ["git", "clonar", "repositorio"]
+    },
+    {
+      "id": "git-add",
+      "comando": "git add",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Agrega cambios al área de staging.",
+      "ejemplo": ["git add archivo.txt", "git add .", "git add -A"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "staging", "commit"]
+    },
+    {
+      "id": "git-commit",
+      "comando": "git commit",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Guarda los cambios en el repositorio local.",
+      "ejemplo": ["git commit -m 'mensaje'", "git commit -am 'mensaje'"],
+      "requerimientos": "Cambios en staging",
+      "tags": ["git", "commit", "guardar"]
+    },
+    {
+      "id": "git-push",
+      "comando": "git push",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Sube commits al repositorio remoto.",
+      "ejemplo": ["git push origin main", "git push -u origin nueva-rama"],
+      "requerimientos": "Repositorio remoto configurado",
+      "tags": ["git", "push", "remoto"]
+    },
+    {
+      "id": "git-pull",
+      "comando": "git pull",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Descarga y fusiona cambios del repositorio remoto.",
+      "ejemplo": ["git pull", "git pull origin main"],
+      "requerimientos": "Repositorio remoto configurado",
+      "tags": ["git", "pull", "actualizar"]
+    },
+    {
+      "id": "git-branch",
+      "comando": "git branch",
+      "entorno": "Git",
+      "nivel": "intermedio",
+      "descripcion": "Lista, crea o elimina ramas.",
+      "ejemplo": ["git branch", "git branch nueva-rama", "git branch -d rama-vieja"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "ramas", "branch"]
+    },
+    {
+      "id": "git-checkout",
+      "comando": "git checkout",
+      "entorno": "Git",
+      "nivel": "intermedio",
+      "descripcion": "Cambia de rama o restaura archivos.",
+      "ejemplo": ["git checkout main", "git checkout -b nueva-rama", "git checkout -- archivo.txt"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "rama", "cambiar"]
+    },
+    {
+      "id": "git-merge",
+      "comando": "git merge",
+      "entorno": "Git",
+      "nivel": "intermedio",
+      "descripcion": "Fusiona ramas en la rama actual.",
+      "ejemplo": ["git merge feature-branch", "git merge --no-ff rama"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "merge", "fusionar"]
+    },
+    {
+      "id": "git-log",
+      "comando": "git log",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Muestra el historial de commits.",
+      "ejemplo": ["git log", "git log --oneline", "git log --graph --all"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "historial", "commits"]
+    },
+    {
+      "id": "git-diff",
+      "comando": "git diff",
+      "entorno": "Git",
+      "nivel": "intermedio",
+      "descripcion": "Muestra diferencias entre commits, branches o archivos.",
+      "ejemplo": ["git diff", "git diff main feature", "git diff HEAD~1"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "diferencias", "cambios"]
+    },
+    {
+      "id": "docker-ps",
+      "comando": "docker ps",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Lista contenedores en ejecución.",
+      "ejemplo": ["docker ps", "docker ps -a", "docker ps -q"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "contenedores", "listar"]
+    },
+    {
+      "id": "docker-run",
+      "comando": "docker run",
+      "entorno": "Docker",
+      "nivel": "intermedio",
+      "descripcion": "Crea y ejecuta un nuevo contenedor.",
+      "ejemplo": ["docker run nginx", "docker run -d -p 80:80 nginx", "docker run -it ubuntu bash"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "contenedor", "ejecutar"]
+    },
+    {
+      "id": "docker-stop",
+      "comando": "docker stop",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Detiene uno o más contenedores en ejecución.",
+      "ejemplo": ["docker stop container_id", "docker stop $(docker ps -q)"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "detener", "contenedor"]
+    },
+    {
+      "id": "docker-rm",
+      "comando": "docker rm",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Elimina uno o más contenedores.",
+      "ejemplo": ["docker rm container_id", "docker rm -f container_id", "docker rm $(docker ps -aq)"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "eliminar", "contenedor"]
+    },
+    {
+      "id": "docker-images",
+      "comando": "docker images",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Lista todas las imágenes de Docker locales.",
+      "ejemplo": ["docker images", "docker images -a"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "imágenes", "listar"]
+    },
+    {
+      "id": "docker-pull",
+      "comando": "docker pull",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Descarga una imagen de Docker Hub.",
+      "ejemplo": ["docker pull nginx", "docker pull nginx:latest", "docker pull ubuntu:20.04"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "descargar", "imagen"]
+    },
+    {
+      "id": "docker-build",
+      "comando": "docker build",
+      "entorno": "Docker",
+      "nivel": "intermedio",
+      "descripcion": "Construye una imagen desde un Dockerfile.",
+      "ejemplo": ["docker build .", "docker build -t mi-app:1.0 .", "docker build --no-cache ."],
+      "requerimientos": "Docker y Dockerfile",
+      "tags": ["docker", "build", "imagen"]
+    },
+    {
+      "id": "docker-exec",
+      "comando": "docker exec",
+      "entorno": "Docker",
+      "nivel": "intermedio",
+      "descripcion": "Ejecuta un comando en un contenedor en ejecución.",
+      "ejemplo": ["docker exec container_id ls", "docker exec -it container_id bash"],
+      "requerimientos": "Contenedor en ejecución",
+      "tags": ["docker", "ejecutar", "comando"]
+    },
+    {
+      "id": "docker-logs",
+      "comando": "docker logs",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Muestra los logs de un contenedor.",
+      "ejemplo": ["docker logs container_id", "docker logs -f container_id", "docker logs --tail 100 container_id"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "logs", "debug"]
+    },
+    {
+      "id": "docker-compose-up",
+      "comando": "docker-compose up",
+      "entorno": "Docker",
+      "nivel": "intermedio",
+      "descripcion": "Inicia servicios definidos en docker-compose.yml.",
+      "ejemplo": ["docker-compose up", "docker-compose up -d", "docker-compose up --build"],
+      "requerimientos": "Docker Compose instalado",
+      "tags": ["docker", "compose", "servicios"]
+    },
+    {
+      "id": "powershell-get-childitem",
+      "comando": "Get-ChildItem",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Lista archivos y directorios (equivalente a ls/dir).",
+      "ejemplo": ["Get-ChildItem", "Get-ChildItem -Recurse", "gci -Path C:\\ -Filter *.txt"],
+      "requerimientos": "PowerShell",
+      "tags": ["listar", "archivos", "directorios"]
+    },
+    {
+      "id": "powershell-set-location",
+      "comando": "Set-Location",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Cambia el directorio actual (equivalente a cd).",
+      "ejemplo": ["Set-Location C:\\Users", "cd C:\\Projects", "sl ~"],
+      "requerimientos": "PowerShell",
+      "tags": ["navegación", "directorios"]
+    },
+    {
+      "id": "powershell-new-item",
+      "comando": "New-Item",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Crea nuevos archivos, directorios o enlaces.",
+      "ejemplo": ["New-Item -ItemType Directory -Path C:\\Nueva", "New-Item -ItemType File archivo.txt"],
+      "requerimientos": "PowerShell",
+      "tags": ["crear", "archivos", "directorios"]
+    },
+    {
+      "id": "powershell-remove-item",
+      "comando": "Remove-Item",
+      "entorno": "PowerShell",
+      "nivel": "intermedio",
+      "descripcion": "Elimina archivos y directorios.",
+      "ejemplo": ["Remove-Item archivo.txt", "Remove-Item -Recurse -Force directorio\\"],
+      "requerimientos": "PowerShell",
+      "tags": ["eliminar", "archivos", "directorios"]
+    },
+    {
+      "id": "powershell-copy-item",
+      "comando": "Copy-Item",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Copia archivos y directorios.",
+      "ejemplo": ["Copy-Item origen.txt destino.txt", "Copy-Item -Recurse carpeta\\ nueva_carpeta\\"],
+      "requerimientos": "PowerShell",
+      "tags": ["copiar", "archivos", "backup"]
+    },
+    {
+      "id": "powershell-get-process",
+      "comando": "Get-Process",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Lista procesos en ejecución.",
+      "ejemplo": ["Get-Process", "Get-Process -Name chrome", "gps | Sort-Object CPU -Descending"],
+      "requerimientos": "PowerShell",
+      "tags": ["procesos", "sistema", "monitoreo"]
+    },
+    {
+      "id": "powershell-stop-process",
+      "comando": "Stop-Process",
+      "entorno": "PowerShell",
+      "nivel": "intermedio",
+      "descripcion": "Detiene uno o más procesos en ejecución.",
+      "ejemplo": ["Stop-Process -Name notepad", "Stop-Process -Id 1234", "kill -Name chrome"],
+      "requerimientos": "PowerShell",
+      "tags": ["procesos", "terminar", "sistema"]
+    },
+    {
+      "id": "powershell-get-content",
+      "comando": "Get-Content",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Lee el contenido de archivos.",
+      "ejemplo": ["Get-Content archivo.txt", "gc log.txt -Tail 10", "cat archivo.txt"],
+      "requerimientos": "PowerShell",
+      "tags": ["leer", "archivos", "contenido"]
+    },
+    {
+      "id": "powershell-select-string",
+      "comando": "Select-String",
+      "entorno": "PowerShell",
+      "nivel": "intermedio",
+      "descripcion": "Busca patrones de texto en archivos (equivalente a grep).",
+      "ejemplo": ["Select-String 'patrón' archivo.txt", "sls 'error' *.log"],
+      "requerimientos": "PowerShell",
+      "tags": ["buscar", "texto", "filtrar"]
+    },
+    {
+      "id": "tar",
+      "comando": "tar",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Crea y extrae archivos comprimidos.",
+      "ejemplo": ["tar -czf archivo.tar.gz carpeta/", "tar -xzf archivo.tar.gz", "tar -tf archivo.tar"],
+      "requerimientos": "Ninguno",
+      "tags": ["comprimir", "descomprimir", "archivos"]
+    },
+    {
+      "id": "wget",
+      "comando": "wget",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Descarga archivos desde URLs.",
+      "ejemplo": ["wget https://ejemplo.com/archivo.zip", "wget -O nuevo_nombre.zip url"],
+      "requerimientos": "wget instalado",
+      "tags": ["descargar", "url", "internet"]
+    },
+    {
+      "id": "curl",
+      "comando": "curl",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Transfiere datos desde o hacia un servidor.",
+      "ejemplo": ["curl https://api.ejemplo.com", "curl -X POST -d 'data' url", "curl -o archivo.txt url"],
+      "requerimientos": "curl instalado",
+      "tags": ["http", "api", "descargar"]
+    },
+    {
+      "id": "ssh",
+      "comando": "ssh",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Conecta a un servidor remoto mediante SSH.",
+      "ejemplo": ["ssh usuario@servidor.com", "ssh -i clave.pem usuario@ip", "ssh -p 2222 usuario@servidor"],
+      "requerimientos": "Cliente SSH",
+      "tags": ["remoto", "conexión", "servidor"]
+    },
+    {
+      "id": "scp",
+      "comando": "scp",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Copia archivos entre hosts mediante SSH.",
+      "ejemplo": ["scp archivo.txt usuario@servidor:/ruta/", "scp usuario@servidor:/ruta/archivo.txt ."],
+      "requerimientos": "Cliente SSH",
+      "tags": ["copiar", "remoto", "ssh"]
+    },
+    {
+      "id": "df",
+      "comando": "df",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra el espacio en disco disponible.",
+      "ejemplo": ["df -h", "df -T"],
+      "requerimientos": "Ninguno",
+      "tags": ["disco", "espacio", "sistema"]
+    },
+    {
+      "id": "du",
+      "comando": "du",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra el uso de disco de archivos y directorios.",
+      "ejemplo": ["du -sh *", "du -h --max-depth=1"],
+      "requerimientos": "Ninguno",
+      "tags": ["disco", "tamaño", "archivos"]
+    },
+    {
+      "id": "git-stash",
+      "comando": "git stash",
+      "entorno": "Git",
+      "nivel": "avanzado",
+      "descripcion": "Guarda cambios temporalmente sin hacer commit.",
+      "ejemplo": ["git stash", "git stash pop", "git stash list", "git stash apply"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "temporal", "guardar"]
+    },
+    {
+      "id": "git-rebase",
+      "comando": "git rebase",
+      "entorno": "Git",
+      "nivel": "avanzado",
+      "descripcion": "Reorganiza commits sobre otra base.",
+      "ejemplo": ["git rebase main", "git rebase -i HEAD~3", "git rebase --continue"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "rebase", "historial"]
+    },
+    {
+      "id": "git-reset",
+      "comando": "git reset",
+      "entorno": "Git",
+      "nivel": "avanzado",
+      "descripcion": "Deshace commits o cambios en staging.",
+      "ejemplo": ["git reset HEAD~1", "git reset --hard origin/main", "git reset --soft HEAD~1"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "deshacer", "reset"]
+    },
+    {
+      "id": "docker-network",
+      "comando": "docker network",
+      "entorno": "Docker",
+      "nivel": "avanzado",
+      "descripcion": "Gestiona redes de Docker.",
+      "ejemplo": ["docker network ls", "docker network create mi-red", "docker network inspect bridge"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "red", "network"]
+    },
+    {
+      "id": "docker-volume",
+      "comando": "docker volume",
+      "entorno": "Docker",
+      "nivel": "avanzado",
+      "descripcion": "Gestiona volúmenes de Docker.",
+      "ejemplo": ["docker volume ls", "docker volume create mi-volumen", "docker volume rm volumen"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "volumen", "persistencia"]
     }
   ]
 }
