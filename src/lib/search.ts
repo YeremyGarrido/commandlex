@@ -1,13 +1,5 @@
 // src/lib/search.ts
-// Strategy Pattern → motor de búsqueda reemplazable en el futuro (minisearch, fuse.js, etc.)
-
 import type { Command } from "./data";
-
-export type SearchOptions = {
-  entorno?: Command["entorno"] | "Todos";
-  nivel?: Command["nivel"] | "Todos";
-  tags?: string[];
-};
 
 /**
  * Tokeniza texto en minúsculas sin tildes.
@@ -22,25 +14,27 @@ function tokenize(text: string): string[] {
 }
 
 /**
- * Filtra comandos en memoria según el texto y los filtros opcionales.
+ * Filtra comandos en memoria según el texto de búsqueda.
+ * La lógica de filtrado por facetas (aplicaciones, nivel) se maneja en el componente de UI.
  */
-export function search(
-  commands: Command[],
-  query: string,
-  opts: SearchOptions = {}
-): Command[] {
+export function search(commands: Command[], query: string): Command[] {
   const tokens = tokenize(query);
-  return commands.filter((c) => {
-    if (opts.entorno && opts.entorno !== "Todos" && c.entorno !== opts.entorno)
-      return false;
-    if (opts.nivel && opts.nivel !== "Todos" && c.nivel !== opts.nivel)
-      return false;
-    if (opts.tags?.length && !c.tags.some((t) => opts.tags!.includes(t)))
-      return false;
+  if (tokens.length === 0) {
+    return commands;
+  }
 
-    const texto = `${c.comando} ${c.descripcion} ${
-      c.requerimientos
-    } ${c.tags.join(" ")}`.toLowerCase();
-    return tokens.every((t) => texto.includes(t));
+  return commands.filter((c) => {
+    // Construimos el texto de búsqueda uniendo todos los campos relevantes
+    const searchableText = [
+      c.comando,
+      c.descripcion,
+      c.requerimientos,
+      ...(c.aplicaciones || []),
+      ...(c.tags || []),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return tokens.every((t) => searchableText.includes(t));
   });
 }

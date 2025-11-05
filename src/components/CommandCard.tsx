@@ -32,7 +32,7 @@ export function CommandCard({ command, onToggleFav, isFav }: CommandCardProps) {
         {command.descripcion}
       </p>
       <div className="flex gap-2 flex-wrap">
-        <Tag label={command.entorno} color="blue" />
+        <Tag label={command.aplicaciones.join(", ")} color="blue" />
         <Tag label={command.nivel} color="green" />
         {command.tags.slice(0, 2).map((t) => (
           <Tag key={t} label={t} color="gray" />

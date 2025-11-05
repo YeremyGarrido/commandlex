@@ -5,9 +5,8 @@ export type Command = {
   id: string;
   comando: string;
   // --- MODIFICADO ---
-  // Se cambia a 'string' para aceptar los nuevos entornos
-  // (Excel, Word, Helm, Kubernetes, etc.)
-  entorno: string;
+  // El campo 'entorno' se reemplaza por 'aplicaciones' para soportar múltiples contextos
+  aplicaciones: string[];
   // Se cambia a 'string' para ser más flexible
   nivel: string;
   // --- FIN MODIFICADO ---

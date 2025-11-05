@@ -7,25 +7,24 @@ import * as favs from "@/lib/favs";
 import { SearchBox } from "@/components/SearchBox";
 import { CommandCard } from "@/components/CommandCard";
 import { EmptyState } from "@/components/EmptyState";
-// import FilterTabs from "@/components/FilterTabs"; // MODIFICADO: Ya no usamos FilterTabs
 
 export default function HomePage() {
-  // --- Estados que ya tenías ---
+  // --- Estados ---
   const [allCommands, setAllCommands] = useState<Command[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [favVersion, setFavVersion] = useState(0);
 
-  // --- NUEVOS ESTADOS PARA EL FILTRO POPOVER ---
+  // --- Estados para el filtro Popover (Refactorizado) ---
   const [showFilters, setShowFilters] = useState(false);
   // Estados temporales (lo que seleccionas DENTRO del menú)
-  const [selectedEnvs, setSelectedEnvs] = useState<string[]>([]);
-  const [selectedLevels, setSelectedLevels] = useState<string[]>([]); // Asumiendo que 'Command' tiene 'nivel'
+  const [selectedApps, setSelectedApps] = useState<string[]>([]);
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
   // Estados aplicados (lo que se usa para FILTRAR la lista)
-  const [appliedEnvs, setAppliedEnvs] = useState<string[]>([]);
+  const [appliedApps, setAppliedApps] = useState<string[]>([]);
   const [appliedLevels, setAppliedLevels] = useState<string[]>([]);
 
-  // --- Lógica de carga (sin cambios) ---
+  // --- Lógica de carga ---
   useEffect(() => {
     loadDataset()
       .then((d) => {
@@ -35,7 +34,7 @@ export default function HomePage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // --- Lógica de Búsqueda y Favoritos (sin cambios) ---
+  // --- Handlers (Refactorizado) ---
   const handleSearch = (q: string) => {
     setSearchTerm(q);
   };
@@ -45,10 +44,9 @@ export default function HomePage() {
     setFavVersion((v) => v + 1);
   };
 
-  // --- NUEVOS HANDLERS PARA POPOVER ---
-  const handleEnvChange = (env: string) => {
-    setSelectedEnvs((prev) =>
-      prev.includes(env) ? prev.filter((e) => e !== env) : [...prev, env]
+  const handleAppChange = (app: string) => {
+    setSelectedApps((prev) =>
+      prev.includes(app) ? prev.filter((a) => a !== app) : [...prev, app]
     );
   };
 
@@ -59,76 +57,75 @@ export default function HomePage() {
   };
 
   const handleSaveFilters = () => {
-    setAppliedEnvs(selectedEnvs);
+    setAppliedApps(selectedApps);
     setAppliedLevels(selectedLevels);
     setShowFilters(false);
   };
 
   const handleCancelFilters = () => {
-    setSelectedEnvs(appliedEnvs);
+    // Resetea la selección temporal a la que ya está aplicada
+    setSelectedApps(appliedApps);
     setSelectedLevels(appliedLevels);
     setShowFilters(false);
   };
 
-  // --- LÓGICA DE FILTRADO MODIFICADA ---
+  // --- Lógica de Filtrado (Refactorizado) ---
 
-  // 1. Obtenemos las listas de entornos y niveles
-  const { entornos, niveles } = useMemo(() => {
-    // Asumiendo que tu tipo Command tiene 'entorno' y 'nivel'
-    const uniqueEntornos = [
-      ...new Set(allCommands.map((cmd) => cmd.entorno)),
-    ].sort();
-    const uniqueNiveles = [
-      ...new Set(allCommands.map((cmd) => cmd.nivel)),
-    ].sort();
-    return { entornos: uniqueEntornos, niveles: uniqueNiveles };
+  // 1. Obtenemos las listas de aplicaciones y niveles para el popover
+  const { aplicaciones, niveles } = useMemo(() => {
+    const allApps = allCommands.flatMap((cmd) => cmd.aplicaciones || []);
+    const uniqueApps = [...new Set(allApps)].sort();
+
+    const allLevels = allCommands.map((cmd) => cmd.nivel);
+    const uniqueNiveles = [...new Set(allLevels)].sort();
+
+    return { aplicaciones: uniqueApps, niveles: uniqueNiveles };
   }, [allCommands]);
 
-  // 2. Calculamos la lista filtrada (usando los filtros de array)
+  // 2. Calculamos la lista filtrada
   const filteredCommands = useMemo(() => {
-    return allCommands.filter((command) => {
-      // 1. Filtro por búsqueda (usando tu función 'search')
-      // Tu función search espera un array, le pasamos un array de 1
-      const searchMatch = search([command], searchTerm).length > 0;
+    const filteredByPopover = allCommands.filter((command) => {
+      // Filtro por aplicación (intersección de arrays)
+      const appMatch =
+        appliedApps.length === 0 ||
+        command.aplicaciones?.some((app) => appliedApps.includes(app));
 
-      // 2. Filtro por entorno (multi-select)
-      const envMatch =
-        appliedEnvs.length === 0 || appliedEnvs.includes(command.entorno);
-
-      // 3. Filtro por nivel (multi-select)
+      // Filtro por nivel
       const levelMatch =
         appliedLevels.length === 0 || appliedLevels.includes(command.nivel);
 
-      return searchMatch && envMatch && levelMatch;
+      return appMatch && levelMatch;
     });
-  }, [allCommands, searchTerm, appliedEnvs, appliedLevels]); // Añadido favVersion para re-evaluar al dar fav
 
-  // --- Lógica de renderizado ---
+    // Pasamos la lista pre-filtrada a la función de búsqueda por texto
+    return search(filteredByPopover, searchTerm);
+  }, [allCommands, searchTerm, appliedApps, appliedLevels]);
+
+  // --- Lógica de renderizado (Refactorizado) ---
   if (loading) return <p className="p-8">Cargando...</p>;
 
-  const activeFilterCount = appliedEnvs.length + appliedLevels.length;
+  const activeFilterCount = appliedApps.length + appliedLevels.length;
 
   return (
     <main className="min-h-screen p-6 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <h1 className="text-2xl font-bold mb-4">CommandLex</h1>
 
       <div className="flex flex-col sm:flex-row gap-2 mb-4">
-        {/* Tu componente SearchBox (sin cambios) */}
         <div className="flex-grow">
           <SearchBox onSearch={handleSearch} />
         </div>
 
-        {/* --- NUEVO: Botón de Filtro y Popover --- */}
+        {/* --- Botón de Filtro y Popover (Refactorizado) --- */}
         <div className="relative">
           <button
             onClick={() => {
-              setSelectedEnvs(appliedEnvs);
+              // Al abrir, sincroniza la selección temporal con la aplicada
+              setSelectedApps(appliedApps);
               setSelectedLevels(appliedLevels);
               setShowFilters(!showFilters);
             }}
             className="w-full sm:w-auto flex justify-center items-center gap-2 p-2 border rounded-md hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
-            // Ajusta el padding/altura si es necesario para que coincida con SearchBox
-            style={{ height: "42px" }} // Ajusta este valor si es necesario
+            style={{ height: "42px" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -151,25 +148,22 @@ export default function HomePage() {
             )}
           </button>
 
-          {/* El Menú Popover */}
           {showFilters && (
             <div className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg shadow-lg z-10 p-4">
-              <h3 className="font-semibold mb-2">Entornos</h3>
-              {/* --- ⭐️ CAMBIO AQUÍ: Añadida clase 'custom-scrollbar' --- */}
+              <h3 className="font-semibold mb-2">Aplicaciones</h3>
               <div className="custom-scrollbar max-h-40 overflow-y-auto border dark:border-gray-700 rounded-md p-2 mb-4">
-                {entornos.map((env) => (
+                {aplicaciones.map((app) => (
                   <label
-                    key={env}
+                    key={app}
                     className="flex items-center gap-2 p-1 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
                   >
                     <input
                       type="checkbox"
-                      checked={selectedEnvs.includes(env)}
-                      onChange={() => handleEnvChange(env)}
-                      // --- ⭐️ CAMBIO AQUÍ: Clase 'rounded' eliminada ---
+                      checked={selectedApps.includes(app)}
+                      onChange={() => handleAppChange(app)}
                       className="text-blue-600 focus:ring-blue-500"
                     />
-                    {env}
+                    {app}
                   </label>
                 ))}
               </div>
@@ -185,7 +179,6 @@ export default function HomePage() {
                       type="checkbox"
                       checked={selectedLevels.includes(level)}
                       onChange={() => handleLevelChange(level)}
-                      // --- ⭐️ CAMBIO AQUÍ: Clase 'rounded' eliminada ---
                       className="text-blue-600 focus:ring-blue-500"
                     />
                     {level}
@@ -212,7 +205,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Tu cuadrícula de comandos (sin cambios) */}
+      {/* --- Cuadrícula de comandos --- */}
       <div className="mt-6 grid gap-4">
         {filteredCommands.length === 0 ? (
           <EmptyState message="No se encontraron comandos." />
