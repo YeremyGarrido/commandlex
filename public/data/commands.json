@@ -1,7 +1,7 @@
 {
-  "dataset": { 
-    "version": "2.0", 
-    "updatedAt": "2025-11-04" 
+  "dataset": {
+    "version": "2.0",
+    "updatedAt": "2025-11-04"
   },
   "niveles": ["básico", "intermedio", "avanzado"],
   "comandos": [
@@ -61,7 +61,10 @@
       "entorno": "Linux",
       "nivel": "básico",
       "descripcion": "Copia archivos o directorios.",
-      "ejemplo": ["cp origen.txt destino.txt", "cp -r directorio/ nuevo_directorio/"],
+      "ejemplo": [
+        "cp origen.txt destino.txt",
+        "cp -r directorio/ nuevo_directorio/"
+      ],
       "requerimientos": "Permisos de lectura y escritura",
       "tags": ["copiar", "archivos", "backup"]
     },
@@ -91,7 +94,11 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Busca patrones de texto en archivos.",
-      "ejemplo": ["grep 'texto' archivo.txt", "grep -r 'patrón' directorio/", "ps aux | grep node"],
+      "ejemplo": [
+        "grep 'texto' archivo.txt",
+        "grep -r 'patrón' directorio/",
+        "ps aux | grep node"
+      ],
       "requerimientos": "Ninguno",
       "tags": ["buscar", "texto", "filtrar"]
     },
@@ -111,7 +118,11 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Cambia los permisos de archivos y directorios.",
-      "ejemplo": ["chmod 755 script.sh", "chmod +x archivo.sh", "chmod -R 644 directorio/"],
+      "ejemplo": [
+        "chmod 755 script.sh",
+        "chmod +x archivo.sh",
+        "chmod -R 644 directorio/"
+      ],
       "requerimientos": "Ser propietario o root",
       "tags": ["permisos", "seguridad", "archivos"]
     },
@@ -121,7 +132,10 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Cambia el propietario de archivos y directorios.",
-      "ejemplo": ["chown usuario archivo.txt", "chown -R usuario:grupo directorio/"],
+      "ejemplo": [
+        "chown usuario archivo.txt",
+        "chown -R usuario:grupo directorio/"
+      ],
       "requerimientos": "Privilegios de root",
       "tags": ["propietario", "permisos", "usuario"]
     },
@@ -171,7 +185,10 @@
       "entorno": "Git",
       "nivel": "básico",
       "descripcion": "Clona un repositorio Git existente.",
-      "ejemplo": ["git clone https://github.com/user/repo.git", "git clone --depth 1 url"],
+      "ejemplo": [
+        "git clone https://github.com/user/repo.git",
+        "git clone --depth 1 url"
+      ],
       "requerimientos": "Git instalado",
       "tags": ["git", "clonar", "repositorio"]
     },
@@ -221,7 +238,11 @@
       "entorno": "Git",
       "nivel": "intermedio",
       "descripcion": "Lista, crea o elimina ramas.",
-      "ejemplo": ["git branch", "git branch nueva-rama", "git branch -d rama-vieja"],
+      "ejemplo": [
+        "git branch",
+        "git branch nueva-rama",
+        "git branch -d rama-vieja"
+      ],
       "requerimientos": "Repositorio Git",
       "tags": ["git", "ramas", "branch"]
     },
@@ -231,7 +252,11 @@
       "entorno": "Git",
       "nivel": "intermedio",
       "descripcion": "Cambia de rama o restaura archivos.",
-      "ejemplo": ["git checkout main", "git checkout -b nueva-rama", "git checkout -- archivo.txt"],
+      "ejemplo": [
+        "git checkout main",
+        "git checkout -b nueva-rama",
+        "git checkout -- archivo.txt"
+      ],
       "requerimientos": "Repositorio Git",
       "tags": ["git", "rama", "cambiar"]
     },
@@ -281,7 +306,11 @@
       "entorno": "Docker",
       "nivel": "intermedio",
       "descripcion": "Crea y ejecuta un nuevo contenedor.",
-      "ejemplo": ["docker run nginx", "docker run -d -p 80:80 nginx", "docker run -it ubuntu bash"],
+      "ejemplo": [
+        "docker run nginx",
+        "docker run -d -p 80:80 nginx",
+        "docker run -it ubuntu bash"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "contenedor", "ejecutar"]
     },
@@ -301,7 +330,11 @@
       "entorno": "Docker",
       "nivel": "básico",
       "descripcion": "Elimina uno o más contenedores.",
-      "ejemplo": ["docker rm container_id", "docker rm -f container_id", "docker rm $(docker ps -aq)"],
+      "ejemplo": [
+        "docker rm container_id",
+        "docker rm -f container_id",
+        "docker rm $(docker ps -aq)"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "eliminar", "contenedor"]
     },
@@ -321,7 +354,11 @@
       "entorno": "Docker",
       "nivel": "básico",
       "descripcion": "Descarga una imagen de Docker Hub.",
-      "ejemplo": ["docker pull nginx", "docker pull nginx:latest", "docker pull ubuntu:20.04"],
+      "ejemplo": [
+        "docker pull nginx",
+        "docker pull nginx:latest",
+        "docker pull ubuntu:20.04"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "descargar", "imagen"]
     },
@@ -331,7 +368,11 @@
       "entorno": "Docker",
       "nivel": "intermedio",
       "descripcion": "Construye una imagen desde un Dockerfile.",
-      "ejemplo": ["docker build .", "docker build -t mi-app:1.0 .", "docker build --no-cache ."],
+      "ejemplo": [
+        "docker build .",
+        "docker build -t mi-app:1.0 .",
+        "docker build --no-cache ."
+      ],
       "requerimientos": "Docker y Dockerfile",
       "tags": ["docker", "build", "imagen"]
     },
@@ -341,7 +382,10 @@
       "entorno": "Docker",
       "nivel": "intermedio",
       "descripcion": "Ejecuta un comando en un contenedor en ejecución.",
-      "ejemplo": ["docker exec container_id ls", "docker exec -it container_id bash"],
+      "ejemplo": [
+        "docker exec container_id ls",
+        "docker exec -it container_id bash"
+      ],
       "requerimientos": "Contenedor en ejecución",
       "tags": ["docker", "ejecutar", "comando"]
     },
@@ -351,7 +395,11 @@
       "entorno": "Docker",
       "nivel": "básico",
       "descripcion": "Muestra los logs de un contenedor.",
-      "ejemplo": ["docker logs container_id", "docker logs -f container_id", "docker logs --tail 100 container_id"],
+      "ejemplo": [
+        "docker logs container_id",
+        "docker logs -f container_id",
+        "docker logs --tail 100 container_id"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "logs", "debug"]
     },
@@ -361,7 +409,11 @@
       "entorno": "Docker",
       "nivel": "intermedio",
       "descripcion": "Inicia servicios definidos en docker-compose.yml.",
-      "ejemplo": ["docker-compose up", "docker-compose up -d", "docker-compose up --build"],
+      "ejemplo": [
+        "docker-compose up",
+        "docker-compose up -d",
+        "docker-compose up --build"
+      ],
       "requerimientos": "Docker Compose instalado",
       "tags": ["docker", "compose", "servicios"]
     },
@@ -371,7 +423,11 @@
       "entorno": "PowerShell",
       "nivel": "básico",
       "descripcion": "Lista archivos y directorios (equivalente a ls/dir).",
-      "ejemplo": ["Get-ChildItem", "Get-ChildItem -Recurse", "gci -Path C:\\ -Filter *.txt"],
+      "ejemplo": [
+        "Get-ChildItem",
+        "Get-ChildItem -Recurse",
+        "gci -Path C:\\ -Filter *.txt"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["listar", "archivos", "directorios"]
     },
@@ -391,7 +447,10 @@
       "entorno": "PowerShell",
       "nivel": "básico",
       "descripcion": "Crea nuevos archivos, directorios o enlaces.",
-      "ejemplo": ["New-Item -ItemType Directory -Path C:\\Nueva", "New-Item -ItemType File archivo.txt"],
+      "ejemplo": [
+        "New-Item -ItemType Directory -Path C:\\Nueva",
+        "New-Item -ItemType File archivo.txt"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["crear", "archivos", "directorios"]
     },
@@ -401,7 +460,10 @@
       "entorno": "PowerShell",
       "nivel": "intermedio",
       "descripcion": "Elimina archivos y directorios.",
-      "ejemplo": ["Remove-Item archivo.txt", "Remove-Item -Recurse -Force directorio\\"],
+      "ejemplo": [
+        "Remove-Item archivo.txt",
+        "Remove-Item -Recurse -Force directorio\\"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["eliminar", "archivos", "directorios"]
     },
@@ -411,7 +473,10 @@
       "entorno": "PowerShell",
       "nivel": "básico",
       "descripcion": "Copia archivos y directorios.",
-      "ejemplo": ["Copy-Item origen.txt destino.txt", "Copy-Item -Recurse carpeta\\ nueva_carpeta\\"],
+      "ejemplo": [
+        "Copy-Item origen.txt destino.txt",
+        "Copy-Item -Recurse carpeta\\ nueva_carpeta\\"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["copiar", "archivos", "backup"]
     },
@@ -421,7 +486,11 @@
       "entorno": "PowerShell",
       "nivel": "básico",
       "descripcion": "Lista procesos en ejecución.",
-      "ejemplo": ["Get-Process", "Get-Process -Name chrome", "gps | Sort-Object CPU -Descending"],
+      "ejemplo": [
+        "Get-Process",
+        "Get-Process -Name chrome",
+        "gps | Sort-Object CPU -Descending"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["procesos", "sistema", "monitoreo"]
     },
@@ -431,7 +500,11 @@
       "entorno": "PowerShell",
       "nivel": "intermedio",
       "descripcion": "Detiene uno o más procesos en ejecución.",
-      "ejemplo": ["Stop-Process -Name notepad", "Stop-Process -Id 1234", "kill -Name chrome"],
+      "ejemplo": [
+        "Stop-Process -Name notepad",
+        "Stop-Process -Id 1234",
+        "kill -Name chrome"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["procesos", "terminar", "sistema"]
     },
@@ -441,7 +514,11 @@
       "entorno": "PowerShell",
       "nivel": "básico",
       "descripcion": "Lee el contenido de archivos.",
-      "ejemplo": ["Get-Content archivo.txt", "gc log.txt -Tail 10", "cat archivo.txt"],
+      "ejemplo": [
+        "Get-Content archivo.txt",
+        "gc log.txt -Tail 10",
+        "cat archivo.txt"
+      ],
       "requerimientos": "PowerShell",
       "tags": ["leer", "archivos", "contenido"]
     },
@@ -461,7 +538,11 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Crea y extrae archivos comprimidos.",
-      "ejemplo": ["tar -czf archivo.tar.gz carpeta/", "tar -xzf archivo.tar.gz", "tar -tf archivo.tar"],
+      "ejemplo": [
+        "tar -czf archivo.tar.gz carpeta/",
+        "tar -xzf archivo.tar.gz",
+        "tar -tf archivo.tar"
+      ],
       "requerimientos": "Ninguno",
       "tags": ["comprimir", "descomprimir", "archivos"]
     },
@@ -471,7 +552,10 @@
       "entorno": "Linux",
       "nivel": "básico",
       "descripcion": "Descarga archivos desde URLs.",
-      "ejemplo": ["wget https://ejemplo.com/archivo.zip", "wget -O nuevo_nombre.zip url"],
+      "ejemplo": [
+        "wget https://ejemplo.com/archivo.zip",
+        "wget -O nuevo_nombre.zip url"
+      ],
       "requerimientos": "wget instalado",
       "tags": ["descargar", "url", "internet"]
     },
@@ -481,7 +565,11 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Transfiere datos desde o hacia un servidor.",
-      "ejemplo": ["curl https://api.ejemplo.com", "curl -X POST -d 'data' url", "curl -o archivo.txt url"],
+      "ejemplo": [
+        "curl https://api.ejemplo.com",
+        "curl -X POST -d 'data' url",
+        "curl -o archivo.txt url"
+      ],
       "requerimientos": "curl instalado",
       "tags": ["http", "api", "descargar"]
     },
@@ -491,7 +579,11 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Conecta a un servidor remoto mediante SSH.",
-      "ejemplo": ["ssh usuario@servidor.com", "ssh -i clave.pem usuario@ip", "ssh -p 2222 usuario@servidor"],
+      "ejemplo": [
+        "ssh usuario@servidor.com",
+        "ssh -i clave.pem usuario@ip",
+        "ssh -p 2222 usuario@servidor"
+      ],
       "requerimientos": "Cliente SSH",
       "tags": ["remoto", "conexión", "servidor"]
     },
@@ -501,7 +593,10 @@
       "entorno": "Linux",
       "nivel": "intermedio",
       "descripcion": "Copia archivos entre hosts mediante SSH.",
-      "ejemplo": ["scp archivo.txt usuario@servidor:/ruta/", "scp usuario@servidor:/ruta/archivo.txt ."],
+      "ejemplo": [
+        "scp archivo.txt usuario@servidor:/ruta/",
+        "scp usuario@servidor:/ruta/archivo.txt ."
+      ],
       "requerimientos": "Cliente SSH",
       "tags": ["copiar", "remoto", "ssh"]
     },
@@ -531,7 +626,12 @@
       "entorno": "Git",
       "nivel": "avanzado",
       "descripcion": "Guarda cambios temporalmente sin hacer commit.",
-      "ejemplo": ["git stash", "git stash pop", "git stash list", "git stash apply"],
+      "ejemplo": [
+        "git stash",
+        "git stash pop",
+        "git stash list",
+        "git stash apply"
+      ],
       "requerimientos": "Repositorio Git",
       "tags": ["git", "temporal", "guardar"]
     },
@@ -541,7 +641,11 @@
       "entorno": "Git",
       "nivel": "avanzado",
       "descripcion": "Reorganiza commits sobre otra base.",
-      "ejemplo": ["git rebase main", "git rebase -i HEAD~3", "git rebase --continue"],
+      "ejemplo": [
+        "git rebase main",
+        "git rebase -i HEAD~3",
+        "git rebase --continue"
+      ],
       "requerimientos": "Repositorio Git",
       "tags": ["git", "rebase", "historial"]
     },
@@ -551,7 +655,11 @@
       "entorno": "Git",
       "nivel": "avanzado",
       "descripcion": "Deshace commits o cambios en staging.",
-      "ejemplo": ["git reset HEAD~1", "git reset --hard origin/main", "git reset --soft HEAD~1"],
+      "ejemplo": [
+        "git reset HEAD~1",
+        "git reset --hard origin/main",
+        "git reset --soft HEAD~1"
+      ],
       "requerimientos": "Repositorio Git",
       "tags": ["git", "deshacer", "reset"]
     },
@@ -561,7 +669,11 @@
       "entorno": "Docker",
       "nivel": "avanzado",
       "descripcion": "Gestiona redes de Docker.",
-      "ejemplo": ["docker network ls", "docker network create mi-red", "docker network inspect bridge"],
+      "ejemplo": [
+        "docker network ls",
+        "docker network create mi-red",
+        "docker network inspect bridge"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "red", "network"]
     },
@@ -571,9 +683,306 @@
       "entorno": "Docker",
       "nivel": "avanzado",
       "descripcion": "Gestiona volúmenes de Docker.",
-      "ejemplo": ["docker volume ls", "docker volume create mi-volumen", "docker volume rm volumen"],
+      "ejemplo": [
+        "docker volume ls",
+        "docker volume create mi-volumen",
+        "docker volume rm volumen"
+      ],
       "requerimientos": "Docker instalado",
       "tags": ["docker", "volumen", "persistencia"]
+    },
+    {
+      "id": "linux-head",
+      "comando": "head",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra las primeras 10 líneas de un archivo.",
+      "ejemplo": ["head archivo.txt", "head -n 20 archivo.txt"],
+      "requerimientos": "Permisos de lectura",
+      "tags": ["leer", "archivos", "inicio"]
+    },
+    {
+      "id": "linux-tail",
+      "comando": "tail",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra las últimas 10 líneas de un archivo.",
+      "ejemplo": [
+        "tail archivo.txt",
+        "tail -n 20 archivo.txt",
+        "tail -f /var/log/syslog"
+      ],
+      "requerimientos": "Permisos de lectura",
+      "tags": ["leer", "archivos", "final", "logs"]
+    },
+    {
+      "id": "linux-apt",
+      "comando": "apt",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Gestor de paquetes para Debian/Ubuntu.",
+      "ejemplo": [
+        "sudo apt update",
+        "sudo apt install nginx",
+        "sudo apt remove nginx"
+      ],
+      "requerimientos": "Permisos de root (sudo)",
+      "tags": ["paquetes", "instalar", "debian", "ubuntu"]
+    },
+    {
+      "id": "linux-yum",
+      "comando": "yum",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Gestor de paquetes para RHEL/CentOS/Fedora.",
+      "ejemplo": [
+        "sudo yum check-update",
+        "sudo yum install httpd",
+        "sudo yum remove httpd"
+      ],
+      "requerimientos": "Permisos de root (sudo)",
+      "tags": ["paquetes", "instalar", "redhat", "centos"]
+    },
+    {
+      "id": "linux-uname",
+      "comando": "uname",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Muestra información del sistema operativo (kernel).",
+      "ejemplo": ["uname -a", "uname -r"],
+      "requerimientos": "Ninguno",
+      "tags": ["sistema", "info", "kernel"]
+    },
+    {
+      "id": "linux-ip",
+      "comando": "ip",
+      "entorno": "Linux",
+      "nivel": "intermedio",
+      "descripcion": "Muestra y manipula rutas, dispositivos y direcciones IP.",
+      "ejemplo": ["ip addr show", "ip link", "ip route show"],
+      "requerimientos": "Ninguno",
+      "tags": ["red", "ip", "ifconfig"]
+    },
+    {
+      "id": "git-fetch",
+      "comando": "git fetch",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Descarga cambios del remoto sin fusionarlos.",
+      "ejemplo": ["git fetch", "git fetch origin"],
+      "requerimientos": "Repositorio remoto configurado",
+      "tags": ["git", "remoto", "descargar"]
+    },
+    {
+      "id": "git-remote",
+      "comando": "git remote",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Administra los repositorios remotos.",
+      "ejemplo": [
+        "git remote -v",
+        "git remote add origin url",
+        "git remote remove origin"
+      ],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "remoto", "configurar"]
+    },
+    {
+      "id": "git-blame",
+      "comando": "git blame",
+      "entorno": "Git",
+      "nivel": "intermedio",
+      "descripcion": "Muestra quién modificó cada línea de un archivo.",
+      "ejemplo": ["git blame archivo.txt", "git blame -L 10,20 archivo.txt"],
+      "requerimientos": "Repositorio Git",
+      "tags": ["git", "autor", "historial", "debug"]
+    },
+    {
+      "id": "docker-compose-down",
+      "comando": "docker-compose down",
+      "entorno": "Docker",
+      "nivel": "intermedio",
+      "descripcion": "Detiene y elimina contenedores, redes y volúmenes.",
+      "ejemplo": ["docker-compose down", "docker-compose down -v"],
+      "requerimientos": "Docker Compose instalado",
+      "tags": ["docker", "compose", "detener"]
+    },
+    {
+      "id": "docker-rmi",
+      "comando": "docker rmi",
+      "entorno": "Docker",
+      "nivel": "básico",
+      "descripcion": "Elimina una o más imágenes de Docker.",
+      "ejemplo": ["docker rmi imagen_id", "docker rmi $(docker images -q)"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "eliminar", "imagen"]
+    },
+    {
+      "id": "docker-system-prune",
+      "comando": "docker system prune",
+      "entorno": "Docker",
+      "nivel": "avanzado",
+      "descripcion": "Limpia recursos no utilizados (contenedores, redes, imágenes).",
+      "ejemplo": ["docker system prune", "docker system prune -a --volumes"],
+      "requerimientos": "Docker instalado",
+      "tags": ["docker", "limpiar", "espacio"]
+    },
+    {
+      "id": "powershell-invoke-webrequest",
+      "comando": "Invoke-WebRequest",
+      "entorno": "PowerShell",
+      "nivel": "intermedio",
+      "descripcion": "Descarga contenido de la web (equivalente a curl/wget).",
+      "ejemplo": [
+        "Invoke-WebRequest -Uri 'https://api.com'",
+        "iwr 'url' -OutFile 'pagina.html'"
+      ],
+      "requerimientos": "PowerShell",
+      "tags": ["http", "api", "descargar", "curl"]
+    },
+    {
+      "id": "powershell-get-service",
+      "comando": "Get-Service",
+      "entorno": "PowerShell",
+      "nivel": "básico",
+      "descripcion": "Lista los servicios instalados en el sistema.",
+      "ejemplo": [
+        "Get-Service",
+        "Get-Service -Name 'wuauserv'",
+        "gsv | Where-Object {$_.Status -eq 'Running'}"
+      ],
+      "requerimientos": "PowerShell",
+      "tags": ["servicios", "sistema", "monitoreo"]
+    },
+    {
+      "id": "ofimatica-guardar",
+      "comando": "Ctrl + G",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Guarda el documento actual (Word, Excel, PowerPoint, etc).",
+      "ejemplo": ["Ctrl + G"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["guardar", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-copiar",
+      "comando": "Ctrl + C",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Copia el elemento seleccionado al portapapeles.",
+      "ejemplo": ["Ctrl + C"],
+      "requerimientos": "Windows/Office",
+      "tags": ["copiar", "portapapeles", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-pegar",
+      "comando": "Ctrl + V",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Pega el contenido del portapapeles.",
+      "ejemplo": ["Ctrl + V"],
+      "requerimientos": "Windows/Office",
+      "tags": ["pegar", "portapapeles", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-cortar",
+      "comando": "Ctrl + X",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Corta el elemento seleccionado al portapapeles.",
+      "ejemplo": ["Ctrl + X"],
+      "requerimientos": "Windows/Office",
+      "tags": ["cortar", "portapapeles", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-deshacer",
+      "comando": "Ctrl + Z",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Deshace la última acción.",
+      "ejemplo": ["Ctrl + Z"],
+      "requerimientos": "Windows/Office",
+      "tags": ["deshacer", "atrás", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-rehacer",
+      "comando": "Ctrl + Y",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Rehace la última acción deshecha.",
+      "ejemplo": ["Ctrl + Y"],
+      "requerimientos": "Windows/Office",
+      "tags": ["rehacer", "adelante", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-negrita",
+      "comando": "Ctrl + N",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Aplica formato de negrita al texto seleccionado.",
+      "ejemplo": ["Ctrl + N"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["formato", "negrita", "word", "powerpoint"]
+    },
+    {
+      "id": "ofimatica-cursiva",
+      "comando": "Ctrl + K",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Aplica formato de cursiva al texto seleccionado.",
+      "ejemplo": ["Ctrl + K"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["formato", "cursiva", "word", "powerpoint"]
+    },
+    {
+      "id": "ofimatica-subrayado",
+      "comando": "Ctrl + S",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Aplica formato de subrayado al texto seleccionado.",
+      "ejemplo": ["Ctrl + S"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["formato", "subrayado", "word", "powerpoint"]
+    },
+    {
+      "id": "ofimatica-buscar",
+      "comando": "Ctrl + B",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Abre el panel de búsqueda.",
+      "ejemplo": ["Ctrl + B"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["buscar", "encontrar", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-seleccionar-todo",
+      "comando": "Ctrl + E",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Selecciona todo el contenido del documento o la hoja.",
+      "ejemplo": ["Ctrl + E"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["seleccionar", "todo", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-nuevo-documento",
+      "comando": "Ctrl + U",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Crea un nuevo documento, libro u hoja de cálculo.",
+      "ejemplo": ["Ctrl + U"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["nuevo", "archivo", "word", "excel"]
+    },
+    {
+      "id": "ofimatica-abrir",
+      "comando": "Ctrl + A",
+      "entorno": "Ofimática",
+      "nivel": "básico",
+      "descripcion": "Abre el diálogo para abrir un archivo existente.",
+      "ejemplo": ["Ctrl + A"],
+      "requerimientos": "Microsoft Office (Español)",
+      "tags": ["abrir", "archivo", "word", "excel"]
     }
   ]
 }
