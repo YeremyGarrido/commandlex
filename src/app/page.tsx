@@ -101,7 +101,7 @@ export default function HomePage() {
 
       return searchMatch && envMatch && levelMatch;
     });
-  }, [allCommands, searchTerm, appliedEnvs, appliedLevels, favVersion]); // Añadido favVersion para re-evaluar al dar fav
+  }, [allCommands, searchTerm, appliedEnvs, appliedLevels]); // Añadido favVersion para re-evaluar al dar fav
 
   // --- Lógica de renderizado ---
   if (loading) return <p className="p-8">Cargando...</p>;
