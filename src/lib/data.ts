@@ -4,8 +4,13 @@ import commandsData from "../../public/data/commands.json";
 export type Command = {
   id: string;
   comando: string;
-  entorno: "Linux" | "PowerShell" | "Git" | "Docker";
-  nivel: "básico" | "intermedio" | "avanzado";
+  // --- MODIFICADO ---
+  // Se cambia a 'string' para aceptar los nuevos entornos
+  // (Excel, Word, Helm, Kubernetes, etc.)
+  entorno: string;
+  // Se cambia a 'string' para ser más flexible
+  nivel: string;
+  // --- FIN MODIFICADO ---
   descripcion: string;
   ejemplo: string[];
   requerimientos: string;
@@ -14,7 +19,9 @@ export type Command = {
 
 export type Dataset = {
   dataset: { version: string; updatedAt: string };
-  niveles: Array<Command["nivel"]>;
+  // --- MODIFICADO ---
+  // Asegurarse de que 'niveles' sea un array de 'string'
+  niveles: string[];
   comandos: Command[];
 };
 
