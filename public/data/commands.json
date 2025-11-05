@@ -1,0 +1,26 @@
+{
+  "dataset": { "version": "1.0", "updatedAt": "2025-01-01" },
+  "niveles": ["básico", "intermedio", "avanzado"],
+  "comandos": [
+    {
+      "id": "ls",
+      "comando": "ls",
+      "entorno": "Linux",
+      "nivel": "básico",
+      "descripcion": "Lista archivos y directorios del sistema.",
+      "ejemplo": ["ls -la"],
+      "requerimientos": "Ninguno",
+      "tags": ["listar", "archivos"]
+    },
+    {
+      "id": "git-status",
+      "comando": "git status",
+      "entorno": "Git",
+      "nivel": "básico",
+      "descripcion": "Muestra el estado actual del repositorio Git.",
+      "ejemplo": ["git status"],
+      "requerimientos": "Git instalado",
+      "tags": ["git", "repositorio", "estado"]
+    }
+  ]
+}
