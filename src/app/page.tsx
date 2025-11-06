@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 import { useEffect, useState, useMemo } from "react";
 import { loadDataset, type Command } from "@/lib/data";
@@ -7,6 +6,7 @@ import * as favs from "@/lib/favs";
 import { SearchBox } from "@/components/SearchBox";
 import { CommandCard } from "@/components/CommandCard";
 import { EmptyState } from "@/components/EmptyState";
+import { CommandModal } from "@/components/CommandModal";
 
 export default function HomePage() {
   // --- Estados ---
@@ -23,6 +23,7 @@ export default function HomePage() {
   // Estados aplicados (lo que se usa para FILTRAR la lista)
   const [appliedApps, setAppliedApps] = useState<string[]>([]);
   const [appliedLevels, setAppliedLevels] = useState<string[]>([]);
+  const [selectedCommand, setSelectedCommand] = useState<Command | null>(null);
 
   // --- Lógica de carga ---
   useEffect(() => {
@@ -69,6 +70,11 @@ export default function HomePage() {
     setShowFilters(false);
   };
 
+  // --- Función para el clic en los Tags ---
+  const handleTagClick = (tag: string) => {
+    setSearchTerm(tag);
+  };
+
   // --- Lógica de Filtrado (Refactorizado) ---
 
   // 1. Obtenemos las listas de aplicaciones y niveles para el popover
@@ -112,7 +118,8 @@ export default function HomePage() {
 
       <div className="flex flex-col sm:flex-row gap-2 mb-4">
         <div className="flex-grow">
-          <SearchBox onSearch={handleSearch} />
+          {/* Le pasamos el 'externalValue' para el clic en los tags */}
+          <SearchBox externalValue={searchTerm} onSearch={handleSearch} />
         </div>
 
         {/* --- Botón de Filtro y Popover (Refactorizado) --- */}
@@ -206,7 +213,7 @@ export default function HomePage() {
       </div>
 
       {/* --- Cuadrícula de comandos --- */}
-      <div className="mt-6 grid gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredCommands.length === 0 ? (
           <EmptyState message="No se encontraron comandos." />
         ) : (
@@ -216,10 +223,20 @@ export default function HomePage() {
               command={cmd}
               isFav={favs.has(cmd.id)}
               onToggleFav={toggleFav}
+              onClick={setSelectedCommand}
+              onTagClick={handleTagClick}
             />
           ))
         )}
       </div>
+
+      {/* --- Modal (ya lo tenías) --- */}
+      {selectedCommand && (
+        <CommandModal
+          comando={selectedCommand}
+          onClose={() => setSelectedCommand(null)}
+        />
+      )}
     </main>
   );
 }
