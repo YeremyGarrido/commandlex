@@ -1,13 +1,13 @@
 // public/sw.js
-// Service Worker de CommandLex - estrategia Stale-While-Revalidate
-// Adaptado para GitHub Pages (subpath /commandlex)
+// Service Worker de CommandLex - versión 3.1
+// Estrategia: Stale-While-Revalidate, adaptada para GitHub Pages (subpath /commandlex)
 
 const BASE_PATH = self.location.pathname.includes("/commandlex/")
   ? "/commandlex"
   : "";
 
-const CACHE_NAME = "commandlex-cache-v3";
-const DATA_CACHE = "commandlex-data-v3";
+const APP_SHELL_CACHE = "commandlex-shell-v3.1";
+const DATA_CACHE = "commandlex-data-v3.1";
 
 const APP_SHELL = [
   `${BASE_PATH}/`,
@@ -17,18 +17,31 @@ const APP_SHELL = [
   `${BASE_PATH}/icons/icon-512.png`,
 ];
 
-// Instala el SW y guarda el app shell
+// ✅ Instalación del Service Worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
-      .open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .catch((err) => console.warn("❌ Error al precachear:", err))
+      .open(APP_SHELL_CACHE)
+      .then(async (cache) => {
+        // Validación: solo agregar recursos que existan
+        const validUrls = [];
+        for (const url of APP_SHELL) {
+          try {
+            const response = await fetch(url, { cache: "no-store" });
+            if (response.ok) validUrls.push(url);
+            else console.warn(`⚠️ Skipped (HTTP ${response.status}): ${url}`);
+          } catch (e) {
+            console.warn(`⚠️ Skipped (fetch failed): ${url}`);
+          }
+        }
+        return cache.addAll(validUrls);
+      })
+      .catch((err) => console.error("❌ Error precacheando:", err))
   );
   self.skipWaiting();
 });
 
-// Limpieza de caches viejos
+// ✅ Activación: limpiar caches antiguos
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
@@ -36,7 +49,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((k) => k !== CACHE_NAME && k !== DATA_CACHE)
+            .filter((k) => k !== APP_SHELL_CACHE && k !== DATA_CACHE)
             .map((k) => caches.delete(k))
         )
       )
@@ -44,15 +57,15 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Intercepta peticiones y aplica Stale-While-Revalidate
+// ✅ Interceptar peticiones
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // Cachear solo peticiones del mismo dominio
+  // Ignorar cross-origin
   if (url.origin !== self.location.origin) return;
 
-  // Cachea los datos del dataset
+  // Dataset: stale-while-revalidate
   if (url.pathname.endsWith("/data/commands.json")) {
     event.respondWith(
       caches.open(DATA_CACHE).then((cache) =>
@@ -67,15 +80,17 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cachea el app shell y otros recursos
+  // App shell y recursos estáticos
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
-      return fetch(req).then((resp) => {
-        const copy = resp.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-        return resp;
-      });
+      return fetch(req)
+        .then((resp) => {
+          const copy = resp.clone();
+          caches.open(APP_SHELL_CACHE).then((cache) => cache.put(req, copy));
+          return resp;
+        })
+        .catch(() => cached);
     })
   );
 });
