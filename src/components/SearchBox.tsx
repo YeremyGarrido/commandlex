@@ -41,10 +41,10 @@ export function SearchBox({
     <input
       type="text"
       value={value} // Sigue usando el estado interno
-      onChange={(e) => setValue(e.target.value)} // Sigue actualizando el estado interno
+      onChange={(e) => setValue(e.target.value)} // Permite al usuario escribir
       placeholder={placeholder}
-      // Tus clases originales (ajusté un par de detalles de tu código)
-      className="w-full p-2 border rounded-md dark:border-gray-700 dark:bg-gray-800"
+      // CAMBIO: Estilo más oscuro y elegante
+      className="w-full p-2 border border-gray-700 rounded-l-lg dark:bg-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
       style={{ height: "42px" }}
     />
   );
