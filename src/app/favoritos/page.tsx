@@ -39,6 +39,10 @@ export default function FavoritosPage() {
               command={cmd}
               isFav={favs.has(cmd.id)}
               onToggleFav={toggleFav}
+              // --- CAMBIOS NECESARIOS ---
+              onClick={() => {}} // No hacemos nada, ya que la página de favoritos no tiene modal
+              onTagClick={() => {}} // No hacemos nada, ya que la página de favoritos no tiene SearchBox
+              // -------------------------
             />
           ))}
         </div>
