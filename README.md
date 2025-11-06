@@ -24,9 +24,40 @@
 
 ---
 
+## Novedades en la Versión 2.0
+
+### Cambios funcionales
+
+- Nueva vista inicial por categorías (`CategoryPicker.tsx`) con íconos grandes y filtrado directo.
+- Búsqueda y categorías integradas en la URL (`?category=`, `?q=`) con soporte completo para el botón “Atrás”.
+- Reescritura de la lógica de navegación usando `useRouter`, `usePathname` y `useSearchParams`.
+- Eliminado el “parpadeo” al alternar entre vistas.
+- Filtros avanzados con persistencia temporal y contadores dinámicos.
+- Corrección de enlaces 404 en GitHub Pages mediante rutas relativas (`basePath`, `assetPrefix`).
+- Dataset ampliado con **5 nuevos comandos CMD** (systeminfo, netstat, tasklist, sfc, wmic).
+
+### Cambios visuales
+
+- Rediseño completo de la Hero Section con espaciado optimizado.
+- Barra de búsqueda central más compacta.
+- Inclusión de ícono de GitHub en cabecera.
+- Popover de filtros rediseñado (tema oscuro, bordes, z-index corregido).
+- Nuevas animaciones suaves (fade + translateY).
+- Mejora de sombras, márgenes y tipografía.
+- Modal de comandos con cierre por tecla **ESC** y layout adaptativo.
+
+### Componentes actualizados
+
+- `AppIcon.tsx` actualizado con soporte para DevIcons, íconos de Office y diferenciación entre CMD y PowerShell.
+- Nuevo componente `CategoryPicker.tsx`.
+- `CommandModal.tsx` reorganizado para mostrar ejemplos, nivel y tags de forma más clara.
+- `tailwind.config.ts` modificado con nuevas animaciones personalizadas.
+
+---
+
 ## Dataset v3.0
 
-**107 comandos** organizados en:
+**112 comandos** organizados en:
 
 ### Aplicaciones Soportadas
 
@@ -34,6 +65,7 @@
 - **Linux** (32 comandos) - Comandos básicos, administración de sistema, redes
 - **Git** (18 comandos) - Control de versiones, branching, historial
 - **PowerShell** (15 comandos) - Administración Windows, scripting
+- **CMD** (5 comandos) - Diagnóstico y administración de sistema Windows
 - **Excel** (10 comandos) - Atajos y funciones
 - **Office General** (4 comandos) - Atajos compartidos entre aplicaciones
 - **PowerPoint** (3 comandos) - Atajos específicos de presentaciones
@@ -43,8 +75,8 @@
 
 ### Niveles de Dificultad
 
-- **Básico** (66 comandos) - Para comenzar
-- **Intermedio** (30 comandos) - Uso avanzado
+- **Básico** (70 comandos) - Para comenzar
+- **Intermedio** (31 comandos) - Uso avanzado
 - **Avanzado** (11 comandos) - Para expertos
 
 ---
@@ -104,13 +136,16 @@ commandlex/
 │   │   ├── detalle/[id]/      # Página de detalle dinámico
 │   │   ├── favoritos/         # Página de favoritos
 │   │   ├── layout.tsx         # Layout raíz con navegación
-│   │   ├── page.tsx           # Página principal con filtros
+│   │   ├── page.tsx           # Página principal con lógica de búsqueda y categorías
 │   │   └── globals.css        # Estilos globales + scrollbar
 │   ├── components/
 │   │   ├── CommandCard.tsx    # Tarjeta de comando
 │   │   ├── EmptyState.tsx     # Estado vacío
 │   │   ├── SearchBox.tsx      # Caja de búsqueda
 │   │   ├── ServiceWorkerProvider.tsx # PWA provider
+│   │   ├── CategoryPicker.tsx # Nueva vista por categorías
+│   │   ├── CommandModal.tsx   # Modal con soporte para tecla ESC
+│   │   ├── AppIcon.tsx        # Íconos de aplicaciones actualizados
 │   │   └── Tag.tsx            # Etiquetas de comandos
 │   ├── lib/
 │   │   ├── data.ts            # Carga de dataset y tipos
@@ -124,55 +159,8 @@ commandlex/
 │   └── deploy.yml             # CI/CD automático
 ├── jest.config.ts             # Configuración de Jest
 ├── jest.setup.ts              # Setup de Testing Library
-└── tailwind.config.ts         # Configuración de Tailwind
+└── tailwind.config.ts         # Configuración de Tailwind (animaciones y colores)
 ```
-
----
-
-## Agregar Nuevos Comandos
-
-Edita el archivo `public/data/commands.json`:
-
-```json
-{
-  "dataset": {
-    "version": "3.0",
-    "updatedAt": "2025-11-05"
-  },
-  "niveles": ["básico", "intermedio", "avanzado"],
-  "comandos": [
-    {
-      "id": "mi-comando",
-      "comando": "nombre del comando",
-      "aplicaciones": ["Linux", "macOS"],
-      "nivel": "básico",
-      "descripcion": "Descripción clara del comando",
-      "ejemplo": ["ejemplo 1", "ejemplo 2 con opciones"],
-      "requerimientos": "Software necesario o permisos",
-      "tags": ["tag1", "tag2", "tag3"]
-    }
-  ]
-}
-```
-
-### Campos Requeridos
-
-| Campo            | Tipo     | Descripción                          |
-| ---------------- | -------- | ------------------------------------ |
-| `id`             | string   | Identificador único (kebab-case)     |
-| `comando`        | string   | Nombre del comando o atajo           |
-| `aplicaciones`   | string[] | Array de aplicaciones donde funciona |
-| `nivel`          | string   | básico, intermedio o avanzado        |
-| `descripcion`    | string   | Descripción clara y concisa          |
-| `ejemplo`        | string[] | Array de ejemplos de uso             |
-| `requerimientos` | string   | Software o permisos necesarios       |
-| `tags`           | string[] | Palabras clave para búsqueda         |
-
-### Aplicaciones Disponibles
-
-`Docker`, `Linux`, `Git`, `PowerShell`, `Excel`, `Office General`, `PowerPoint`, `Word`, `Kubernetes`, `Helm`
-
-**Nota:** Un comando puede pertenecer a múltiples aplicaciones (ej: `Ctrl+C` funciona en Excel, Word y Office General).
 
 ---
 
@@ -184,6 +172,7 @@ Edita el archivo `public/data/commands.json`:
 - Sin tildes (busca "aplicacion" o "aplicación", ambos funcionan)
 - Tokenización inteligente (busca palabras individuales)
 - Resultados instantáneos mientras escribes
+- Navegación con parámetros (`?q=`, `?category=`)
 
 ### Filtros Multi-selección
 
@@ -191,7 +180,7 @@ Edita el archivo `public/data/commands.json`:
 - Filtra por niveles de dificultad
 - Combina filtros con búsqueda de texto
 - Contador visual de filtros activos
-- Popover con checkboxes intuitivo
+- Popover rediseñado con tema oscuro
 
 ---
 
@@ -203,16 +192,20 @@ El proyecto usa GitHub Actions para deploy automático:
 
 1. Haz cambios en tu código
 2. Commit con mensaje descriptivo:
+
    ```bash
    git add .
    git commit -m "feat: descripción del cambio"
    git push origin main
    ```
+
 3. GitHub Actions ejecuta automáticamente:
+
    - Instala dependencias
    - Ejecuta build de Next.js
    - Despliega a rama `gh-pages`
-4. El sitio se actualiza en 1-2 minutos en https://yeremygarrido.github.io/commandlex
+
+4. El sitio se actualiza en 1-2 minutos en [https://yeremygarrido.github.io/commandlex](https://yeremygarrido.github.io/commandlex)
 
 ### Deploy Manual (Local)
 
@@ -223,81 +216,15 @@ npm run build
 
 ---
 
-## Testing
-
-### Ejecutar Tests
-
-```bash
-npm test              # Ejecuta todos los tests
-npm run test:watch    # Modo watch (desarrollo)
-npm run test:coverage # Reporte de cobertura
-```
-
-### Tests Incluidos
-
-- `search.test.ts` - Tests del motor de búsqueda
-- `favs.test.ts` - Tests de sistema de favoritos
-- `Tag.test.tsx` - Tests de componente Tag
-
----
-
-## Tecnologías
-
-### Core
-
-- **Next.js 14** - Framework React con App Router
-- **TypeScript 5.9** - Tipado estático
-- **React 18** - Biblioteca UI
-
-### Estilos
-
-- **Tailwind CSS 3.4** - Utility-first CSS
-- **@tailwindcss/forms** - Estilos de formularios
-
-### Testing
-
-- **Jest 30** - Framework de testing
-- **Testing Library** - Testing de componentes React
-
-### Herramientas
-
-- **ESLint** - Linter de código
-- **PostCSS** - Procesador CSS
-
----
-
-## Contribuir
-
-Las contribuciones son bienvenidas! Aquí está cómo puedes ayudar:
-
-### Agregar Comandos
-
-1. Edita `public/data/commands.json`
-2. Sigue la estructura documentada arriba
-3. Asegúrate de que el JSON sea válido
-4. Haz PR con tus cambios
-
-### Mejorar el Código
-
-1. Fork el proyecto
-2. Crea una rama: `git checkout -b feature/nueva-feature`
-3. Haz tus cambios con commits descriptivos
-4. Ejecuta `npm run lint` y `npm test`
-5. Push: `git push origin feature/nueva-feature`
-6. Abre un Pull Request
-
-### Reportar Bugs
-
-Usa los [GitHub Issues](https://github.com/YeremyGarrido/commandlex/issues) con:
-
-- Descripción clara del problema
-- Pasos para reproducir
-- Comportamiento esperado vs actual
-- Screenshots si aplica
-
----
-
 ## Roadmap
+
+### v2.0 (Actual)
+
+- Rediseño total de la interfaz
+- Nueva arquitectura de navegación y filtros
+- Corrección de errores 404
+- Mejoras de rendimiento y accesibilidad
+- Integración de comandos CMD
 
 ### v3.1 (Próximo)
 
@@ -318,27 +245,9 @@ Usa los [GitHub Issues](https://github.com/YeremyGarrido/commandlex/issues) con:
 
 ---
 
-## Estadísticas del Proyecto
-
-- **107 comandos** en el dataset
-- **10 aplicaciones** soportadas
-- **3 niveles** de dificultad
-- **0 vulnerabilidades** de seguridad
-- **PWA score: 100** (Lighthouse)
-- **Offline-first** con Service Worker
-
----
-
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-Esto significa que puedes:
-
-- Usar comercialmente
-- Modificar
-- Distribuir
-- Uso privado
 
 ---
 
@@ -348,31 +257,4 @@ Esto significa que puedes:
 
 - GitHub: [@YeremyGarrido](https://github.com/YeremyGarrido)
 - Proyecto: [commandlex](https://yeremygarrido.github.io/commandlex)
-- Email: yeremy_neira@hotmail.com
-
----
-
-## Agradecimientos
-
-- **Next.js** por el framework
-- **Tailwind CSS** por el sistema de estilos
-- **La comunidad open source** por las herramientas y soporte
-
----
-
-## Recursos Adicionales
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [GitHub Pages Docs](https://docs.github.com/en/pages)
-
----
-
-<div align="center">
-  
-  **Si este proyecto te fue útil, considera darle una estrella en GitHub**
-  
-  [Reportar Bug](https://github.com/YeremyGarrido/commandlex/issues) · [Solicitar Feature](https://github.com/YeremyGarrido/commandlex/issues) · [Ver Demo](https://yeremygarrido.github.io/commandlex)
-  
-</div>
+- Email: [yeremy_neira@hotmail.com](mailto:yeremy_neira@hotmail.com)
