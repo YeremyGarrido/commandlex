@@ -1590,6 +1590,162 @@
       "requerimientos": "Microsoft Word",
       "aplicaciones": ["Word"],
       "tags": ["atajo", "formato", "texto"]
+    },
+    {
+      "id": "cmd-systeminfo",
+      "comando": "systeminfo",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra información detallada del sistema operativo, hardware, red y configuración instalada.",
+      "ejemplo": ["systeminfo", "systeminfo | findstr /B /C:'OS Name'"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["diagnóstico", "sistema", "información"]
+    },
+    {
+      "id": "cmd-netstat",
+      "comando": "netstat",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra conexiones de red activas, puertos de escucha y estadísticas de red.",
+      "ejemplo": ["netstat -ano", "netstat -an | find \"LISTEN\""],
+      "requerimientos": "Permisos estándar de usuario o administrador para puertos reservados.",
+      "tags": ["red", "puertos", "conexiones"]
+    },
+    {
+      "id": "cmd-tasklist",
+      "comando": "tasklist",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Lista todos los procesos en ejecución junto con su PID y uso de memoria.",
+      "ejemplo": ["tasklist", "tasklist | find \"chrome.exe\""],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["procesos", "diagnóstico", "sistema"]
+    },
+    {
+      "id": "cmd-sfc",
+      "comando": "sfc /scannow",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Verifica e intenta reparar archivos del sistema de Windows dañados o faltantes.",
+      "ejemplo": ["sfc /scannow"],
+      "requerimientos": "Ejecutar CMD como administrador.",
+      "tags": ["sistema", "reparación", "integridad"]
+    },
+    {
+      "id": "cmd-wmic",
+      "comando": "wmic product get name,version",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra una lista de programas instalados con su versión utilizando la interfaz WMIC.",
+      "ejemplo": [
+        "wmic os get caption,version",
+        "wmic product get name,version"
+      ],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["software", "inventario", "sistema"]
+    },
+    {
+      "id": "cmd-ipconfig",
+      "comando": "ipconfig",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra la configuración de red del equipo, incluyendo direcciones IP, máscara de subred y puerta de enlace predeterminada.",
+      "ejemplo": ["ipconfig", "ipconfig /all"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["red", "diagnóstico", "ip"]
+    },
+    {
+      "id": "cmd-ping",
+      "comando": "ping",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Envía paquetes ICMP a una dirección IP o dominio para comprobar la conectividad de red.",
+      "ejemplo": ["ping google.com", "ping 8.8.8.8 -t"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["red", "conectividad", "diagnóstico"]
+    },
+    {
+      "id": "cmd-tracert",
+      "comando": "tracert",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra la ruta que siguen los paquetes para llegar a un host de destino.",
+      "ejemplo": ["tracert google.com", "tracert 8.8.8.8"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["red", "diagnóstico", "rutas"]
+    },
+    {
+      "id": "cmd-shutdown",
+      "comando": "shutdown",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Apaga, reinicia o cierra sesión en el equipo local o remoto.",
+      "ejemplo": ["shutdown /s /t 0", "shutdown /r /t 60"],
+      "requerimientos": "Permisos de administrador para equipos remotos.",
+      "tags": ["sistema", "energía", "administración"]
+    },
+    {
+      "id": "cmd-chkdsk",
+      "comando": "chkdsk",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Escanea y repara errores en el disco duro o en un volumen específico.",
+      "ejemplo": ["chkdsk C:", "chkdsk D: /f /r"],
+      "requerimientos": "Ejecutar CMD como administrador.",
+      "tags": ["disco", "sistema", "reparación"]
+    },
+    {
+      "id": "cmd-diskpart",
+      "comando": "diskpart",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Administra particiones, discos y volúmenes del sistema.",
+      "ejemplo": ["diskpart", "list disk", "select disk 0"],
+      "requerimientos": "Ejecutar CMD como administrador.",
+      "tags": ["discos", "particiones", "administración"]
+    },
+    {
+      "id": "cmd-del",
+      "comando": "del",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Elimina uno o varios archivos desde la línea de comandos.",
+      "ejemplo": ["del archivo.txt", "del *.log /s /q"],
+      "requerimientos": "Permisos de escritura en el directorio.",
+      "tags": ["archivos", "sistema", "borrado"]
+    },
+    {
+      "id": "cmd-mkdir",
+      "comando": "mkdir",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Crea un nuevo directorio en la ruta especificada.",
+      "ejemplo": ["mkdir proyectos", "mkdir C:\\Reportes\\2025"],
+      "requerimientos": "Permisos de escritura en la ubicación.",
+      "tags": ["archivos", "carpetas", "estructura"]
+    },
+    {
+      "id": "cmd-robocopy",
+      "comando": "robocopy",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Copia archivos y carpetas con mayor control que el comando 'copy', manteniendo permisos y atributos.",
+      "ejemplo": [
+        "robocopy C:\\Origen D:\\Destino /E /ZB",
+        "robocopy C:\\Logs D:\\Backup /MIR"
+      ],
+      "requerimientos": "Permisos de lectura y escritura.",
+      "tags": ["archivos", "backup", "automatización"]
+    },
+    {
+      "id": "cmd-powershell",
+      "comando": "start powershell",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Abre una instancia de PowerShell desde la consola CMD.",
+      "ejemplo": ["start powershell", "start powershell -NoExit"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["integración", "sistema", "shell"]
     }
   ]
 }

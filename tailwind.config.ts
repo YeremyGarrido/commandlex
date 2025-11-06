@@ -1,4 +1,3 @@
-// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -14,11 +13,12 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
 
-      // --- Animaciones del Modal (ya las tenías) ---
+      // --- Animaciones ---
       keyframes: {
+        // CAMBIO: Modificado fadeIn para incluir el "slide" (translateY)
         fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         scaleIn: {
           "0%": { opacity: "0", transform: "scale(0.95)" },
@@ -26,16 +26,16 @@ const config: Config = {
         },
       },
       animation: {
-        fadeIn: "fadeIn 200ms ease-out",
-        scaleIn: "scaleIn 200ms ease-out",
+        // CAMBIO: Ajustada la duración y 'forwards' para la nueva animación
+        fadeIn: "fadeIn 300ms ease-out forwards",
+        scaleIn: "scaleIn 200ms ease-out", // Se mantiene igual
       },
 
-      // --- AÑADE ESTO PARA EL GLOW (OPCIÓN 1) ---
+      // --- Efectos de Sombra (Glow) ---
       boxShadow: {
         "glow-purple": "0 0 15px 0 rgb(168 85 247 / 0.5)",
         "glow-blue": "0 0 15px 0 rgb(59 130 246 / 0.5)",
       },
-      // --- FIN DE LO AÑADIDO ---
     },
   },
   plugins: [],
