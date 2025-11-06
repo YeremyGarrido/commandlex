@@ -1,8 +1,8 @@
 // public/sw.js
 // Service Worker de CommandLex - estrategia Stale-While-Revalidate
 
-const CACHE_NAME = "commandlex-cache-v1";
-const DATA_CACHE = "commandlex-data-v1";
+const CACHE_NAME = "commandlex-cache-v2";
+const DATA_CACHE = "commandlex-data-v2";
 
 const APP_SHELL = [
   "/",
