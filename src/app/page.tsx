@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { loadDataset, type Command } from "@/lib/data";
@@ -12,7 +13,15 @@ import { FaGithub } from "react-icons/fa";
 import { CategoryPicker } from "@/components/CategoryPicker";
 import Link from "next/link";
 
-export default function HomePage() {
+export default function HomePageWrapper() {
+  return (
+    <Suspense fallback={<div className="p-8 text-gray-400">Cargando...</div>}>
+      <HomePage />
+    </Suspense>
+  );
+}
+
+function HomePage() {
   // --- Estados Locales (Solo para datos y UI) ---
   const [allCommands, setAllCommands] = useState<Command[]>([]);
   const [loading, setLoading] = useState(true);
@@ -45,18 +54,13 @@ export default function HomePage() {
   }, []);
 
   // --- Handlers (Ahora actualizan la URL) ---
-
-  // !!!!! --- ESTA ES LA FUNCIÓN CORREGIDA --- !!!!!
   const handleSearch = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) {
-      // Si el usuario escribe algo, SÍ reseteamos la categoría
       params.set("q", value);
       params.delete("category");
     } else {
-      // Si el valor es vacío (ej. borró el texto), solo borra 'q'
       params.delete("q");
-      // NO borramos la categoría aquí
     }
     router.push(`${pathname}?${params.toString()}`);
   };
@@ -75,7 +79,7 @@ export default function HomePage() {
     } else {
       params.delete("category");
     }
-    params.delete("q"); // Seleccionar categoría resetea la búsqueda
+    params.delete("q");
     setAppliedApps([]);
     setAppliedLevels([]);
     router.push(`${pathname}?${params.toString()}`);
@@ -92,7 +96,7 @@ export default function HomePage() {
     setFavVersion((v) => v + 1);
   };
 
-  // --- Lógica de filtrado (sin cambios) ---
+  // --- Lógica de filtrado ---
   const { aplicaciones, niveles } = useMemo(() => {
     const apps = new Set<string>();
     const levels = new Set<string>();
@@ -131,7 +135,7 @@ export default function HomePage() {
     return result;
   }, [allCommands, searchTerm, appliedApps, appliedLevels, selectedCategory]);
 
-  // --- Handlers del Popover (sin cambios) ---
+  // --- Handlers del Popover ---
   const handleSaveFilters = () => {
     setAppliedApps(selectedApps);
     setAppliedLevels(selectedLevels);
@@ -166,7 +170,7 @@ export default function HomePage() {
 
   return (
     <main className="text-gray-900 dark:text-gray-100">
-      {/* 1. HERO SECTION (con espacio reducido) */}
+      {/* 1. HERO SECTION */}
       <div className="bg-gray-50 dark:bg-gray-950 pt-10 pb-8 min-h-[35vh] md:pt-12 md:pb-10 md:min-h-[38vh] px-6">
         <div className="flex justify-between items-center mb-8 text-sm max-w-7xl mx-auto">
           <a
@@ -193,7 +197,6 @@ export default function HomePage() {
         </div>
 
         <div className="max-w-4xl mx-auto text-center">
-          {/* Título (Resetea la vista) */}
           <h1
             className="text-5xl sm:text-7xl font-extrabold mb-4 tracking-tighter cursor-pointer"
             onClick={resetView}
@@ -210,7 +213,6 @@ export default function HomePage() {
             para todos tus comandos favoritos y atajos.
           </p>
 
-          {/* Barra de búsqueda (Siempre visible) */}
           <div className="flex justify-center mx-auto max-w-2xl mt-4 animate-fadeIn">
             <div className="flex flex-grow items-center gap-2">
               <div className="relative flex-grow rounded-xl border border-gray-800 bg-gray-900/60 shadow-lg backdrop-blur-sm focus-within:ring-2 focus-within:ring-purple-500/40 transition-all">
@@ -315,12 +317,10 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      {/* FIN DEL HERO SECTION */}
 
-      {/* 2. CONTENEDOR DE LA CUADRÍCULA (Condicional) */}
+      {/* 2. CONTENEDOR DE LA CUADRÍCULA */}
       <div className="px-6 max-w-7xl mx-auto">
         {showCards ? (
-          // A. VISTA DE CARDS (si hay categoría o búsqueda)
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 animate-fadeIn">
             {filteredCommands.length === 0 ? (
               <EmptyState message="No se encontraron comandos." />
@@ -338,7 +338,6 @@ export default function HomePage() {
             )}
           </div>
         ) : (
-          // B. VISTA DE CATEGORÍAS (por defecto)
           <CategoryPicker
             applications={aplicaciones}
             onSelectApp={handleCategorySelect}
