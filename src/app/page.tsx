@@ -171,7 +171,7 @@ function HomePage() {
   return (
     <main className="text-gray-900 dark:text-gray-100">
       {/* 1. HERO SECTION */}
-      <div className="bg-gray-50 dark:bg-gray-950 pt-10 pb-8 min-h-[35vh] md:pt-12 md:pb-10 md:min-h-[38vh] px-6">
+      <div className="bg-gray-950 pt-10 pb-8 min-h-[35vh] md:pt-12 md:pb-10 md:min-h-[38vh] px-6">
         <div className="flex justify-between items-center mb-8 text-sm max-w-7xl mx-auto">
           <a
             href="https://github.com/YeremyGarrido/commandlex"
