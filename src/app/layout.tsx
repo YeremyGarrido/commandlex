@@ -14,6 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="dark">
+      {" "}
+      {/* Forzamos tema oscuro en todo el sitio */}
       <body className="min-h-screen bg-gray-950 text-gray-100">
         <ServiceWorkerProvider />
         {children}
