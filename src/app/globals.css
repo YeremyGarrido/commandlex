@@ -2,16 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- Tema oscuro forzado (modo fijo) --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0a0a0a; /* Fondo principal */
+  --foreground: #ededed; /* Texto principal */
 }
 
 body {
@@ -20,13 +14,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* --- Ajustes globales --- */
+html,
+body {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Utilidad de equilibrio de texto --- */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-/* --- AÑADIDO: Estilos para la barra de scroll --- */
+/* --- Estilos personalizados para barra de scroll --- */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
@@ -34,11 +37,11 @@ body {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
+  background-color: #4b5563; /* gris medio */
   border-radius: 20px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #6b7280;
+  background-color: #6b7280; /* gris más claro */
 }
