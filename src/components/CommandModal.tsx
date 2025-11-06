@@ -1,8 +1,9 @@
 "use client";
+import { useEffect } from "react";
 import type { Command } from "@/lib/data";
 import { AppIcon } from "./AppIcon";
-import { CopyBlock } from "./CopyBlock"; // <-- El bloque que acabamos de crear
-import { Tag } from "./Tag"; // <-- Tu componente Tag
+import { CopyBlock } from "./CopyBlock";
+import { Tag } from "./Tag";
 import { FaTimes, FaLayerGroup, FaTerminal, FaTags } from "react-icons/fa";
 
 interface Props {
@@ -11,18 +12,28 @@ interface Props {
 }
 
 export const CommandModal = ({ comando, onClose }: Props) => {
+  // 🔹 Cerrar con tecla ESC
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     // 1. Overlay (fondo oscuro semi-transparente)
     <div
       onClick={onClose}
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm
-                 animate-fadeIn" // <-- AÑADE ESTA CLASE
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
     >
       {/* 2. Contenedor del Modal (evita que el clic en él cierre el modal) */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-3xl rounded-lg border border-gray-700 bg-gray-800 p-8 shadow-2xl dark:bg-gray-900
-                   animate-scaleIn" // <-- AÑADE ESTA CLASE
+        className="relative w-full max-w-3xl rounded-lg border border-gray-700 bg-gray-800 p-8 shadow-2xl dark:bg-gray-900 animate-scaleIn"
       >
         {/* 3. Botón de Cerrar */}
         <button
@@ -32,7 +43,7 @@ export const CommandModal = ({ comando, onClose }: Props) => {
           <FaTimes size={20} />
         </button>
 
-        {/* 4. Layout Principal (2 columnas, como en la foto) */}
+        {/* 4. Layout Principal (2 columnas) */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* === COLUMNA IZQUIERDA (Principal) === */}
           <div className="md:col-span-2">
@@ -52,7 +63,7 @@ export const CommandModal = ({ comando, onClose }: Props) => {
             {/* Descripción */}
             <p className="text-gray-300 mb-6">{comando.descripcion}</p>
 
-            {/* Ejemplos (¡Lo más importante!) */}
+            {/* Ejemplos */}
             <h3 className="text-lg font-semibold text-white mb-3">Ejemplos</h3>
             <div className="flex flex-col gap-3">
               {comando.ejemplo.map((ej, index) => (
@@ -61,7 +72,7 @@ export const CommandModal = ({ comando, onClose }: Props) => {
             </div>
           </div>
 
-          {/* === COLUMNA DERECHA (Metadata "Ad-hoc") === */}
+          {/* === COLUMNA DERECHA (Metadata) === */}
           <div className="md:col-span-1">
             {/* Nivel */}
             <div className="mb-4">
