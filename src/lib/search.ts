@@ -1,16 +1,5 @@
 // src/lib/search.ts
-// Módulo de búsqueda tolerante entre v2.x (entorno) y v3.x (aplicaciones)
-
-export type Command = {
-  id?: string;
-  comando: string;
-  descripcion: string;
-  requerimientos?: string;
-  aplicaciones?: string[]; // v3.0
-  entorno?: string; // v2.x (compatibilidad temporal)
-  nivel?: string;
-  tags?: string[];
-};
+import type { Command } from "./data"; // <-- usa el mismo tipo del dataset
 
 function tokenize(text: string): string[] {
   return text
@@ -32,12 +21,12 @@ export function search(
   const entorno = filters?.entorno?.toLowerCase();
   const nivel = filters?.nivel?.toLowerCase();
 
-  // Filtra por entorno (usando entorno o aplicaciones[])
+  // Filtra por entorno (v2.x) o aplicaciones (v3.x)
   if (entorno) {
     filtered = filtered.filter((c) =>
-      c.entorno
+      "entorno" in c && typeof c.entorno === "string"
         ? c.entorno.toLowerCase() === entorno
-        : c.aplicaciones?.some((app) => app.toLowerCase() === entorno)
+        : (c.aplicaciones ?? []).some((app) => app.toLowerCase() === entorno)
     );
   }
 
@@ -46,10 +35,10 @@ export function search(
     filtered = filtered.filter((c) => (c.nivel ?? "").toLowerCase() === nivel);
   }
 
-  // Si no hay query, retorna los filtrados
+  // Si no hay texto, retorna los filtrados por facetas
   if (tokens.length === 0) return filtered;
 
-  // Busca por texto completo
+  // Búsqueda textual completa (nombre, descripción, requerimientos, tags, etc.)
   return filtered.filter((c) => {
     const searchableText = [
       c.comando,
