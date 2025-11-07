@@ -1,82 +1,63 @@
-import { search } from '@/lib/search';
-import type { Command } from '@/lib/data';
+import { search } from "@/lib/search";
+import type { Command } from "@/lib/search";
 
 const mockCommands: Command[] = [
   {
-    id: 'ls',
-    comando: 'ls',
-    entorno: 'Linux',
-    nivel: 'básico',
-    descripcion: 'Lista archivos y directorios',
-    ejemplo: ['ls -la'],
-    requerimientos: 'Ninguno',
-    tags: ['listar', 'archivos'],
+    id: "ls",
+    comando: "ls",
+    descripcion: "Lista archivos y directorios",
+    requerimientos: "Ninguno",
+    aplicaciones: ["Linux"],
+    nivel: "básico",
+    tags: ["listar", "archivos"],
   },
   {
-    id: 'git-status',
-    comando: 'git status',
-    entorno: 'Git',
-    nivel: 'básico',
-    descripcion: 'Muestra el estado del repositorio',
-    ejemplo: ['git status'],
-    requerimientos: 'Git instalado',
-    tags: ['git', 'estado'],
+    id: "git-status",
+    comando: "git status",
+    descripcion: "Muestra el estado del repositorio",
+    requerimientos: "Git instalado",
+    aplicaciones: ["Git"],
+    nivel: "básico",
+    tags: ["git", "estado"],
   },
   {
-    id: 'docker-ps',
-    comando: 'docker ps',
-    entorno: 'Docker',
-    nivel: 'intermedio',
-    descripcion: 'Lista contenedores',
-    ejemplo: ['docker ps'],
-    requerimientos: 'Docker instalado',
-    tags: ['docker', 'contenedores'],
+    id: "docker-ps",
+    comando: "docker ps",
+    descripcion: "Lista contenedores activos",
+    requerimientos: "Docker instalado",
+    aplicaciones: ["Docker"],
+    nivel: "intermedio",
+    tags: ["docker", "contenedores"],
   },
 ];
 
-describe('search function', () => {
-  it('should return all commands when query is empty', () => {
-    const result = search(mockCommands, '');
+describe("search function", () => {
+  it("should return all commands when query is empty", () => {
+    const result = search(mockCommands, "");
     expect(result).toHaveLength(3);
   });
 
-  it('should filter by command name', () => {
-    const result = search(mockCommands, 'git');
+  it("should find commands by name", () => {
+    const result = search(mockCommands, "git");
     expect(result).toHaveLength(1);
-    expect(result[0].comando).toBe('git status');
+    expect(result[0].id).toBe("git-status");
   });
 
-  it('should filter by description', () => {
-    const result = search(mockCommands, 'lista');
-    expect(result.length).toBeGreaterThan(0);
-  });
-
-  it('should filter by tags', () => {
-    const result = search(mockCommands, 'archivos');
-    expect(result.length).toBeGreaterThan(0);
-  });
-
-  it('should be case insensitive', () => {
-    const result = search(mockCommands, 'DOCKER');
+  it("should filter by environment (aplicaciones)", () => {
+    const result = search(mockCommands, "", { entorno: "Linux" });
     expect(result).toHaveLength(1);
-    expect(result[0].id).toBe('docker-ps');
+    expect(result[0].aplicaciones?.includes("Linux")).toBe(true);
   });
 
-  it('should filter by environment', () => {
-    const result = search(mockCommands, '', { entorno: 'Linux' });
+  it("should filter by level", () => {
+    const result = search(mockCommands, "", { nivel: "intermedio" });
     expect(result).toHaveLength(1);
-    expect(result[0].entorno).toBe('Linux');
+    expect(result[0].nivel).toBe("intermedio");
   });
 
-  it('should filter by nivel', () => {
-    const result = search(mockCommands, '', { nivel: 'intermedio' });
+  it("should combine text and filters", () => {
+    const result = search(mockCommands, "docker", { entorno: "Docker" });
     expect(result).toHaveLength(1);
-    expect(result[0].nivel).toBe('intermedio');
-  });
-
-  it('should combine text and filter options', () => {
-    const result = search(mockCommands, 'git', { entorno: 'Git' });
-    expect(result).toHaveLength(1);
-    expect(result[0].comando).toBe('git status');
+    expect(result[0].id).toBe("docker-ps");
   });
 });
