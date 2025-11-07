@@ -1,32 +1,32 @@
-import { render, screen } from '@testing-library/react';
-import { Tag } from '@/components/Tag';
+import { render, screen } from "@testing-library/react";
+import { Tag } from "@/components/Tag";
 
-describe('Tag component', () => {
-  it('should render the tag text', () => {
-    render(<Tag>test-tag</Tag>);
-    expect(screen.getByText('test-tag')).toBeInTheDocument();
+describe("Tag component", () => {
+  it("should render the tag text", () => {
+    render(<Tag label="test-tag" />);
+    expect(screen.getByText("test-tag")).toBeInTheDocument();
   });
 
-  it('should apply correct CSS classes', () => {
-    render(<Tag>my-tag</Tag>);
-    const tag = screen.getByText('my-tag');
-    
-    expect(tag).toHaveClass('px-2');
-    expect(tag).toHaveClass('py-1');
-    expect(tag).toHaveClass('text-xs');
+  it("should apply correct CSS classes", () => {
+    render(<Tag label="my-tag" />);
+    const tag = screen.getByText("my-tag");
+
+    expect(tag).toHaveClass("px-2");
+    expect(tag).toHaveClass("py-1");
+    expect(tag).toHaveClass("text-xs");
   });
 
-  it('should render multiple tags', () => {
+  it("should render multiple tags", () => {
     const { container } = render(
       <>
-        <Tag>tag1</Tag>
-        <Tag>tag2</Tag>
-        <Tag>tag3</Tag>
+        <Tag label="tag1" />
+        <Tag label="tag2" />
+        <Tag label="tag3" />
       </>
     );
-    
-    expect(screen.getByText('tag1')).toBeInTheDocument();
-    expect(screen.getByText('tag2')).toBeInTheDocument();
-    expect(screen.getByText('tag3')).toBeInTheDocument();
+
+    expect(screen.getByText("tag1")).toBeInTheDocument();
+    expect(screen.getByText("tag2")).toBeInTheDocument();
+    expect(screen.getByText("tag3")).toBeInTheDocument();
   });
 });

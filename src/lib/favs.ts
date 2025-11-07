@@ -35,3 +35,11 @@ export function toggle(id: string): string[] {
 export function has(id: string): boolean {
   return get().includes(id);
 }
+
+export function clear(): void {
+  try {
+    localStorage.removeItem(KEY);
+  } catch {
+    console.warn("No se pudieron limpiar los favoritos");
+  }
+}
