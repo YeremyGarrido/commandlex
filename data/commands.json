@@ -1,6 +1,6 @@
 {
   "dataset": {
-    "version": "3.0",
+    "version": "3.1-optimized",
     "updatedAt": "2025-11-20"
   },
   "niveles": ["básico", "intermedio", "avanzado"],
@@ -9,7 +9,7 @@
       "id": "docker-images",
       "comando": "docker images",
       "nivel": "básico",
-      "descripcion": "Lista todas las imágenes de Docker locales.",
+      "descripcion": "Lista todas las **imágenes de Docker** locales.",
       "ejemplo": ["docker images", "docker images -a"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -19,7 +19,7 @@
       "id": "docker-login",
       "comando": "docker login",
       "nivel": "básico",
-      "descripcion": "Autentica en un registro de Docker (por ejemplo Docker Hub).",
+      "descripcion": "Autentica en un registro de Docker (por ejemplo `Docker Hub`).",
       "ejemplo": ["docker login", "docker login registry.ejemplo.com"],
       "requerimientos": "Docker instalado, credenciales válidas",
       "aplicaciones": ["Docker"],
@@ -29,7 +29,7 @@
       "id": "docker-logs",
       "comando": "docker logs",
       "nivel": "básico",
-      "descripcion": "Muestra los logs de un contenedor.",
+      "descripcion": "Muestra los **logs** de un contenedor específico.",
       "ejemplo": [
         "docker logs container_id",
         "docker logs -f container_id",
@@ -43,7 +43,7 @@
       "id": "docker-ps",
       "comando": "docker ps",
       "nivel": "básico",
-      "descripcion": "Lista contenedores en ejecución.",
+      "descripcion": "Lista **contenedores** en ejecución.",
       "ejemplo": ["docker ps", "docker ps -a", "docker ps -q"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -53,7 +53,7 @@
       "id": "docker-pull",
       "comando": "docker pull",
       "nivel": "básico",
-      "descripcion": "Descarga una imagen de Docker Hub.",
+      "descripcion": "Descarga una **imagen** desde Docker Hub.",
       "ejemplo": [
         "docker pull nginx",
         "docker pull nginx:latest",
@@ -67,7 +67,7 @@
       "id": "docker-rm",
       "comando": "docker rm",
       "nivel": "básico",
-      "descripcion": "Elimina uno o más contenedores.",
+      "descripcion": "Elimina uno o más **contenedores**. Equivalente a usar `docker rm`.",
       "ejemplo": [
         "docker rm container_id",
         "docker rm -f container_id",
@@ -81,7 +81,7 @@
       "id": "docker-rmi",
       "comando": "docker rmi",
       "nivel": "básico",
-      "descripcion": "Elimina una o más imágenes de Docker.",
+      "descripcion": "Elimina una o más **imágenes** de Docker.",
       "ejemplo": ["docker rmi imagen_id", "docker rmi $(docker images -q)"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -91,7 +91,7 @@
       "id": "docker-stop",
       "comando": "docker stop",
       "nivel": "básico",
-      "descripcion": "Detiene uno o más contenedores en ejecución.",
+      "descripcion": "Detiene uno o más **contenedores** en ejecución.",
       "ejemplo": ["docker stop container_id", "docker stop $(docker ps -q)"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -101,7 +101,7 @@
       "id": "docker-system-prune",
       "comando": "docker system prune",
       "nivel": "básico",
-      "descripcion": "Elimina todos los contenedores parados, redes no utilizadas, imágenes colgantes y cachés de build.",
+      "descripcion": "Elimina todos los contenedores parados, redes no utilizadas y caché de `build` para liberar **espacio**.",
       "ejemplo": [
         "docker system prune",
         "docker system prune -a --volumes",
@@ -115,7 +115,7 @@
       "id": "docker-tag",
       "comando": "docker tag",
       "nivel": "básico",
-      "descripcion": "Asigna una etiqueta nueva a una imagen existente de Docker.",
+      "descripcion": "Asigna una **etiqueta** nueva a una imagen existente.",
       "ejemplo": ["docker tag imagen_original:latest repo/nueva_imagen:1.0"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -125,7 +125,7 @@
       "id": "docker-build",
       "comando": "docker build",
       "nivel": "intermedio",
-      "descripcion": "Construye una imagen desde un Dockerfile.",
+      "descripcion": "Construye una imagen desde un `Dockerfile`.",
       "ejemplo": [
         "docker build .",
         "docker build -t mi-app:1.0 .",
@@ -139,7 +139,7 @@
       "id": "docker-cp",
       "comando": "docker cp",
       "nivel": "intermedio",
-      "descripcion": "Copia archivos entre un contenedor y el sistema de archivos del host.",
+      "descripcion": "Copia **archivos** entre un contenedor y el sistema host.",
       "ejemplo": [
         "docker cp container_id:/ruta/interna.txt .",
         "docker cp archivo.txt container_id:/ruta/"
@@ -152,7 +152,7 @@
       "id": "docker-exec",
       "comando": "docker exec",
       "nivel": "intermedio",
-      "descripcion": "Ejecuta un comando en un contenedor en ejecución.",
+      "descripcion": "Ejecuta un comando dentro de un **contenedor** activo.",
       "ejemplo": [
         "docker exec container_id ls",
         "docker exec -it container_id bash"
@@ -165,7 +165,7 @@
       "id": "docker-inspect",
       "comando": "docker inspect",
       "nivel": "intermedio",
-      "descripcion": "Devuelve información detallada en formato JSON sobre objetos de Docker (contenedores, imágenes, volúmenes).",
+      "descripcion": "Devuelve información detallada en formato `JSON` sobre objetos de Docker.",
       "ejemplo": [
         "docker inspect mi-contenedor",
         "docker inspect -f '{{.NetworkSettings.IPAddress}}' mi-contenedor",
@@ -179,7 +179,7 @@
       "id": "docker-run",
       "comando": "docker run",
       "nivel": "intermedio",
-      "descripcion": "Crea y ejecuta un nuevo contenedor.",
+      "descripcion": "Crea y ejecuta un **nuevo contenedor**.",
       "ejemplo": [
         "docker run nginx",
         "docker run -d -p 80:80 nginx",
@@ -193,7 +193,7 @@
       "id": "docker-stats",
       "comando": "docker stats",
       "nivel": "intermedio",
-      "descripcion": "Muestra en tiempo real el uso de recursos de contenedores en ejecución.",
+      "descripcion": "Muestra en tiempo real el uso de **recursos** (CPU, RAM) de los contenedores.",
       "ejemplo": ["docker stats", "docker stats --no-stream"],
       "requerimientos": "Docker instalado",
       "aplicaciones": ["Docker"],
@@ -203,7 +203,7 @@
       "id": "docker-compose-down",
       "comando": "docker-compose down",
       "nivel": "intermedio",
-      "descripcion": "Detiene y elimina contenedores, redes y volúmenes.",
+      "descripcion": "Detiene y elimina contenedores, redes y volúmenes creados por `compose`.",
       "ejemplo": ["docker-compose down", "docker-compose down -v"],
       "requerimientos": "Docker Compose instalado",
       "aplicaciones": ["Docker"],
@@ -213,7 +213,7 @@
       "id": "docker-compose-up",
       "comando": "docker-compose up",
       "nivel": "intermedio",
-      "descripcion": "Inicia servicios definidos en docker-compose.yml.",
+      "descripcion": "Inicia servicios definidos en `docker-compose.yml`.",
       "ejemplo": [
         "docker-compose up",
         "docker-compose up -d",
@@ -227,7 +227,7 @@
       "id": "docker-buildx",
       "comando": "docker buildx",
       "nivel": "avanzado",
-      "descripcion": "Extensión de Docker CLI para construir imágenes con BuildKit, permitiendo builds multi-arquitectura (ej. arm64, amd64).",
+      "descripcion": "Construye imágenes multi-arquitectura (ej. `arm64`, `amd64`) usando BuildKit.",
       "ejemplo": [
         "docker buildx create --use",
         "docker buildx build --platform linux/amd64,linux/arm64 -t mi-imagen --push .",
@@ -241,7 +241,7 @@
       "id": "docker-network",
       "comando": "docker network",
       "nivel": "avanzado",
-      "descripcion": "Gestiona redes de Docker.",
+      "descripcion": "Gestiona **redes** de Docker.",
       "ejemplo": [
         "docker network ls",
         "docker network create mi-red",
@@ -255,7 +255,7 @@
       "id": "docker-volume",
       "comando": "docker volume",
       "nivel": "avanzado",
-      "descripcion": "Gestiona volúmenes de Docker.",
+      "descripcion": "Gestiona **volúmenes** de Docker para persistencia de datos.",
       "ejemplo": [
         "docker volume ls",
         "docker volume create mi-volumen",
@@ -269,7 +269,7 @@
       "id": "ofimatica-abrir",
       "comando": "Ctrl + A",
       "nivel": "básico",
-      "descripcion": "Abre el diálogo para abrir un archivo existente.",
+      "descripcion": "Abre el diálogo para **abrir un archivo** existente.",
       "ejemplo": ["Ctrl + A"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -279,7 +279,7 @@
       "id": "ofimatica-buscar",
       "comando": "Ctrl + B",
       "nivel": "básico",
-      "descripcion": "Abre el panel de búsqueda.",
+      "descripcion": "Abre el panel de **búsqueda**.",
       "ejemplo": ["Ctrl + B"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -289,7 +289,7 @@
       "id": "ofimatica-copiar",
       "comando": "Ctrl + C",
       "nivel": "básico",
-      "descripcion": "Copia el elemento seleccionado al portapapeles.",
+      "descripcion": "Copia el elemento seleccionado al **portapapeles**.",
       "ejemplo": ["Ctrl + C"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -299,7 +299,7 @@
       "id": "ofimatica-seleccionar-todo",
       "comando": "Ctrl + E",
       "nivel": "básico",
-      "descripcion": "Selecciona todo el contenido del documento o la hoja.",
+      "descripcion": "**Selecciona todo** el contenido del documento o la hoja.",
       "ejemplo": ["Ctrl + E"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -309,7 +309,7 @@
       "id": "ofimatica-guardar",
       "comando": "Ctrl + G",
       "nivel": "básico",
-      "descripcion": "Guarda el documento actual (Word, Excel, PowerPoint, etc).",
+      "descripcion": "**Guarda** el documento actual.",
       "ejemplo": ["Ctrl + G"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -319,7 +319,7 @@
       "id": "ofimatica-excel-filtro",
       "comando": "Ctrl + Shift + L",
       "nivel": "básico",
-      "descripcion": "Activa o desactiva los filtros automáticos en un rango de datos seleccionado.",
+      "descripcion": "Activa o desactiva los **filtros** automáticos en Excel.",
       "ejemplo": [],
       "requerimientos": "Microsoft Excel",
       "aplicaciones": ["Excel"],
@@ -329,7 +329,7 @@
       "id": "ofimatica-nuevo-documento",
       "comando": "Ctrl + U",
       "nivel": "básico",
-      "descripcion": "Crea un nuevo documento, libro u hoja de cálculo.",
+      "descripcion": "Crea un **nuevo documento**, libro u hoja de cálculo.",
       "ejemplo": ["Ctrl + U"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -339,7 +339,7 @@
       "id": "ofimatica-pegar",
       "comando": "Ctrl + V",
       "nivel": "básico",
-      "descripcion": "Pega el contenido del portapapeles.",
+      "descripcion": "**Pega** el contenido del portapapeles.",
       "ejemplo": ["Ctrl + V"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -349,7 +349,7 @@
       "id": "ofimatica-cortar",
       "comando": "Ctrl + X",
       "nivel": "básico",
-      "descripcion": "Corta el elemento seleccionado al portapapeles.",
+      "descripcion": "**Corta** el elemento seleccionado al portapapeles.",
       "ejemplo": ["Ctrl + X"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -359,7 +359,7 @@
       "id": "ofimatica-rehacer",
       "comando": "Ctrl + Y",
       "nivel": "básico",
-      "descripcion": "Rehace la última acción deshecha.",
+      "descripcion": "**Rehace** la última acción deshecha.",
       "ejemplo": ["Ctrl + Y"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -369,7 +369,7 @@
       "id": "ofimatica-deshacer",
       "comando": "Ctrl + Z",
       "nivel": "básico",
-      "descripcion": "Deshace la última acción.",
+      "descripcion": "**Deshace** la última acción.",
       "ejemplo": ["Ctrl + Z"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel", "Office General", "Word"],
@@ -379,7 +379,7 @@
       "id": "ofimatica-autosuma",
       "comando": "Alt + =",
       "nivel": "intermedio",
-      "descripcion": "Inserta la función de Autosuma para sumar rápidamente un rango de celdas.",
+      "descripcion": "Inserta la función de **Autosuma** para sumar rápidamente un rango.",
       "ejemplo": ["Alt + ="],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel"],
@@ -389,7 +389,7 @@
       "id": "ofimatica-fecha-actual",
       "comando": "Ctrl + ;",
       "nivel": "intermedio",
-      "descripcion": "Inserta la fecha actual en la celda o documento (según la aplicación).",
+      "descripcion": "Inserta la **fecha actual** en la celda.",
       "ejemplo": ["Ctrl + ;"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel"],
@@ -399,7 +399,7 @@
       "id": "ofimatica-hora-actual",
       "comando": "Ctrl + Shift + ;",
       "nivel": "intermedio",
-      "descripcion": "Inserta la hora actual en la celda o documento (según la aplicación).",
+      "descripcion": "Inserta la **hora actual** en la celda.",
       "ejemplo": ["Ctrl + Shift + ;"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Excel"],
@@ -409,7 +409,7 @@
       "id": "ofimatica-excel-f4",
       "comando": "F4",
       "nivel": "intermedio",
-      "descripcion": "Repite la última acción. Dentro del editor de fórmulas, alterna entre referencias absolutas, relativas y mixtas (ej. A1, $A$1, $A1, A$1).",
+      "descripcion": "Repite la última acción. En fórmulas, alterna referencias (`$A$1`, `A1`).",
       "ejemplo": [],
       "requerimientos": "Microsoft Excel",
       "aplicaciones": ["Excel"],
@@ -419,7 +419,7 @@
       "id": "git-add",
       "comando": "git add",
       "nivel": "básico",
-      "descripcion": "Agrega cambios al área de staging.",
+      "descripcion": "Agrega cambios al área de **staging**.",
       "ejemplo": ["git add archivo.txt", "git add .", "git add -A"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -429,7 +429,7 @@
       "id": "git-clone",
       "comando": "git clone",
       "nivel": "básico",
-      "descripcion": "Clona un repositorio Git existente.",
+      "descripcion": "**Clona** un repositorio Git existente.",
       "ejemplo": [
         "git clone https://github.com/user/repo.git",
         "git clone --depth 1 url"
@@ -442,7 +442,7 @@
       "id": "git-commit",
       "comando": "git commit",
       "nivel": "básico",
-      "descripcion": "Guarda los cambios en el repositorio local.",
+      "descripcion": "Guarda los cambios en el **repositorio local**.",
       "ejemplo": ["git commit -m 'mensaje'", "git commit -am 'mensaje'"],
       "requerimientos": "Cambios en staging",
       "aplicaciones": ["Git"],
@@ -452,7 +452,7 @@
       "id": "git-fetch",
       "comando": "git fetch",
       "nivel": "básico",
-      "descripcion": "Descarga cambios del remoto sin fusionarlos.",
+      "descripcion": "Descarga cambios del **remoto** sin fusionarlos.",
       "ejemplo": ["git fetch", "git fetch origin"],
       "requerimientos": "Repositorio remoto configurado",
       "aplicaciones": ["Git"],
@@ -462,7 +462,7 @@
       "id": "git-init",
       "comando": "git init",
       "nivel": "básico",
-      "descripcion": "Crea un nuevo repositorio Git en el directorio actual.",
+      "descripcion": "**Inicializa** un nuevo repositorio Git en el directorio actual.",
       "ejemplo": ["git init"],
       "requerimientos": "Git instalado",
       "aplicaciones": ["Git"],
@@ -472,7 +472,7 @@
       "id": "git-log",
       "comando": "git log",
       "nivel": "básico",
-      "descripcion": "Muestra el historial de commits.",
+      "descripcion": "Muestra el **historial** de commits.",
       "ejemplo": ["git log", "git log --oneline", "git log --graph --all"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -482,7 +482,7 @@
       "id": "git-pull",
       "comando": "git pull",
       "nivel": "básico",
-      "descripcion": "Descarga y fusiona cambios del repositorio remoto.",
+      "descripcion": "**Descarga y fusiona** cambios del repositorio remoto.",
       "ejemplo": ["git pull", "git pull origin main"],
       "requerimientos": "Repositorio remoto configurado",
       "aplicaciones": ["Git"],
@@ -492,7 +492,7 @@
       "id": "git-push",
       "comando": "git push",
       "nivel": "básico",
-      "descripcion": "Sube commits al repositorio remoto.",
+      "descripcion": "**Sube** commits al repositorio remoto.",
       "ejemplo": ["git push origin main", "git push -u origin nueva-rama"],
       "requerimientos": "Repositorio remoto configurado",
       "aplicaciones": ["Git"],
@@ -502,7 +502,7 @@
       "id": "git-remote",
       "comando": "git remote",
       "nivel": "básico",
-      "descripcion": "Administra los repositorios remotos.",
+      "descripcion": "Administra los **orígenes remotos**.",
       "ejemplo": [
         "git remote -v",
         "git remote add origin url",
@@ -516,7 +516,7 @@
       "id": "git-status",
       "comando": "git status",
       "nivel": "básico",
-      "descripcion": "Muestra el estado actual del repositorio Git.",
+      "descripcion": "Muestra el **estado** actual del repositorio (archivos modificados, staged).",
       "ejemplo": ["git status", "git status -s"],
       "requerimientos": "Git instalado",
       "aplicaciones": ["Git"],
@@ -526,7 +526,7 @@
       "id": "git-blame",
       "comando": "git blame",
       "nivel": "intermedio",
-      "descripcion": "Muestra quién modificó cada línea de un archivo.",
+      "descripcion": "Muestra quién modificó cada **línea** de un archivo.",
       "ejemplo": ["git blame archivo.txt", "git blame -L 10,20 archivo.txt"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -536,7 +536,7 @@
       "id": "git-branch",
       "comando": "git branch",
       "nivel": "intermedio",
-      "descripcion": "Lista, crea o elimina ramas.",
+      "descripcion": "Lista, crea o elimina **ramas**.",
       "ejemplo": [
         "git branch",
         "git branch nueva-rama",
@@ -550,7 +550,7 @@
       "id": "git-checkout",
       "comando": "git checkout",
       "nivel": "intermedio",
-      "descripcion": "Cambia de rama o restaura archivos.",
+      "descripcion": "Cambia de **rama** o restaura archivos.",
       "ejemplo": [
         "git checkout main",
         "git checkout -b nueva-rama",
@@ -564,7 +564,7 @@
       "id": "git-diff",
       "comando": "git diff",
       "nivel": "intermedio",
-      "descripcion": "Muestra diferencias entre commits, branches o archivos.",
+      "descripcion": "Muestra **diferencias** entre commits, branches o archivos.",
       "ejemplo": ["git diff", "git diff main feature", "git diff HEAD~1"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -574,7 +574,7 @@
       "id": "git-merge",
       "comando": "git merge",
       "nivel": "intermedio",
-      "descripcion": "Fusiona ramas en la rama actual.",
+      "descripcion": "**Fusiona** una rama en la rama actual.",
       "ejemplo": ["git merge feature-branch", "git merge --no-ff rama"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -584,7 +584,7 @@
       "id": "git-reflog",
       "comando": "git reflog",
       "nivel": "intermedio",
-      "descripcion": "Muestra un registro de dónde ha estado HEAD. Útil para recuperar commits o ramas perdidas.",
+      "descripcion": "Registro de dónde ha estado `HEAD`. Útil para **recuperar** commits perdidos.",
       "ejemplo": [
         "git reflog",
         "git reset --hard HEAD@{5}",
@@ -598,7 +598,7 @@
       "id": "git-revert",
       "comando": "git revert",
       "nivel": "intermedio",
-      "descripcion": "Crea un nuevo commit que revierte los cambios de un commit anterior.",
+      "descripcion": "Crea un nuevo commit que **invierte** los cambios de un commit anterior.",
       "ejemplo": ["git revert abc1234"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -608,7 +608,7 @@
       "id": "git-tag",
       "comando": "git tag",
       "nivel": "intermedio",
-      "descripcion": "Crea, lista o elimina etiquetas de referencia a commits específicos.",
+      "descripcion": "Crea **etiquetas** (tags) de referencia a commits específicos (ej. versiones).",
       "ejemplo": ["git tag v1.0.0", "git tag -d v1.0.0"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -618,7 +618,7 @@
       "id": "git-bisect",
       "comando": "git bisect",
       "nivel": "avanzado",
-      "descripcion": "Realiza una búsqueda binaria en el historial de commits para encontrar el commit que introdujo un error.",
+      "descripcion": "Búsqueda binaria para encontrar qué commit introdujo un **bug**.",
       "ejemplo": [
         "git bisect start",
         "git bisect good <commit_bueno>",
@@ -633,7 +633,7 @@
       "id": "git-cherry-pick",
       "comando": "git cherry-pick",
       "nivel": "avanzado",
-      "descripcion": "Aplica commits específicos de una rama en la rama actual.",
+      "descripcion": "Aplica un **commit específico** de otra rama en la actual.",
       "ejemplo": ["git cherry-pick abc1234"],
       "requerimientos": "Repositorio Git",
       "aplicaciones": ["Git"],
@@ -643,7 +643,7 @@
       "id": "git-rebase",
       "comando": "git rebase",
       "nivel": "avanzado",
-      "descripcion": "Reorganiza commits sobre otra base.",
+      "descripcion": "**Reorganiza** commits colocándolos sobre otra base.",
       "ejemplo": [
         "git rebase main",
         "git rebase -i HEAD~3",
@@ -657,7 +657,7 @@
       "id": "git-reset",
       "comando": "git reset",
       "nivel": "avanzado",
-      "descripcion": "Deshace commits o cambios en staging.",
+      "descripcion": "**Deshace** commits o cambios en staging.",
       "ejemplo": [
         "git reset HEAD~1",
         "git reset --hard origin/main",
@@ -671,7 +671,7 @@
       "id": "git-stash",
       "comando": "git stash",
       "nivel": "avanzado",
-      "descripcion": "Guarda cambios temporalmente sin hacer commit.",
+      "descripcion": "Guarda cambios **temporalmente** en una pila sin hacer commit.",
       "ejemplo": [
         "git stash",
         "git stash pop",
@@ -686,7 +686,7 @@
       "id": "git-worktree",
       "comando": "git worktree",
       "nivel": "avanzado",
-      "descripcion": "Permite tener múltiples árboles de trabajo (checkouts de diferentes ramas) en un solo repositorio.",
+      "descripcion": "Permite tener múltiples **árboles de trabajo** (directorios) vinculados al mismo repo.",
       "ejemplo": [
         "git worktree add ../hotfix-branch hotfix",
         "git worktree list",
@@ -700,7 +700,7 @@
       "id": "helm-upgrade-install",
       "comando": "helm upgrade --install",
       "nivel": "intermedio",
-      "descripcion": "Actualiza un release existente o instala uno nuevo si no existe (operación 'upsert').",
+      "descripcion": "Actualiza un release o lo instala si no existe (operación **upsert**).",
       "ejemplo": [
         "helm upgrade --install mi-release ./mi-chart",
         "helm upgrade --install nginx stable/nginx-ingress --namespace kube-system --values values.yaml",
@@ -714,7 +714,7 @@
       "id": "kubectl-port-forward",
       "comando": "kubectl port-forward",
       "nivel": "intermedio",
-      "descripcion": "Redirige un puerto local a un puerto en un Pod. Ideal para debugging y acceso a servicios internos.",
+      "descripcion": "Redirige un **puerto local** a un puerto en un Pod (K8s). Ideal para debugging.",
       "ejemplo": [
         "kubectl port-forward pods/mi-pod 8080:80",
         "kubectl port-forward svc/mi-servicio 9000:80 -n mi-namespace",
@@ -728,7 +728,7 @@
       "id": "kubectl-jsonpath",
       "comando": "kubectl get ... -o jsonpath",
       "nivel": "avanzado",
-      "descripcion": "Utiliza expresiones JSONPath para formatear la salida y extraer valores específicos de los objetos de Kubernetes.",
+      "descripcion": "Utiliza expresiones **JSONPath** para extraer valores específicos de Kubernetes.",
       "ejemplo": [
         "kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type==\"InternalIP\")].address}'",
         "kubectl get pod mi-pod -o jsonpath='{.spec.containers[0].image}'",
@@ -742,7 +742,7 @@
       "id": "cat",
       "comando": "cat",
       "nivel": "básico",
-      "descripcion": "Muestra el contenido de archivos.",
+      "descripcion": "Muestra el **contenido** de archivos en la terminal.",
       "ejemplo": ["cat archivo.txt", "cat archivo1.txt archivo2.txt"],
       "requerimientos": "Permisos de lectura",
       "aplicaciones": ["Linux"],
@@ -752,7 +752,7 @@
       "id": "cd",
       "comando": "cd",
       "nivel": "básico",
-      "descripcion": "Cambia el directorio actual de trabajo.",
+      "descripcion": "Cambia el **directorio** actual de trabajo.",
       "ejemplo": ["cd /home/usuario", "cd ..", "cd ~"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -762,7 +762,7 @@
       "id": "cp",
       "comando": "cp",
       "nivel": "básico",
-      "descripcion": "Copia archivos o directorios.",
+      "descripcion": "**Copia** archivos o directorios.",
       "ejemplo": [
         "cp origen.txt destino.txt",
         "cp -r directorio/ nuevo_directorio/"
@@ -775,7 +775,7 @@
       "id": "df",
       "comando": "df",
       "nivel": "básico",
-      "descripcion": "Muestra el espacio en disco disponible.",
+      "descripcion": "Muestra el **espacio en disco** disponible.",
       "ejemplo": ["df -h", "df -T"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -785,7 +785,7 @@
       "id": "du",
       "comando": "du",
       "nivel": "básico",
-      "descripcion": "Muestra el uso de disco de archivos y directorios.",
+      "descripcion": "Muestra el **peso** de archivos y directorios.",
       "ejemplo": ["du -sh *", "du -h --max-depth=1"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -795,7 +795,7 @@
       "id": "linux-free",
       "comando": "free",
       "nivel": "básico",
-      "descripcion": "Muestra el uso de memoria RAM e intercambio en el sistema.",
+      "descripcion": "Muestra el uso de **memoria RAM** y swap.",
       "ejemplo": ["free -h"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -805,7 +805,7 @@
       "id": "linux-head",
       "comando": "head",
       "nivel": "básico",
-      "descripcion": "Muestra las primeras 10 líneas de un archivo.",
+      "descripcion": "Muestra las **primeras** líneas de un archivo.",
       "ejemplo": ["head archivo.txt", "head -n 20 archivo.txt"],
       "requerimientos": "Permisos de lectura",
       "aplicaciones": ["Linux"],
@@ -815,7 +815,7 @@
       "id": "ls",
       "comando": "ls",
       "nivel": "básico",
-      "descripcion": "Lista archivos y directorios del sistema.",
+      "descripcion": "**Lista** archivos y directorios.",
       "ejemplo": ["ls -la", "ls -lh", "ls -R"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -825,7 +825,7 @@
       "id": "mkdir",
       "comando": "mkdir",
       "nivel": "básico",
-      "descripcion": "Crea uno o más directorios nuevos.",
+      "descripcion": "**Crea** uno o más directorios nuevos.",
       "ejemplo": ["mkdir nuevo_directorio", "mkdir -p padre/hijo/nieto"],
       "requerimientos": "Permisos de escritura",
       "aplicaciones": ["Linux"],
@@ -835,7 +835,7 @@
       "id": "mv",
       "comando": "mv",
       "nivel": "básico",
-      "descripcion": "Mueve o renombra archivos y directorios.",
+      "descripcion": "**Mueve** o **renombra** archivos.",
       "ejemplo": ["mv viejo.txt nuevo.txt", "mv archivo.txt /otra/carpeta/"],
       "requerimientos": "Permisos de escritura",
       "aplicaciones": ["Linux"],
@@ -845,7 +845,7 @@
       "id": "ps",
       "comando": "ps",
       "nivel": "básico",
-      "descripcion": "Muestra los procesos en ejecución.",
+      "descripcion": "Muestra los **procesos** en ejecución.",
       "ejemplo": ["ps aux", "ps -ef", "ps aux | grep python"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -855,7 +855,7 @@
       "id": "pwd",
       "comando": "pwd",
       "nivel": "básico",
-      "descripcion": "Muestra la ruta completa del directorio actual.",
+      "descripcion": "Imprime la **ruta actual** de trabajo.",
       "ejemplo": ["pwd"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -865,7 +865,7 @@
       "id": "linux-sudo",
       "comando": "sudo",
       "nivel": "básico",
-      "descripcion": "Ejecuta comandos con privilegios de superusuario o de otro usuario.",
+      "descripcion": "Ejecuta comandos con privilegios de **superusuario**.",
       "ejemplo": ["sudo apt update", "sudo -u otroUsuario comando"],
       "requerimientos": "Usuario con permisos de sudo",
       "aplicaciones": ["Linux"],
@@ -875,7 +875,7 @@
       "id": "linux-tail",
       "comando": "tail",
       "nivel": "básico",
-      "descripcion": "Muestra las últimas 10 líneas de un archivo.",
+      "descripcion": "Muestra las **últimas** líneas de un archivo (útil para logs).",
       "ejemplo": [
         "tail archivo.txt",
         "tail -n 20 archivo.txt",
@@ -889,7 +889,7 @@
       "id": "top",
       "comando": "top",
       "nivel": "básico",
-      "descripcion": "Muestra procesos en tiempo real y uso de recursos.",
+      "descripcion": "Muestra procesos y recursos en **tiempo real**.",
       "ejemplo": ["top", "top -u usuario"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -899,7 +899,7 @@
       "id": "linux-uname",
       "comando": "uname",
       "nivel": "básico",
-      "descripcion": "Muestra información del sistema operativo (kernel).",
+      "descripcion": "Muestra información del **kernel** y sistema.",
       "ejemplo": ["uname -a", "uname -r"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -909,7 +909,7 @@
       "id": "wget",
       "comando": "wget",
       "nivel": "básico",
-      "descripcion": "Descarga archivos desde URLs.",
+      "descripcion": "**Descarga** archivos desde URLs directamente.",
       "ejemplo": [
         "wget https://ejemplo.com/archivo.zip",
         "wget -O nuevo_nombre.zip url"
@@ -922,7 +922,7 @@
       "id": "linux-apt",
       "comando": "apt",
       "nivel": "intermedio",
-      "descripcion": "Gestor de paquetes para Debian/Ubuntu.",
+      "descripcion": "Gestor de **paquetes** para Debian/Ubuntu.",
       "ejemplo": [
         "sudo apt update",
         "sudo apt install nginx",
@@ -936,7 +936,7 @@
       "id": "chmod",
       "comando": "chmod",
       "nivel": "intermedio",
-      "descripcion": "Cambia los permisos de archivos y directorios.",
+      "descripcion": "Cambia los **permisos** (lectura/escritura/ejecución) de archivos.",
       "ejemplo": [
         "chmod 755 script.sh",
         "chmod +x archivo.sh",
@@ -950,7 +950,7 @@
       "id": "chown",
       "comando": "chown",
       "nivel": "intermedio",
-      "descripcion": "Cambia el propietario de archivos y directorios.",
+      "descripcion": "Cambia el **propietario** de archivos y directorios.",
       "ejemplo": [
         "chown usuario archivo.txt",
         "chown -R usuario:grupo directorio/"
@@ -963,7 +963,7 @@
       "id": "linux-crontab",
       "comando": "crontab",
       "nivel": "intermedio",
-      "descripcion": "Programa tareas para ejecución periódica mediante el demonio cron.",
+      "descripcion": "Programa **tareas periódicas** (Cron jobs).",
       "ejemplo": ["crontab -l", "crontab -e"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -973,7 +973,7 @@
       "id": "curl",
       "comando": "curl",
       "nivel": "intermedio",
-      "descripcion": "Transfiere datos desde o hacia un servidor.",
+      "descripcion": "Transfiere datos desde o hacia un servidor (HTTP, FTP, etc.).",
       "ejemplo": [
         "curl https://api.ejemplo.com",
         "curl -X POST -d 'data' url",
@@ -987,7 +987,7 @@
       "id": "find",
       "comando": "find",
       "nivel": "intermedio",
-      "descripcion": "Busca archivos y directorios por diversos criterios.",
+      "descripcion": "**Busca** archivos por nombre, tipo, fecha, etc.",
       "ejemplo": ["find . -name '*.txt'", "find /home -type f -mtime -7"],
       "requerimientos": "Permisos de lectura",
       "aplicaciones": ["Linux"],
@@ -997,7 +997,7 @@
       "id": "grep",
       "comando": "grep",
       "nivel": "intermedio",
-      "descripcion": "Busca patrones de texto en archivos.",
+      "descripcion": "Busca **patrones de texto** dentro de archivos.",
       "ejemplo": [
         "grep 'texto' archivo.txt",
         "grep -r 'patrón' directorio/",
@@ -1011,7 +1011,7 @@
       "id": "linux-ip",
       "comando": "ip",
       "nivel": "intermedio",
-      "descripcion": "Configura y muestra ajustes de red (interfaces, rutas, etc.).",
+      "descripcion": "Configura y muestra ajustes de **red** (reemplazo de `ifconfig`).",
       "ejemplo": ["ip addr show", "ip route add default via 192.168.1.1"],
       "requerimientos": "Puede requerir privilegios de root para cambios",
       "aplicaciones": ["Linux"],
@@ -1021,7 +1021,7 @@
       "id": "linux-journalctl",
       "comando": "journalctl",
       "nivel": "intermedio",
-      "descripcion": "Consulta y muestra logs del journal de systemd.",
+      "descripcion": "Consulta los logs del sistema gestionados por `systemd`.",
       "ejemplo": [
         "journalctl -u nginx.service",
         "journalctl -f",
@@ -1035,7 +1035,7 @@
       "id": "kill",
       "comando": "kill",
       "nivel": "intermedio",
-      "descripcion": "Termina procesos enviando señales.",
+      "descripcion": "**Termina** procesos enviando señales (por defecto `SIGTERM`).",
       "ejemplo": ["kill 1234", "kill -9 1234", "killall firefox"],
       "requerimientos": "Permisos sobre el proceso",
       "aplicaciones": ["Linux"],
@@ -1045,7 +1045,7 @@
       "id": "linux-lsof",
       "comando": "lsof",
       "nivel": "intermedio",
-      "descripcion": "Lista archivos abiertos y los procesos que los utilizan.",
+      "descripcion": "Lista **archivos abiertos** por procesos.",
       "ejemplo": ["lsof -i", "lsof /var/log/syslog"],
       "requerimientos": "Permisos de lectura de procesos",
       "aplicaciones": ["Linux"],
@@ -1055,7 +1055,7 @@
       "id": "linux-nmap",
       "comando": "nmap",
       "nivel": "intermedio",
-      "descripcion": "Escáner de redes y auditoría de seguridad. Descubre hosts, puertos abiertos y servicios en una red.",
+      "descripcion": "Escáner de seguridad para descubrir hosts y **puertos abiertos**.",
       "ejemplo": [
         "nmap -v -A 192.168.1.0/24",
         "nmap -sS -p 80,443 midominio.com",
@@ -1069,7 +1069,7 @@
       "id": "rm",
       "comando": "rm",
       "nivel": "intermedio",
-      "descripcion": "Elimina archivos o directorios. Usar con precaución.",
+      "descripcion": "**Elimina** archivos o directorios permanentemente.",
       "ejemplo": ["rm archivo.txt", "rm -rf directorio/"],
       "requerimientos": "Permisos de escritura",
       "aplicaciones": ["Linux"],
@@ -1079,7 +1079,7 @@
       "id": "scp",
       "comando": "scp",
       "nivel": "intermedio",
-      "descripcion": "Copia archivos entre hosts mediante SSH.",
+      "descripcion": "Copia archivos de forma segura vía **SSH**.",
       "ejemplo": [
         "scp archivo.txt usuario@servidor:/ruta/",
         "scp usuario@servidor:/ruta/archivo.txt ."
@@ -1092,7 +1092,7 @@
       "id": "linux-ss",
       "comando": "ss",
       "nivel": "intermedio",
-      "descripcion": "Muestra estadísticas de sockets. Es el reemplazo moderno de netstat.",
+      "descripcion": "Muestra estadísticas de **sockets**. Reemplazo rápido de `netstat`.",
       "ejemplo": [
         "ss -tulpn",
         "ss -tan '( dport = :443 or sport = :443 )'",
@@ -1106,7 +1106,7 @@
       "id": "ssh",
       "comando": "ssh",
       "nivel": "intermedio",
-      "descripcion": "Conecta a un servidor remoto mediante SSH.",
+      "descripcion": "Conecta a un servidor **remoto** de forma segura.",
       "ejemplo": [
         "ssh usuario@servidor.com",
         "ssh -i clave.pem usuario@ip",
@@ -1120,7 +1120,7 @@
       "id": "linux-systemctl",
       "comando": "systemctl",
       "nivel": "intermedio",
-      "descripcion": "Controla el estado de servicios y unidades en sistemas con systemd.",
+      "descripcion": "Controla el estado de **servicios** (start, stop, restart) en systemd.",
       "ejemplo": ["systemctl status nginx", "systemctl restart sshd"],
       "requerimientos": "Privilegios de root para gestionar servicios",
       "aplicaciones": ["Linux"],
@@ -1130,7 +1130,7 @@
       "id": "tar",
       "comando": "tar",
       "nivel": "intermedio",
-      "descripcion": "Crea y extrae archivos comprimidos.",
+      "descripcion": "**Comprime** y extrae archivos (`.tar`, `.tar.gz`).",
       "ejemplo": [
         "tar -czf archivo.tar.gz carpeta/",
         "tar -xzf archivo.tar.gz",
@@ -1144,7 +1144,7 @@
       "id": "linux-xargs",
       "comando": "xargs",
       "nivel": "intermedio",
-      "descripcion": "Construye y ejecuta líneas de comando a partir de la entrada estándar, manejando grandes cantidades de argumentos.",
+      "descripcion": "Construye comandos a partir de la entrada estándar (ej. pasar lista de archivos a `rm`).",
       "ejemplo": [
         "find . -name '*.log' -print0 | xargs -0 rm -v",
         "cat urls.txt | xargs -n 1 -P 4 curl -O",
@@ -1158,7 +1158,7 @@
       "id": "linux-yum",
       "comando": "yum",
       "nivel": "intermedio",
-      "descripcion": "Gestor de paquetes para RHEL/CentOS/Fedora.",
+      "descripcion": "Gestor de paquetes para sistemas RedHat/CentOS.",
       "ejemplo": [
         "sudo yum check-update",
         "sudo yum install httpd",
@@ -1172,7 +1172,7 @@
       "id": "linux-auditctl",
       "comando": "auditctl",
       "nivel": "avanzado",
-      "descripcion": "Controla el sistema de auditoría del kernel de Linux (auditd), permitiendo definir reglas de seguimiento.",
+      "descripcion": "Controla el sistema de **auditoría** del kernel.",
       "ejemplo": [
         "auditctl -l",
         "auditctl -w /etc/shadow -p wa -k shadow_change",
@@ -1186,7 +1186,7 @@
       "id": "linux-awk",
       "comando": "awk",
       "nivel": "avanzado",
-      "descripcion": "Procesa y extrae datos de texto dividiendo en campos y patrones.",
+      "descripcion": "Lenguaje de procesamiento de texto, ideal para extraer **columnas**.",
       "ejemplo": [
         "awk '{print $1,$3}' archivo.txt",
         "ps aux | awk '/apache/ {print $2}'"
@@ -1199,7 +1199,7 @@
       "id": "linux-sed",
       "comando": "sed",
       "nivel": "avanzado",
-      "descripcion": "Realiza transformaciones de texto utilizando expresiones regulares.",
+      "descripcion": "Editor de flujo para filtrar y **transformar texto**.",
       "ejemplo": ["sed -i 's/antiguo/nuevo/g' archivo.txt"],
       "requerimientos": "Ninguno",
       "aplicaciones": ["Linux"],
@@ -1209,7 +1209,7 @@
       "id": "ofimatica-cerrar",
       "comando": "Ctrl + R",
       "nivel": "básico",
-      "descripcion": "Cierra el documento o ventana actual de la aplicación Office.",
+      "descripcion": "**Cierra** el documento o ventana actual.",
       "ejemplo": ["Ctrl + R"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Office General"],
@@ -1219,7 +1219,7 @@
       "id": "ofimatica-justificar",
       "comando": "Ctrl + J",
       "nivel": "intermedio",
-      "descripcion": "Alinea el texto seleccionado tanto a la izquierda como a la derecha (justificar).",
+      "descripcion": "**Justifica** el texto seleccionado.",
       "ejemplo": ["Ctrl + J"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Office General"],
@@ -1229,7 +1229,7 @@
       "id": "ofimatica-reemplazar",
       "comando": "Ctrl + L",
       "nivel": "intermedio",
-      "descripcion": "Abre el diálogo de buscar y reemplazar texto en el documento.",
+      "descripcion": "Abre el diálogo de **buscar y reemplazar**.",
       "ejemplo": ["Ctrl + L"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Office General"],
@@ -1239,7 +1239,7 @@
       "id": "ofimatica-imprimir",
       "comando": "Ctrl + P",
       "nivel": "intermedio",
-      "descripcion": "Envía el documento actual a la impresora para imprimir.",
+      "descripcion": "Envía el documento a **imprimir**.",
       "ejemplo": ["Ctrl + P"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Office General"],
@@ -1249,7 +1249,7 @@
       "id": "ofimatica-ortografia",
       "comando": "F7",
       "nivel": "intermedio",
-      "descripcion": "Inicia la revisión ortográfica y gramatical del documento.",
+      "descripcion": "Inicia la **revisión ortográfica**.",
       "ejemplo": ["F7"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["Office General"],
@@ -1259,7 +1259,7 @@
       "id": "ofimatica-ppt-duplicar",
       "comando": "Ctrl + D",
       "nivel": "básico",
-      "descripcion": "Duplica el objeto seleccionado (forma, imagen, texto) o la diapositiva seleccionada.",
+      "descripcion": "**Duplica** el objeto o diapositiva seleccionada.",
       "ejemplo": [],
       "requerimientos": "Microsoft PowerPoint",
       "aplicaciones": ["PowerPoint"],
@@ -1269,7 +1269,7 @@
       "id": "ofimatica-cursiva",
       "comando": "Ctrl + K",
       "nivel": "básico",
-      "descripcion": "Aplica formato de cursiva al texto seleccionado.",
+      "descripcion": "Aplica formato de *cursiva*.",
       "ejemplo": ["Ctrl + K"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Office General", "PowerPoint", "Word"],
@@ -1279,7 +1279,7 @@
       "id": "ofimatica-negrita",
       "comando": "Ctrl + N",
       "nivel": "básico",
-      "descripcion": "Aplica formato de negrita al texto seleccionado.",
+      "descripcion": "Aplica formato de **negrita**.",
       "ejemplo": ["Ctrl + N"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Office General", "PowerPoint", "Word"],
@@ -1289,7 +1289,7 @@
       "id": "ofimatica-subrayado",
       "comando": "Ctrl + S",
       "nivel": "básico",
-      "descripcion": "Aplica formato de subrayado al texto seleccionado.",
+      "descripcion": "Aplica formato de **subrayado**.",
       "ejemplo": ["Ctrl + S"],
       "requerimientos": "Microsoft Office (Español)",
       "aplicaciones": ["Office General", "PowerPoint", "Word"],
@@ -1297,9 +1297,9 @@
     },
     {
       "id": "ofimatica-ppt-alinear",
-      "comando": "Alt + F10 (o Alt + H, G, A)",
+      "comando": "Alt + F10",
       "nivel": "intermedio",
-      "descripcion": "Abre el menú de 'Alinear' objetos. Permite alinear múltiples objetos (ej. alinear a la izquierda, distribuir verticalmente).",
+      "descripcion": "Abre el menú de **Alinear** objetos.",
       "ejemplo": [],
       "requerimientos": "Microsoft PowerPoint",
       "aplicaciones": ["PowerPoint"],
@@ -1309,7 +1309,7 @@
       "id": "ofimatica-presentacion",
       "comando": "F5",
       "nivel": "intermedio",
-      "descripcion": "Inicia la presentación de diapositivas desde el principio (PowerPoint).",
+      "descripcion": "Inicia la **presentación** de diapositivas.",
       "ejemplo": ["F5"],
       "requerimientos": "Windows/Office",
       "aplicaciones": ["PowerPoint"],
@@ -1319,7 +1319,7 @@
       "id": "powershell-copy-item",
       "comando": "Copy-Item",
       "nivel": "básico",
-      "descripcion": "Copia archivos y directorios.",
+      "descripcion": "**Copia** archivos y directorios.",
       "ejemplo": [
         "Copy-Item origen.txt destino.txt",
         "Copy-Item -Recurse carpeta\\ nueva_carpeta\\"
@@ -1332,7 +1332,7 @@
       "id": "powershell-get-childitem",
       "comando": "Get-ChildItem",
       "nivel": "básico",
-      "descripcion": "Lista archivos y directorios (equivalente a ls/dir).",
+      "descripcion": "**Lista** archivos y directorios (alias `ls`, `dir`).",
       "ejemplo": [
         "Get-ChildItem",
         "Get-ChildItem -Recurse",
@@ -1346,7 +1346,7 @@
       "id": "powershell-get-content",
       "comando": "Get-Content",
       "nivel": "básico",
-      "descripcion": "Lee el contenido de archivos.",
+      "descripcion": "Lee el **contenido** de archivos (alias `cat`).",
       "ejemplo": [
         "Get-Content archivo.txt",
         "gc log.txt -Tail 10",
@@ -1360,7 +1360,7 @@
       "id": "powershell-get-process",
       "comando": "Get-Process",
       "nivel": "básico",
-      "descripcion": "Lista procesos en ejecución.",
+      "descripcion": "Lista **procesos** en ejecución.",
       "ejemplo": [
         "Get-Process",
         "Get-Process -Name chrome",
@@ -1374,7 +1374,7 @@
       "id": "powershell-get-service",
       "comando": "Get-Service",
       "nivel": "básico",
-      "descripcion": "Lista los servicios instalados en el sistema.",
+      "descripcion": "Lista los **servicios** del sistema.",
       "ejemplo": [
         "Get-Service",
         "Get-Service -Name 'wuauserv'",
@@ -1388,7 +1388,7 @@
       "id": "powershell-new-item",
       "comando": "New-Item",
       "nivel": "básico",
-      "descripcion": "Crea nuevos archivos, directorios o enlaces.",
+      "descripcion": "**Crea** nuevos archivos o directorios.",
       "ejemplo": [
         "New-Item -ItemType Directory -Path C:\\Nueva",
         "New-Item -ItemType File archivo.txt"
@@ -1401,7 +1401,7 @@
       "id": "powershell-outgridview",
       "comando": "Out-GridView",
       "nivel": "básico",
-      "descripcion": "Envía la salida de un comando a una ventana de cuadrícula interactiva para filtrar, ordenar y seleccionar.",
+      "descripcion": "Envía la salida a una ventana de **cuadrícula interactiva**.",
       "ejemplo": [
         "Get-Process | Out-GridView",
         "Get-Service | Where-Object {$_.Status -eq 'Running'} | Out-GridView -Title 'Servicios Activos'",
@@ -1415,7 +1415,7 @@
       "id": "powershell-set-location",
       "comando": "Set-Location",
       "nivel": "básico",
-      "descripcion": "Cambia el directorio actual (equivalente a cd).",
+      "descripcion": "Cambia el **directorio** actual (alias `cd`).",
       "ejemplo": ["Set-Location C:\\Users", "cd C:\\Projects", "sl ~"],
       "requerimientos": "PowerShell",
       "aplicaciones": ["PowerShell"],
@@ -1425,7 +1425,7 @@
       "id": "powershell-stopservice",
       "comando": "Stop-Service",
       "nivel": "básico",
-      "descripcion": "Detiene uno o más servicios en ejecución. Reemplaza a 'sc stop' de CMD.",
+      "descripcion": "**Detiene** servicios en ejecución.",
       "ejemplo": [
         "Stop-Service -Name 'spooler'",
         "Get-Service -Name 'wuauserv' | Stop-Service -Force",
@@ -1439,7 +1439,7 @@
       "id": "powershell-test-connection",
       "comando": "Test-Connection",
       "nivel": "básico",
-      "descripcion": "Envía paquetes ICMP para comprobar la conectividad con un host (ping).",
+      "descripcion": "Comprueba la conectividad (alias `ping`).",
       "ejemplo": [
         "Test-Connection google.com",
         "Test-Connection -Count 2 8.8.8.8"
@@ -1452,7 +1452,7 @@
       "id": "powershell-testnetconnection",
       "comando": "Test-NetConnection",
       "nivel": "básico",
-      "descripcion": "Diagnostica la conectividad de red. Puede reemplazar ping, traceroute y pruebas de puerto.",
+      "descripcion": "Diagnóstico avanzado de red (puertos, traceroute).",
       "ejemplo": [
         "Test-NetConnection google.com",
         "Test-NetConnection 1.1.1.1 -Port 53",
@@ -1466,7 +1466,7 @@
       "id": "powershell-get-eventlog",
       "comando": "Get-EventLog",
       "nivel": "intermedio",
-      "descripcion": "Recupera entradas de los registros de eventos de Windows.",
+      "descripcion": "Recupera entradas de los **logs de eventos** de Windows.",
       "ejemplo": ["Get-EventLog -LogName System -Newest 5"],
       "requerimientos": "PowerShell",
       "aplicaciones": ["PowerShell"],
@@ -1476,7 +1476,7 @@
       "id": "powershell-getwinevent",
       "comando": "Get-WinEvent",
       "nivel": "intermedio",
-      "descripcion": "Obtiene eventos de los registros de eventos clásicos y de Windows, con capacidad de filtrado avanzada.",
+      "descripcion": "Obtiene **eventos** de logs clásicos y modernos con filtros.",
       "ejemplo": [
         "Get-WinEvent -LogName System -MaxEvents 10 -ComputerName 'Server01'",
         "Get-WinEvent -FilterHashtable @{LogName='Security'; ID=4624} -MaxEvents 5",
@@ -1490,7 +1490,7 @@
       "id": "powershell-invoke-webrequest",
       "comando": "Invoke-WebRequest",
       "nivel": "intermedio",
-      "descripcion": "Descarga contenido de la web (equivalente a curl/wget).",
+      "descripcion": "**Descarga** contenido web (alias `curl`/`wget`).",
       "ejemplo": [
         "Invoke-WebRequest -Uri 'https://api.com'",
         "iwr 'url' -OutFile 'pagina.html'"
@@ -1503,7 +1503,7 @@
       "id": "powershell-remove-item",
       "comando": "Remove-Item",
       "nivel": "intermedio",
-      "descripcion": "Elimina archivos y directorios.",
+      "descripcion": "**Elimina** archivos y directorios.",
       "ejemplo": [
         "Remove-Item archivo.txt",
         "Remove-Item -Recurse -Force directorio\\"
@@ -1516,7 +1516,7 @@
       "id": "powershell-select-string",
       "comando": "Select-String",
       "nivel": "intermedio",
-      "descripcion": "Busca patrones de texto en archivos (equivalente a grep).",
+      "descripcion": "Busca patrones de texto (alias `grep`).",
       "ejemplo": ["Select-String 'patrón' archivo.txt", "sls 'error' *.log"],
       "requerimientos": "PowerShell",
       "aplicaciones": ["PowerShell"],
@@ -1526,7 +1526,7 @@
       "id": "powershell-set-executionpolicy",
       "comando": "Set-ExecutionPolicy",
       "nivel": "intermedio",
-      "descripcion": "Establece la política de ejecución para la seguridad de scripts de PowerShell.",
+      "descripcion": "Establece la **política de seguridad** de ejecución de scripts.",
       "ejemplo": [
         "Set-ExecutionPolicy RemoteSigned",
         "Set-ExecutionPolicy Bypass -Scope Process"
@@ -1539,7 +1539,7 @@
       "id": "powershell-stop-process",
       "comando": "Stop-Process",
       "nivel": "intermedio",
-      "descripcion": "Detiene uno o más procesos en ejecución.",
+      "descripcion": "**Mata** un proceso en ejecución.",
       "ejemplo": [
         "Stop-Process -Name notepad",
         "Stop-Process -Id 1234",
@@ -1553,7 +1553,7 @@
       "id": "powershell-invoke-command",
       "comando": "Invoke-Command",
       "nivel": "avanzado",
-      "descripcion": "Ejecuta comandos de forma local o remota (requiere WinRM para remoto).",
+      "descripcion": "Ejecuta comandos de forma **remota** o local.",
       "ejemplo": [
         "Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Service }"
       ],
@@ -1565,7 +1565,7 @@
       "id": "powershell-start-job",
       "comando": "Start-Job",
       "nivel": "avanzado",
-      "descripcion": "Inicia un trabajo en segundo plano para ejecutar comandos de forma asíncrona.",
+      "descripcion": "Inicia un trabajo en **segundo plano** (background job).",
       "ejemplo": ["Start-Job -ScriptBlock { Get-Process }"],
       "requerimientos": "PowerShell",
       "aplicaciones": ["PowerShell"],
@@ -1573,9 +1573,9 @@
     },
     {
       "id": "ofimatica-word-copiarformato",
-      "comando": "Ctrl + Shift + C / Ctrl + Shift + V",
+      "comando": "Ctrl + Shift + C",
       "nivel": "básico",
-      "descripcion": "Copia (C) y Pega (V) el formato de un texto seleccionado, sin copiar el texto en sí (similar a 'copiar formato').",
+      "descripcion": "**Copia formato** del texto seleccionado.",
       "ejemplo": [],
       "requerimientos": "Microsoft Word",
       "aplicaciones": ["Word"],
@@ -1585,7 +1585,7 @@
       "id": "ofimatica-word-f3",
       "comando": "Shift + F3",
       "nivel": "básico",
-      "descripcion": "Cambia el texto seleccionado entre mayúsculas, minúsculas y tipo oración (primera letra en mayúscula).",
+      "descripcion": "Alterna entre **mayúsculas**, minúsculas y tipo oración.",
       "ejemplo": [],
       "requerimientos": "Microsoft Word",
       "aplicaciones": ["Word"],
@@ -1596,7 +1596,7 @@
       "comando": "systeminfo",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra información detallada del sistema operativo, hardware, red y configuración instalada.",
+      "descripcion": "Muestra información detallada del **sistema**, hardware y parches.",
       "ejemplo": ["systeminfo", "systeminfo | findstr /B /C:'OS Name'"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["diagnóstico", "sistema", "información"]
@@ -1606,7 +1606,7 @@
       "comando": "netstat",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra conexiones de red activas, puertos de escucha y estadísticas de red.",
+      "descripcion": "Muestra **conexiones de red** activas y puertos.",
       "ejemplo": ["netstat -ano", "netstat -an | find \"LISTEN\""],
       "requerimientos": "Permisos estándar de usuario o administrador para puertos reservados.",
       "tags": ["red", "puertos", "conexiones"]
@@ -1616,7 +1616,7 @@
       "comando": "tasklist",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Lista todos los procesos en ejecución junto con su PID y uso de memoria.",
+      "descripcion": "Lista todos los **procesos** en ejecución (similar a `ps`).",
       "ejemplo": ["tasklist", "tasklist | find \"chrome.exe\""],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["procesos", "diagnóstico", "sistema"]
@@ -1626,17 +1626,17 @@
       "comando": "sfc /scannow",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Verifica e intenta reparar archivos del sistema de Windows dañados o faltantes.",
+      "descripcion": "**Repara** archivos del sistema dañados.",
       "ejemplo": ["sfc /scannow"],
       "requerimientos": "Ejecutar CMD como administrador.",
       "tags": ["sistema", "reparación", "integridad"]
     },
     {
       "id": "cmd-wmic",
-      "comando": "wmic product get name,version",
+      "comando": "wmic",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra una lista de programas instalados con su versión utilizando la interfaz WMIC.",
+      "descripcion": "Consulta información avanzada mediante WMI (ej. software instalado).",
       "ejemplo": [
         "wmic os get caption,version",
         "wmic product get name,version"
@@ -1649,7 +1649,7 @@
       "comando": "ipconfig",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra la configuración de red del equipo, incluyendo direcciones IP, máscara de subred y puerta de enlace predeterminada.",
+      "descripcion": "Muestra la configuración de **IP** y adaptadores de red.",
       "ejemplo": ["ipconfig", "ipconfig /all"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["red", "diagnóstico", "ip"]
@@ -1659,7 +1659,7 @@
       "comando": "ping",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Envía paquetes ICMP a una dirección IP o dominio para comprobar la conectividad de red.",
+      "descripcion": "Comprueba la **conectividad** con un host remoto.",
       "ejemplo": ["ping google.com", "ping 8.8.8.8 -t"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["red", "conectividad", "diagnóstico"]
@@ -1669,7 +1669,7 @@
       "comando": "tracert",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra la ruta que siguen los paquetes para llegar a un host de destino.",
+      "descripcion": "Traza la **ruta** de paquetes hacia un destino.",
       "ejemplo": ["tracert google.com", "tracert 8.8.8.8"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["red", "diagnóstico", "rutas"]
@@ -1679,7 +1679,7 @@
       "comando": "shutdown",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Apaga, reinicia o cierra sesión en el equipo local o remoto.",
+      "descripcion": "**Apaga** o reinicia el equipo.",
       "ejemplo": ["shutdown /s /t 0", "shutdown /r /t 60"],
       "requerimientos": "Permisos de administrador para equipos remotos.",
       "tags": ["sistema", "energía", "administración"]
@@ -1689,7 +1689,7 @@
       "comando": "chkdsk",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Escanea y repara errores en el disco duro o en un volumen específico.",
+      "descripcion": "Escanea y repara errores en el **disco**.",
       "ejemplo": ["chkdsk C:", "chkdsk D: /f /r"],
       "requerimientos": "Ejecutar CMD como administrador.",
       "tags": ["disco", "sistema", "reparación"]
@@ -1699,7 +1699,7 @@
       "comando": "diskpart",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Administra particiones, discos y volúmenes del sistema.",
+      "descripcion": "Gestor de **particiones** y volúmenes.",
       "ejemplo": ["diskpart", "list disk", "select disk 0"],
       "requerimientos": "Ejecutar CMD como administrador.",
       "tags": ["discos", "particiones", "administración"]
@@ -1709,7 +1709,7 @@
       "comando": "del",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Elimina uno o varios archivos desde la línea de comandos.",
+      "descripcion": "**Elimina** archivos.",
       "ejemplo": ["del archivo.txt", "del *.log /s /q"],
       "requerimientos": "Permisos de escritura en el directorio.",
       "tags": ["archivos", "sistema", "borrado"]
@@ -1719,7 +1719,7 @@
       "comando": "mkdir",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Crea un nuevo directorio en la ruta especificada.",
+      "descripcion": "**Crea** directorios.",
       "ejemplo": ["mkdir proyectos", "mkdir C:\\Reportes\\2025"],
       "requerimientos": "Permisos de escritura en la ubicación.",
       "tags": ["archivos", "carpetas", "estructura"]
@@ -1729,7 +1729,7 @@
       "comando": "robocopy",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Copia archivos y carpetas con mayor control que el comando 'copy', manteniendo permisos y atributos.",
+      "descripcion": "**Copia robusta** de archivos, ideal para backups grandes.",
       "ejemplo": [
         "robocopy C:\\Origen D:\\Destino /E /ZB",
         "robocopy C:\\Logs D:\\Backup /MIR"
@@ -1742,7 +1742,7 @@
       "comando": "start powershell",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Abre una instancia de PowerShell desde la consola CMD.",
+      "descripcion": "Abre **PowerShell** desde CMD.",
       "ejemplo": ["start powershell", "start powershell -NoExit"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["integración", "sistema", "shell"]
@@ -1752,7 +1752,7 @@
       "comando": "whoami",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra el usuario actual, grupos y privilegios.",
+      "descripcion": "Muestra el **usuario actual**.",
       "ejemplo": ["whoami", "whoami /all"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["usuario", "identidad", "seguridad"]
@@ -1762,7 +1762,7 @@
       "comando": "getmac",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra la dirección MAC de los adaptadores de red.",
+      "descripcion": "Obtiene la dirección **MAC** física.",
       "ejemplo": ["getmac", "getmac /v"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["red", "hardware", "mac"]
@@ -1772,7 +1772,7 @@
       "comando": "hostname",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra el nombre del equipo en la red.",
+      "descripcion": "Muestra el **nombre del equipo**.",
       "ejemplo": ["hostname"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["red", "sistema", "nombre"]
@@ -1782,7 +1782,7 @@
       "comando": "ver",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra la versión del sistema operativo Windows.",
+      "descripcion": "Versión de Windows (CLI).",
       "ejemplo": ["ver"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["sistema", "versión", "info"]
@@ -1792,7 +1792,7 @@
       "comando": "winver",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Abre una ventana con información detallada de la versión y compilación de Windows.",
+      "descripcion": "Ventana con versión de Windows (`GUI`).",
       "ejemplo": ["winver"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["sistema", "versión", "gui"]
@@ -1802,7 +1802,7 @@
       "comando": "nslookup",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Consulta servidores DNS para resolver nombres de dominio o direcciones IP.",
+      "descripcion": "Consulta servidores **DNS**.",
       "ejemplo": ["nslookup google.com", "nslookup 8.8.8.8"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["red", "dns", "diagnóstico"]
@@ -1812,7 +1812,7 @@
       "comando": "taskkill",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Termina uno o más procesos en ejecución por ID o nombre de imagen.",
+      "descripcion": "**Mata procesos** por ID o nombre.",
       "ejemplo": ["taskkill /IM notepad.exe /F", "taskkill /PID 1234 /F"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["procesos", "administración", "terminar"]
@@ -1822,7 +1822,7 @@
       "comando": "format",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Formatea un disco para aceptar archivos de Windows. ¡Borra todos los datos!",
+      "descripcion": "**Formatea** un disco (borra todo).",
       "ejemplo": ["format D: /fs:ntfs", "format E: /q"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["disco", "formatear", "sistema"]
@@ -1832,7 +1832,7 @@
       "comando": "xcopy",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Copia archivos y árboles de directorios. Más avanzado que copy estándar.",
+      "descripcion": "Copia archivos y **árboles de directorios**.",
       "ejemplo": [
         "xcopy C:\\origen D:\\destino /E /I",
         "xcopy *.txt D:\\Backup /Y"
@@ -1845,7 +1845,7 @@
       "comando": "dir",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra una lista de archivos y subdirectorios en un directorio.",
+      "descripcion": "**Lista** contenido de directorios.",
       "ejemplo": ["dir", "dir /a:h (ocultos)", "dir /s (recursivo)"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["archivos", "listar", "navegación"]
@@ -1855,7 +1855,7 @@
       "comando": "cd",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra el nombre del directorio actual o cambia a otro directorio.",
+      "descripcion": "Cambia de directorio.",
       "ejemplo": ["cd C:\\Windows", "cd ..", "cd \\"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["navegación", "directorios", "básico"]
@@ -1865,7 +1865,7 @@
       "comando": "rd",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Elimina (remueve) un directorio.",
+      "descripcion": "**Elimina** un directorio.",
       "ejemplo": ["rd CarpetaVacia", "rd /s /q CarpetaConArchivos"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["directorios", "borrar", "sistema"]
@@ -1875,7 +1875,7 @@
       "comando": "copy",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Copia uno o más archivos a otra ubicación.",
+      "descripcion": "**Copia** archivos simples.",
       "ejemplo": ["copy archivo.txt D:\\", "copy *.jpg D:\\Fotos"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["archivos", "copiar", "básico"]
@@ -1885,7 +1885,7 @@
       "comando": "move",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Mueve archivos y cambia el nombre a archivos y directorios.",
+      "descripcion": "**Mueve** archivos.",
       "ejemplo": ["move archivo.txt D:\\", "move viejo.txt nuevo.txt"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["archivos", "mover", "renombrar"]
@@ -1895,7 +1895,7 @@
       "comando": "ren",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Cambia el nombre de uno o más archivos.",
+      "descripcion": "**Renombra** archivos.",
       "ejemplo": ["ren documento.txt documento_final.txt", "ren *.txt *.bak"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["archivos", "renombrar", "gestión"]
@@ -1905,7 +1905,7 @@
       "comando": "type",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Muestra el contenido de un archivo de texto.",
+      "descripcion": "Muestra el **contenido** de un archivo de texto.",
       "ejemplo": ["type archivo.txt"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["archivos", "leer", "texto"]
@@ -1915,7 +1915,7 @@
       "comando": "find",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Busca una cadena de texto en uno o más archivos.",
+      "descripcion": "**Busca** texto exacto en archivos.",
       "ejemplo": ["find \"error\" log.txt", "dir | find \"<DIR>\""],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["búsqueda", "texto", "archivos"]
@@ -1925,7 +1925,7 @@
       "comando": "findstr",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Busca cadenas de texto en archivos usando expresiones regulares simples.",
+      "descripcion": "Busca texto usando **Regex**.",
       "ejemplo": ["findstr /s \"error\" *.log", "ipconfig | findstr \"IPv4\""],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["búsqueda", "regex", "texto"]
@@ -1935,7 +1935,7 @@
       "comando": "sort",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Lee la entrada, ordena los datos y escribe el resultado en la pantalla o archivo.",
+      "descripcion": "**Ordena** datos de entrada.",
       "ejemplo": ["sort lista.txt", "dir | sort"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["texto", "ordenar", "datos"]
@@ -1945,7 +1945,7 @@
       "comando": "comp",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Compara el contenido de dos archivos o conjuntos de archivos byte por byte.",
+      "descripcion": "**Compara** archivos byte a byte.",
       "ejemplo": ["comp archivo1.bin archivo2.bin"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["archivos", "comparar", "binario"]
@@ -1955,7 +1955,7 @@
       "comando": "fc",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Compara dos archivos o conjuntos de archivos y muestra las diferencias.",
+      "descripcion": "**Compara** archivos de texto y muestra diferencias.",
       "ejemplo": ["fc archivo1.txt archivo2.txt"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["archivos", "comparar", "texto"]
@@ -1965,7 +1965,7 @@
       "comando": "tree",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra gráficamente la estructura de directorios de una unidad o ruta.",
+      "descripcion": "Muestra la estructura de carpetas en forma de **árbol**.",
       "ejemplo": ["tree C:\\Proyectos", "tree /f (incluye archivos)"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["directorios", "estructura", "visual"]
@@ -1975,7 +1975,7 @@
       "comando": "attrib",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra o cambia los atributos de archivo (lectura, oculto, sistema, archivo).",
+      "descripcion": "Cambia **atributos** de archivo (oculto, sistema).",
       "ejemplo": ["attrib +r +h secreto.txt", "attrib -r archivo.txt"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["archivos", "atributos", "seguridad"]
@@ -1985,7 +1985,7 @@
       "comando": "cipher",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Muestra o altera el cifrado de directorios y archivos en particiones NTFS.",
+      "descripcion": "Gestiona el **cifrado** de carpetas NTFS.",
       "ejemplo": ["cipher /e CarpetaPrivada", "cipher /d ArchivoCifrado"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["seguridad", "cifrado", "archivos"]
@@ -1995,7 +1995,7 @@
       "comando": "compact",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra o altera la compresión de archivos en particiones NTFS.",
+      "descripcion": "Gestiona la **compresión** NTFS.",
       "ejemplo": ["compact /c archivo.txt", "compact /u archivo.txt"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["archivos", "compresión", "almacenamiento"]
@@ -2005,7 +2005,7 @@
       "comando": "powercfg",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Controla la configuración de energía del sistema (hibernación, suspensión, etc.).",
+      "descripcion": "Configuración de **energía**.",
       "ejemplo": ["powercfg /a", "powercfg /hibernate on"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["sistema", "energía", "configuración"]
@@ -2015,7 +2015,7 @@
       "comando": "gpupdate",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Actualiza la configuración de directivas de grupo locales y de Active Directory.",
+      "descripcion": "Actualiza **políticas de grupo**.",
       "ejemplo": ["gpupdate /force"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["administración", "políticas", "red"]
@@ -2025,7 +2025,7 @@
       "comando": "gpresult",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Muestra la información del conjunto resultante de directivas (RSoP) para un usuario o equipo.",
+      "descripcion": "Muestra el resultado de políticas aplicadas (**RSoP**).",
       "ejemplo": ["gpresult /r"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["administración", "políticas", "diagnóstico"]
@@ -2035,7 +2035,7 @@
       "comando": "net user",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Agrega, modifica o muestra cuentas de usuario.",
+      "descripcion": "Administra **usuarios** locales.",
       "ejemplo": ["net user", "net user NuevoUsuario clave123 /add"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["usuarios", "administración", "seguridad"]
@@ -2045,7 +2045,7 @@
       "comando": "net localgroup",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Modifica grupos locales (agrega/quita usuarios).",
+      "descripcion": "Administra **grupos** locales.",
       "ejemplo": ["net localgroup Administradores NuevoUsuario /add"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["grupos", "permisos", "seguridad"]
@@ -2055,7 +2055,7 @@
       "comando": "net start",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Inicia un servicio de red o lista los servicios iniciados.",
+      "descripcion": "**Inicia** un servicio.",
       "ejemplo": ["net start", "net start \"Cola de impresión\""],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["servicios", "administración", "red"]
@@ -2065,7 +2065,7 @@
       "comando": "net stop",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Detiene un servicio de red que se está ejecutando.",
+      "descripcion": "**Detiene** un servicio.",
       "ejemplo": ["net stop \"Cola de impresión\""],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["servicios", "administración", "red"]
@@ -2075,7 +2075,7 @@
       "comando": "netsh",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Utilidad de scripting para configurar y supervisar componentes de red (IP, firewall, Wi-Fi).",
+      "descripcion": "Configuración avanzada de red (firewall, wifi).",
       "ejemplo": [
         "netsh wlan show profiles",
         "netsh advfirewall set allprofiles state off"
@@ -2088,7 +2088,7 @@
       "comando": "sc",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Comunica con el Administrador de control de servicios y los servicios.",
+      "descripcion": "Control avanzado de **servicios**.",
       "ejemplo": ["sc query", "sc config servicio start= auto"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["servicios", "sistema", "administración"]
@@ -2098,7 +2098,7 @@
       "comando": "reg",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Realiza operaciones en las subclaves e información del registro de Windows.",
+      "descripcion": "Edita el **Registro de Windows**.",
       "ejemplo": [
         "reg query HKLM\\Software",
         "reg add HKLM\\Software\\MiClave"
@@ -2111,7 +2111,7 @@
       "comando": "runas",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Ejecuta herramientas y programas con permisos de otro usuario.",
+      "descripcion": "Ejecuta como **otro usuario**.",
       "ejemplo": [
         "runas /user:Administrador cmd",
         "runas /user:Dominio\\Usuario notepad.exe"
@@ -2124,7 +2124,7 @@
       "comando": "schtasks",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Permite a un administrador crear, eliminar, consultar, cambiar, ejecutar y finalizar tareas programadas.",
+      "descripcion": "Administra **tareas programadas**.",
       "ejemplo": [
         "schtasks /query",
         "schtasks /create /tn \"Backup\" /tr c:\\backup.bat /sc daily"
@@ -2137,7 +2137,7 @@
       "comando": "assoc",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Muestra o modifica las asociaciones de extensiones de nombre de archivo.",
+      "descripcion": "Asocia extensiones de archivo.",
       "ejemplo": ["assoc .txt", "assoc .py=Python.File"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["sistema", "asociaciones", "configuración"]
@@ -2147,7 +2147,7 @@
       "comando": "ftype",
       "aplicaciones": ["cmd"],
       "nivel": "avanzado",
-      "descripcion": "Muestra o modifica los tipos de archivo usados en las asociaciones de extensión.",
+      "descripcion": "Define programas para tipos de archivo.",
       "ejemplo": [
         "ftype txtfile",
         "ftype Python.File=\"C:\\Python\\python.exe\" \"%1\" %*"
@@ -2160,7 +2160,7 @@
       "comando": "driverquery",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Muestra una lista de todos los controladores de dispositivo instalados y sus propiedades.",
+      "descripcion": "Lista **controladores** (drivers) instalados.",
       "ejemplo": ["driverquery", "driverquery /v"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["drivers", "hardware", "sistema"]
@@ -2170,7 +2170,7 @@
       "comando": "msinfo32",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Abre la herramienta Información del sistema para mostrar una vista completa del hardware, componentes y entorno de software.",
+      "descripcion": "Información del sistema (`GUI`).",
       "ejemplo": ["msinfo32"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["info", "sistema", "gui"]
@@ -2180,7 +2180,7 @@
       "comando": "mmc",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Abre la Microsoft Management Console, que aloja herramientas administrativas.",
+      "descripcion": "Consola de Administración de Microsoft (`GUI`).",
       "ejemplo": ["mmc"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["administración", "consola", "gui"]
@@ -2190,7 +2190,7 @@
       "comando": "eventvwr",
       "aplicaciones": ["cmd"],
       "nivel": "intermedio",
-      "descripcion": "Inicia el Visor de eventos de Windows para ver registros de sistema, seguridad y aplicación.",
+      "descripcion": "Visor de **eventos** (`GUI`).",
       "ejemplo": ["eventvwr"],
       "requerimientos": "Permisos de Administrador recomendados.",
       "tags": ["logs", "eventos", "diagnóstico"]
@@ -2200,439 +2200,258 @@
       "comando": "services.msc",
       "aplicaciones": ["cmd"],
       "nivel": "básico",
-      "descripcion": "Abre la consola de Servicios para gestionar servicios en segundo plano.",
+      "descripcion": "Consola de **Servicios** (`GUI`).",
       "ejemplo": ["services.msc"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["servicios", "gui", "administración"]
     },
     {
       "id": "cypress-open",
-
       "comando": "npx cypress open",
-
       "nivel": "básico",
-
-      "descripcion": "Abre el Test Runner de Cypress (GUI). Es tu comando principal para desarrollar y depurar tests visualmente.",
-
+      "descripcion": "Abre el **Test Runner** de Cypress (`GUI`). Es tu comando principal para desarrollar y depurar tests visualmente.",
       "ejemplo": ["npx cypress open"],
-
       "requerimientos": "Node.js instalado",
-
       "aplicaciones": ["Cypress"],
-
       "tags": ["qa", "testing", "gui", "debug"]
     },
-
     {
       "id": "cypress-run",
-
       "comando": "npx cypress run",
-
       "nivel": "intermedio",
-
-      "descripcion": "Ejecuta los tests de Cypress en modo 'headless' (sin navegador visible). Fundamental para pipelines de CI/CD.",
-
+      "descripcion": "Ejecuta los tests de Cypress en modo **headless** (sin navegador visible). Fundamental para pipelines de CI/CD.",
       "ejemplo": ["npx cypress run", "npx cypress run --browser chrome"],
-
       "requerimientos": "Node.js instalado",
-
       "aplicaciones": ["Cypress"],
-
       "tags": ["qa", "ci/cd", "headless", "automatización"]
     },
-
     {
       "id": "playwright-test",
-
       "comando": "npx playwright test",
-
       "nivel": "básico",
-
-      "descripcion": "Ejecuta toda la suite de pruebas de Playwright. Por defecto corre en modo headless.",
-
+      "descripcion": "Ejecuta toda la suite de pruebas de **Playwright**.",
       "ejemplo": ["npx playwright test", "npx playwright test --headed"],
-
       "requerimientos": "Node.js instalado",
-
       "aplicaciones": ["Playwright"],
-
       "tags": ["qa", "e2e", "testing", "microsoft"]
     },
-
     {
       "id": "playwright-codegen",
-
       "comando": "npx playwright codegen",
-
       "nivel": "básico",
-
-      "descripcion": "Abre un navegador que graba tus acciones y genera el código del test automáticamente. ¡Vital para aprender!",
-
+      "descripcion": "Abre un navegador que graba tus acciones y **genera el código** del test automáticamente.",
       "ejemplo": [
         "npx playwright codegen",
-
         "npx playwright codegen wikipedia.org"
       ],
-
       "requerimientos": "Node.js instalado",
-
       "aplicaciones": ["Playwright"],
-
       "tags": ["qa", "generador", "low-code", "grabación"]
     },
-
     {
       "id": "playwright-ui",
-
       "comando": "npx playwright test --ui",
-
       "nivel": "intermedio",
-
-      "descripcion": "Abre la interfaz moderna de Playwright para explorar, ejecutar y depurar tests con 'time travel'.",
-
+      "descripcion": "Abre la interfaz moderna de Playwright para depurar con **Time Travel**.",
       "ejemplo": ["npx playwright test --ui"],
-
       "requerimientos": "Playwright actualizado",
-
       "aplicaciones": ["Playwright"],
-
       "tags": ["qa", "gui", "debug"]
     },
-
     {
       "id": "newman-run",
-
       "comando": "newman run",
-
       "nivel": "intermedio",
-
-      "descripcion": "Ejecuta colecciones de Postman desde la consola. Permite automatizar pruebas de API sin abrir la app visual.",
-
+      "descripcion": "Ejecuta colecciones de **Postman** desde la consola.",
       "ejemplo": [
         "newman run coleccion.json",
-
         "newman run https://api.getpostman.com/collections/..."
       ],
-
       "requerimientos": "Node.js y Newman instalado",
-
       "aplicaciones": ["Newman"],
-
       "tags": ["qa", "api", "postman", "backend"]
     },
-
     {
       "id": "cucumber-js",
-
       "comando": "npx cucumber-js",
-
       "nivel": "intermedio",
-
-      "descripcion": "Ejecuta pruebas de comportamiento (BDD) definidas en archivos .feature (Gherkin).",
-
+      "descripcion": "Ejecuta pruebas **BDD** definidas en archivos `.feature` (Gherkin).",
       "ejemplo": ["npx cucumber-js", "npx cucumber-js features/login.feature"],
-
       "requerimientos": "Node.js instalado",
-
       "aplicaciones": ["Cucumber"],
-
       "tags": ["qa", "bdd", "gherkin", "testing"]
     },
-
     {
       "id": "appium-server",
-
       "comando": "appium",
-
       "nivel": "básico",
-
-      "descripcion": "Inicia el servidor de Appium. Es el puente necesario para ejecutar pruebas en emuladores o dispositivos móviles.",
-
+      "descripcion": "Inicia el servidor de **Appium** (puente para mobile testing).",
       "ejemplo": ["appium", "appium -p 4724"],
-
       "requerimientos": "Node.js y Appium instalado",
-
       "aplicaciones": ["Appium"],
-
       "tags": ["qa", "mobile", "android", "ios"]
     },
-
     {
       "id": "appium-doctor",
-
       "comando": "appium-doctor",
-
       "nivel": "básico",
-
-      "descripcion": "Diagnostica tu entorno para verificar si tienes todas las dependencias (Java, Android Home, Xcode) configuradas correctamente.",
-
+      "descripcion": "Diagnostica tu entorno (JAVA_HOME, Android SDK).",
       "ejemplo": ["appium-doctor", "appium-doctor --android"],
-
       "requerimientos": "npm install -g appium-doctor",
-
       "aplicaciones": ["Appium"],
-
       "tags": ["qa", "configuración", "mobile", "diagnóstico"]
     },
-
     {
       "id": "curl-api-post",
-
       "comando": "curl -X POST",
-
       "nivel": "intermedio",
-
-      "descripcion": "Realiza una petición HTTP POST a una API REST enviando datos JSON. Útil para probar endpoints rápidamente.",
-
+      "descripcion": "Realiza una petición **POST** enviando JSON.",
       "ejemplo": [
         "curl -X POST -H \"Content-Type: application/json\" -d '{\"user\":\"test\"}' https://api.ejemplo.com/login"
       ],
-
       "requerimientos": "Terminal estándar",
-
       "aplicaciones": ["Linux"],
-
       "tags": ["api", "rest", "backend", "testing"]
     },
-
     {
       "id": "cypress-structure",
-
       "comando": "describe('...', () => { ... })",
-
       "nivel": "básico",
-
-      "descripcion": "Estructura básica de un test en Cypress (Mocha syntax). Define una suite y un caso de prueba.",
-
+      "descripcion": "Estructura básica de un test en **Cypress** (Mocha syntax).",
       "ejemplo": [
         "describe('Login Suite', () => {",
-
         "  it('debería iniciar sesión correctamente', () => {",
-
         "    cy.visit('/login');",
-
         "    cy.get('#username').type('admin');",
-
         "    cy.get('#btn').click();",
-
         "    cy.url().should('include', '/dashboard');",
-
         "  });",
-
         "});"
       ],
-
       "requerimientos": "Cypress",
-
       "aplicaciones": ["Cypress"],
-
       "tags": ["snippet", "sintaxis", "código", "js"]
     },
-
     {
       "id": "playwright-basic-test",
-
       "comando": "test('...', async ({ page }) => { ... })",
-
       "nivel": "básico",
-
-      "descripcion": "Estructura base de un test en Playwright. Incluye la fixture 'page' automáticamente.",
-
+      "descripcion": "Estructura base de un test en **Playwright**. Incluye la fixture `page`.",
       "ejemplo": [
         "import { test, expect } from '@playwright/test';",
-
         "",
-
         "test('homepage tiene el título correcto', async ({ page }) => {",
-
         "  await page.goto('https://example.com');",
-
         "  await expect(page).toHaveTitle(/Example/);",
-
         "});"
       ],
-
       "requerimientos": "Playwright",
-
       "aplicaciones": ["Playwright"],
-
       "tags": ["snippet", "sintaxis", "código", "ts"]
     },
-
     {
       "id": "supertest-get",
-
       "comando": "request(app).get().expect()",
-
       "nivel": "intermedio",
-
-      "descripcion": "Snippet para probar un endpoint GET usando SuperTest (común en pruebas de API con Jest/Mocha).",
-
+      "descripcion": "Snippet para probar un endpoint GET usando **SuperTest**.",
       "ejemplo": [
         "const request = require('supertest');",
-
         "const app = require('../app');",
-
         "",
-
         "request(app)",
-
         "  .get('/api/users')",
-
         "  .set('Accept', 'application/json')",
-
         "  .expect('Content-Type', /json/)",
-
         "  .expect(200)",
-
         "  .end(function(err, res) {",
-
         "    if (err) throw err;",
-
         "  });"
       ],
-
       "requerimientos": "Librería SuperTest",
-
       "aplicaciones": ["SuperTest"],
-
       "tags": ["api", "snippet", "backend", "código"]
     },
-
     {
       "id": "cucumber-gherkin",
-
       "comando": "Feature: / Scenario:",
-
       "nivel": "básico",
-
-      "descripcion": "Sintaxis Gherkin para definir pruebas BDD. Se usa en archivos .feature.",
-
+      "descripcion": "Sintaxis **Gherkin** para definir pruebas BDD.",
       "ejemplo": [
         "Feature: Login de Usuario",
-
         "",
-
         "  Scenario: Credenciales válidas",
-
         "    Given que estoy en la página de login",
-
         "    When ingreso el usuario 'admin' y clave '1234'",
-
         "    Then debería ver el mensaje 'Bienvenido'"
       ],
-
       "requerimientos": "Cucumber / Gherkin",
-
       "aplicaciones": ["Cucumber"],
-
       "tags": ["bdd", "sintaxis", "gherkin", "teoría"]
     },
-
     {
       "id": "api-status-codes",
-
       "comando": "HTTP Status Codes",
-
       "nivel": "básico",
-
-      "descripcion": "Referencia rápida de los códigos de estado HTTP más comunes en pruebas de API.",
-
+      "descripcion": "Referencia de **códigos de estado HTTP** comunes.",
       "ejemplo": [
         "200 OK: Petición exitosa.",
-
         "201 Created: Recurso creado (POST).",
-
-        "400 Bad Request: Error del cliente (datos mal formados).",
-
-        "401 Unauthorized: Falta autenticación (token).",
-
-        "403 Forbidden: Autenticado pero sin permisos.",
-
-        "404 Not Found: Recurso no encontrado.",
-
-        "500 Internal Server Error: Fallo en el servidor."
+        "400 Bad Request: Error del cliente.",
+        "401 Unauthorized: Falta autenticación.",
+        "403 Forbidden: Sin permisos.",
+        "404 Not Found: No encontrado.",
+        "500 Server Error: Fallo interno."
       ],
-
       "requerimientos": "Conocimiento general REST",
-
       "aplicaciones": ["API"],
-
       "tags": ["teoría", "referencia", "rest", "backend"]
     },
-
     {
       "id": "appium-capabilities",
-
       "comando": "Desired Capabilities (JSON)",
-
       "nivel": "intermedio",
-
-      "descripcion": "Ejemplo de configuración JSON necesaria para iniciar una sesión de Appium en Android.",
-
+      "descripcion": "Configuración `JSON` para iniciar sesión en **Appium**.",
       "ejemplo": [
         "{",
-
         "  \"platformName\": \"Android\",",
-
         "  \"platformVersion\": \"11.0\",",
-
         "  \"deviceName\": \"Android Emulator\",",
-
         "  \"app\": \"/path/to/my.apk\",",
-
         "  \"automationName\": \"UiAutomator2\"",
-
         "}"
       ],
-
       "requerimientos": "Appium Server",
-
       "aplicaciones": ["Appium"],
-
       "tags": ["mobile", "configuración", "json", "android"]
     },
-
     {
       "id": "git-ignore-qa",
-
       "comando": ".gitignore (QA)",
-
       "nivel": "básico",
-
-      "descripcion": "Archivos comunes que NO debes subir al repo en un proyecto de automatización.",
-
+      "descripcion": "Archivos que **NO** debes subir al repo en automatización.",
       "ejemplo": [
         "node_modules/",
-
         "cypress/videos/",
-
         "cypress/screenshots/",
-
         "test-results/",
-
         "playwright-report/",
-
         ".env"
       ],
-
       "requerimientos": "Git",
-
       "aplicaciones": ["Git"],
-
-      "tags": ["configuración", "buenas-prácticas", "qa"]
+      "tags": ["configuración", "buenas-prácticas", "qa", "snippet"]
     },
     {
       "id": "api-http-methods",
       "comando": "HTTP Methods",
       "nivel": "básico",
-      "descripcion": "Resumen de los verbos HTTP principales y su uso estándar en arquitecturas RESTful.",
+      "descripcion": "Resumen de los **verbos HTTP** principales.",
       "ejemplo": [
-        "GET:    Obtener recursos. (Idempotente, Safe)",
-        "POST:   Crear recursos nuevos. (No idempotente)",
-        "PUT:    Reemplazar un recurso completo. (Idempotente)",
-        "PATCH:  Actualizar parcialmente un recurso. (No necesariamente idempotente)",
-        "DELETE: Eliminar un recurso. (Idempotente)"
+        "GET /recurso: Obtener datos.",
+        "POST /recurso: Crear datos.",
+        "PUT /recurso: Reemplazar datos.",
+        "PATCH /recurso: Actualizar parcial.",
+        "DELETE /recurso: Eliminar datos."
       ],
       "requerimientos": "Conceptos REST",
       "aplicaciones": ["API"],
@@ -2642,13 +2461,12 @@
       "id": "api-common-headers",
       "comando": "Common Headers",
       "nivel": "intermedio",
-      "descripcion": "Encabezados HTTP esenciales para la negociación de contenido y autenticación.",
+      "descripcion": "**Encabezados HTTP** esenciales.",
       "ejemplo": [
         "Content-Type: application/json",
         "Accept: application/json",
         "Authorization: Bearer <token_jwt>",
-        "User-Agent: MyClient/1.0",
-        "Cache-Control: no-cache"
+        "User-Agent: MyClient/1.0"
       ],
       "requerimientos": "Cliente HTTP",
       "aplicaciones": ["API"],
@@ -2658,19 +2476,14 @@
       "id": "postman-tests",
       "comando": "pm.test() Snippets",
       "nivel": "intermedio",
-      "descripcion": "Snippets comunes de JavaScript para validar respuestas dentro de Postman (Scripts de prueba).",
+      "descripcion": "Snippets de **JavaScript** para validar respuestas en Postman.",
       "ejemplo": [
-        "// Validar código de estado 200",
+        "// Validar 200 OK",
         "pm.test(\"Status code is 200\", function () {",
         "    pm.response.to.have.status(200);",
         "});",
         "",
-        "// Validar tiempo de respuesta",
-        "pm.test(\"Response time is less than 200ms\", function () {",
-        "    pm.expect(pm.response.responseTime).to.be.below(200);",
-        "});",
-        "",
-        "// Validar campo JSON",
+        "// Validar JSON body",
         "pm.test(\"Check JSON value\", function () {",
         "    var jsonData = pm.response.json();",
         "    pm.expect(jsonData.success).to.eql(true);",
@@ -2684,7 +2497,7 @@
       "id": "curl-auth-bearer",
       "comando": "curl (Auth Bearer)",
       "nivel": "intermedio",
-      "descripcion": "Realiza una petición GET segura enviando un token de acceso (JWT) en el header.",
+      "descripcion": "Petición segura enviando un **token** (JWT).",
       "ejemplo": [
         "curl -H \"Authorization: Bearer <TU_TOKEN>\" https://api.ejemplo.com/perfil",
         "curl -v -H \"Authorization: Bearer $TOKEN\" https://api.ejemplo.com/datos"
@@ -2692,6 +2505,294 @@
       "requerimientos": "Terminal",
       "aplicaciones": ["Linux", "API"],
       "tags": ["seguridad", "jwt", "token", "terminal"]
+    },
+    {
+      "id": "js-async-await",
+      "comando": "async / await",
+      "nivel": "básico",
+      "descripcion": "Manejo moderno de **promesas** en JavaScript. Vital para Playwright y SuperTest.",
+      "ejemplo": [
+        "async function test() {",
+        "  const respuesta = await fetch(url);",
+        "  const datos = await respuesta.json();",
+        "  console.log(datos);",
+        "}"
+      ],
+      "requerimientos": "Node.js / Navegador",
+      "aplicaciones": ["JavaScript"],
+      "tags": ["js", "snippet", "código", "promesas"]
+    },
+    {
+      "id": "js-array-methods",
+      "comando": "map / filter / find",
+      "nivel": "intermedio",
+      "descripcion": "Métodos esenciales para manipular datos de prueba (JSON) en **JavaScript**.",
+      "ejemplo": [
+        "// Filtrar usuarios activos",
+        "const activos = users.filter(u => u.isActive);",
+        "",
+        "// Obtener solo los IDs",
+        "const ids = users.map(u => u.id);",
+        "",
+        "// Encontrar un usuario específico",
+        "const admin = users.find(u => u.role === 'admin');"
+      ],
+      "requerimientos": "Node.js",
+      "aplicaciones": ["JavaScript"],
+      "tags": ["js", "snippet", "código", "datos"]
+    },
+    {
+      "id": "cypress-selectors",
+      "comando": "cy.get()",
+      "nivel": "básico",
+      "descripcion": "Estrategias comunes para seleccionar elementos en **Cypress**.",
+      "ejemplo": [
+        "cy.get('#id-unico'); // Por ID",
+        "cy.get('.clase-css'); // Por Clase",
+        "cy.get('[data-cy=\"submit-btn\"]'); // Best Practice",
+        "cy.contains('Iniciar Sesión'); // Por Texto"
+      ],
+      "requerimientos": "Cypress",
+      "aplicaciones": ["Cypress"],
+      "tags": ["qa", "selectores", "código", "snippet"]
+    },
+    {
+      "id": "cypress-assertions",
+      "comando": "cy.should()",
+      "nivel": "básico",
+      "descripcion": "Aserciones comunes en **Cypress** (Chai assertions).",
+      "ejemplo": [
+        "cy.get('.btn').should('be.visible');",
+        "cy.get('input').should('have.value', 'Yeremy');",
+        "cy.url().should('include', '/dashboard');",
+        "cy.get('.error').should('not.exist');"
+      ],
+      "requerimientos": "Cypress",
+      "aplicaciones": ["Cypress"],
+      "tags": ["qa", "validación", "código", "snippet"]
+    },
+    {
+      "id": "playwright-locators",
+      "comando": "page.locator()",
+      "nivel": "básico",
+      "descripcion": "Cómo encontrar elementos en **Playwright**.",
+      "ejemplo": [
+        "await page.locator('text=Login').click();",
+        "await page.getByRole('button', { name: 'Enviar' }).click();",
+        "await page.getByTestId('username-input').fill('admin');"
+      ],
+      "requerimientos": "Playwright",
+      "aplicaciones": ["Playwright"],
+      "tags": ["qa", "selectores", "código", "snippet"]
+    },
+    {
+      "id": "playwright-assertions",
+      "comando": "expect(locator)",
+      "nivel": "básico",
+      "descripcion": "Aserciones asíncronas en **Playwright**.",
+      "ejemplo": [
+        "await expect(page.locator('.alert')).toBeVisible();",
+        "await expect(page).toHaveTitle(/Bienvenido/);",
+        "await expect(page.locator('input')).toBeEmpty();"
+      ],
+      "requerimientos": "Playwright",
+      "aplicaciones": ["Playwright"],
+      "tags": ["qa", "validación", "código", "snippet"]
+    },
+    {
+      "id": "ci-cd-github-actions",
+      "comando": "pipeline.yml",
+      "nivel": "intermedio",
+      "descripcion": "Estructura básica de un pipeline de **CI/CD** en GitHub Actions para correr tests.",
+      "ejemplo": [
+        "name: Run Tests",
+        "on: [push]",
+        "jobs:",
+        "  test:",
+        "    runs-on: ubuntu-latest",
+        "    steps:",
+        "      - uses: actions/checkout@v3",
+        "      - uses: actions/setup-node@v3",
+        "      - run: npm ci",
+        "      - run: npx playwright test"
+      ],
+      "requerimientos": "GitHub Repository",
+      "aplicaciones": ["CI/CD"],
+      "tags": ["devops", "yaml", "configuración", "snippet"]
+    },
+    {
+      "id": "qa-concept-testing-pyramid",
+      "comando": "Pirámide de Testing",
+      "nivel": "teórico",
+      "descripcion": "Concepto fundamental: Debes tener muchos tests unitarios, bastantes de integración y pocos E2E (UI).",
+      "ejemplo": [
+        "🔼 UI (E2E): Lentos, frágiles, costosos. (Cypress/Playwright)",
+        "🔽 Integración: Verifican comunicación API/DB. (SuperTest/Postman)",
+        "底部 Unitarios: Rápidos, aíslan funciones. (Jest/Mocha)"
+      ],
+      "requerimientos": "Concepto Teórico",
+      "aplicaciones": ["QA General"],
+      "tags": ["teoría", "fundamentos", "entrevista"]
+    },
+    {
+      "id": "qa-concept-bugs",
+      "comando": "Reporte de Bug",
+      "nivel": "básico",
+      "descripcion": "Estructura estándar profesional para reportar un error.",
+      "ejemplo": [
+        "**Título:** El botón de login da error 500.",
+        "**Pasos:** 1. Abrir home. 2. Escribir usuario. 3. Clic login.",
+        "**Esperado:** Redirección al dashboard.",
+        "**Actual:** Mensaje 'Internal Server Error'.",
+        "**Evidencia:** Screenshot o logs."
+      ],
+      "requerimientos": "Jira / Trello",
+      "aplicaciones": ["QA General"],
+      "tags": ["teoría", "procesos", "bugs"]
+    },
+    {
+      "id": "docker-compose-qa",
+      "comando": "docker-compose (QA)",
+      "nivel": "intermedio",
+      "descripcion": "Levantar un entorno de pruebas completo (App + Base de datos) con un comando.",
+      "ejemplo": [
+        "version: '3'",
+        "services:",
+        "  web:",
+        "    image: mi-app:latest",
+        "    ports: ['3000:3000']",
+        "  db:",
+        "    image: postgres:13",
+        "    environment:",
+        "      POSTGRES_PASSWORD: test"
+      ],
+      "requerimientos": "Docker Compose",
+      "aplicaciones": ["Docker"],
+      "tags": ["devops", "yaml", "entornos", "snippet"]
+    },
+    {
+      "id": "sql-select",
+      "comando": "SELECT",
+      "nivel": "básico",
+      "descripcion": "Selecciona datos de una base de datos. El comando más fundamental de **SQL**.",
+      "ejemplo": [
+        "SELECT * FROM usuarios;",
+        "SELECT nombre, email FROM usuarios;",
+        "SELECT DISTINCT pais FROM clientes;"
+      ],
+      "requerimientos": "Base de Datos SQL",
+      "aplicaciones": ["SQL"],
+      "tags": ["sql", "consulta", "leer", "snippet"]
+    },
+    {
+      "id": "sql-where",
+      "comando": "WHERE / AND / OR",
+      "nivel": "básico",
+      "descripcion": "**Filtra** registros que cumplen una condición específica.",
+      "ejemplo": [
+        "SELECT * FROM productos WHERE precio > 100;",
+        "SELECT * FROM usuarios WHERE activo = 1 AND rol = 'admin';",
+        "SELECT * FROM pedidos WHERE estado = 'pendiente' OR estado = 'procesando';"
+      ],
+      "requerimientos": "Base de Datos SQL",
+      "aplicaciones": ["SQL"],
+      "tags": ["sql", "filtro", "condicion", "snippet"]
+    },
+    {
+      "id": "sql-insert",
+      "comando": "INSERT INTO",
+      "nivel": "básico",
+      "descripcion": "**Inserta** nuevos registros en una tabla.",
+      "ejemplo": [
+        "INSERT INTO usuarios (nombre, edad) VALUES ('Yeremy', 30);",
+        "INSERT INTO logs (mensaje, fecha) VALUES ('Error 500', NOW());"
+      ],
+      "requerimientos": "Permisos de escritura",
+      "aplicaciones": ["SQL"],
+      "tags": ["sql", "crear", "datos", "snippet"]
+    },
+    {
+      "id": "sql-update",
+      "comando": "UPDATE",
+      "nivel": "intermedio",
+      "descripcion": "**Modifica** registros existentes. ¡Cuidado! Siempre usa `WHERE` o actualizarás toda la tabla.",
+      "ejemplo": [
+        "UPDATE usuarios SET activo = 0 WHERE id = 5;",
+        "UPDATE precios SET costo = costo * 1.1 WHERE categoria = 'electronica';"
+      ],
+      "requerimientos": "Permisos de escritura",
+      "aplicaciones": ["SQL"],
+      "tags": ["sql", "editar", "actualizar", "snippet"]
+    },
+    {
+      "id": "sql-join",
+      "comando": "INNER JOIN",
+      "nivel": "intermedio",
+      "descripcion": "**Combina** filas de dos o más tablas basándose en una columna relacionada.",
+      "ejemplo": [
+        "SELECT pedidos.id, clientes.nombre",
+        "FROM pedidos",
+        "INNER JOIN clientes ON pedidos.cliente_id = clientes.id;"
+      ],
+      "requerimientos": "Relación entre tablas",
+      "aplicaciones": ["SQL"],
+      "tags": ["sql", "relaciones", "join", "snippet"]
+    },
+    {
+      "id": "regex-clases",
+      "comando": "Clases de Caracteres",
+      "nivel": "básico",
+      "descripcion": "Símbolos para buscar tipos específicos de caracteres en **Regex**.",
+      "ejemplo": [
+        "\\d  ->  Cualquier dígito (0-9)",
+        "\\w  ->  Alfanumérico (a-z, A-Z, 0-9, _)",
+        "\\s  ->  Espacio en blanco (tab, espacio)",
+        ".   ->  Cualquier carácter (excepto nueva línea)"
+      ],
+      "requerimientos": "Motor Regex",
+      "aplicaciones": ["Regex"],
+      "tags": ["regex", "patrones", "texto", "snippet"]
+    },
+    {
+      "id": "regex-cuantificadores",
+      "comando": "Cuantificadores (* + ?)",
+      "nivel": "básico",
+      "descripcion": "Definen **cuántas veces** debe aparecer un carácter.",
+      "ejemplo": [
+        "a* ->  0 o más veces",
+        "a+   ->  1 o más veces",
+        "a?   ->  0 o 1 vez (opcional)",
+        "\\d{4} ->  Exactamente 4 dígitos (ej. año)"
+      ],
+      "requerimientos": "Motor Regex",
+      "aplicaciones": ["Regex"],
+      "tags": ["regex", "cantidad", "patrones", "snippet"]
+    },
+    {
+      "id": "regex-anclas",
+      "comando": "Anclas (^ $)",
+      "nivel": "intermedio",
+      "descripcion": "Fijan la búsqueda al **inicio** o **final** de la línea/texto.",
+      "ejemplo": [
+        "^Hola  ->  Empieza con 'Hola'",
+        "fin$   ->  Termina con 'fin'",
+        "^\\d+$  ->  La línea entera es solo números"
+      ],
+      "requerimientos": "Motor Regex",
+      "aplicaciones": ["Regex"],
+      "tags": ["regex", "inicio", "fin", "snippet"]
+    },
+    {
+      "id": "regex-validacion-email",
+      "comando": "Validar Email (Ejemplo)",
+      "nivel": "avanzado",
+      "descripcion": "Patrón común para validar formato de correos electrónicos.",
+      "ejemplo": [
+        "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+      ],
+      "requerimientos": "Motor Regex",
+      "aplicaciones": ["Regex"],
+      "tags": ["regex", "email", "validación", "snippet"]
     }
   ]
 }
