@@ -2204,6 +2204,423 @@
       "ejemplo": ["services.msc"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["servicios", "gui", "administración"]
+    },
+    {
+      "id": "cypress-open",
+
+      "comando": "npx cypress open",
+
+      "nivel": "básico",
+
+      "descripcion": "Abre el Test Runner de Cypress (GUI). Es tu comando principal para desarrollar y depurar tests visualmente.",
+
+      "ejemplo": ["npx cypress open"],
+
+      "requerimientos": "Node.js instalado",
+
+      "aplicaciones": ["Cypress"],
+
+      "tags": ["qa", "testing", "gui", "debug"]
+    },
+
+    {
+      "id": "cypress-run",
+
+      "comando": "npx cypress run",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Ejecuta los tests de Cypress en modo 'headless' (sin navegador visible). Fundamental para pipelines de CI/CD.",
+
+      "ejemplo": ["npx cypress run", "npx cypress run --browser chrome"],
+
+      "requerimientos": "Node.js instalado",
+
+      "aplicaciones": ["Cypress"],
+
+      "tags": ["qa", "ci/cd", "headless", "automatización"]
+    },
+
+    {
+      "id": "playwright-test",
+
+      "comando": "npx playwright test",
+
+      "nivel": "básico",
+
+      "descripcion": "Ejecuta toda la suite de pruebas de Playwright. Por defecto corre en modo headless.",
+
+      "ejemplo": ["npx playwright test", "npx playwright test --headed"],
+
+      "requerimientos": "Node.js instalado",
+
+      "aplicaciones": ["Playwright"],
+
+      "tags": ["qa", "e2e", "testing", "microsoft"]
+    },
+
+    {
+      "id": "playwright-codegen",
+
+      "comando": "npx playwright codegen",
+
+      "nivel": "básico",
+
+      "descripcion": "Abre un navegador que graba tus acciones y genera el código del test automáticamente. ¡Vital para aprender!",
+
+      "ejemplo": [
+        "npx playwright codegen",
+
+        "npx playwright codegen wikipedia.org"
+      ],
+
+      "requerimientos": "Node.js instalado",
+
+      "aplicaciones": ["Playwright"],
+
+      "tags": ["qa", "generador", "low-code", "grabación"]
+    },
+
+    {
+      "id": "playwright-ui",
+
+      "comando": "npx playwright test --ui",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Abre la interfaz moderna de Playwright para explorar, ejecutar y depurar tests con 'time travel'.",
+
+      "ejemplo": ["npx playwright test --ui"],
+
+      "requerimientos": "Playwright actualizado",
+
+      "aplicaciones": ["Playwright"],
+
+      "tags": ["qa", "gui", "debug"]
+    },
+
+    {
+      "id": "newman-run",
+
+      "comando": "newman run",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Ejecuta colecciones de Postman desde la consola. Permite automatizar pruebas de API sin abrir la app visual.",
+
+      "ejemplo": [
+        "newman run coleccion.json",
+
+        "newman run https://api.getpostman.com/collections/..."
+      ],
+
+      "requerimientos": "Node.js y Newman instalado",
+
+      "aplicaciones": ["Newman"],
+
+      "tags": ["qa", "api", "postman", "backend"]
+    },
+
+    {
+      "id": "cucumber-js",
+
+      "comando": "npx cucumber-js",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Ejecuta pruebas de comportamiento (BDD) definidas en archivos .feature (Gherkin).",
+
+      "ejemplo": ["npx cucumber-js", "npx cucumber-js features/login.feature"],
+
+      "requerimientos": "Node.js instalado",
+
+      "aplicaciones": ["Cucumber"],
+
+      "tags": ["qa", "bdd", "gherkin", "testing"]
+    },
+
+    {
+      "id": "appium-server",
+
+      "comando": "appium",
+
+      "nivel": "básico",
+
+      "descripcion": "Inicia el servidor de Appium. Es el puente necesario para ejecutar pruebas en emuladores o dispositivos móviles.",
+
+      "ejemplo": ["appium", "appium -p 4724"],
+
+      "requerimientos": "Node.js y Appium instalado",
+
+      "aplicaciones": ["Appium"],
+
+      "tags": ["qa", "mobile", "android", "ios"]
+    },
+
+    {
+      "id": "appium-doctor",
+
+      "comando": "appium-doctor",
+
+      "nivel": "básico",
+
+      "descripcion": "Diagnostica tu entorno para verificar si tienes todas las dependencias (Java, Android Home, Xcode) configuradas correctamente.",
+
+      "ejemplo": ["appium-doctor", "appium-doctor --android"],
+
+      "requerimientos": "npm install -g appium-doctor",
+
+      "aplicaciones": ["Appium"],
+
+      "tags": ["qa", "configuración", "mobile", "diagnóstico"]
+    },
+
+    {
+      "id": "curl-api-post",
+
+      "comando": "curl -X POST",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Realiza una petición HTTP POST a una API REST enviando datos JSON. Útil para probar endpoints rápidamente.",
+
+      "ejemplo": [
+        "curl -X POST -H \"Content-Type: application/json\" -d '{\"user\":\"test\"}' https://api.ejemplo.com/login"
+      ],
+
+      "requerimientos": "Terminal estándar",
+
+      "aplicaciones": ["Linux"],
+
+      "tags": ["api", "rest", "backend", "testing"]
+    },
+
+    {
+      "id": "cypress-structure",
+
+      "comando": "describe('...', () => { ... })",
+
+      "nivel": "básico",
+
+      "descripcion": "Estructura básica de un test en Cypress (Mocha syntax). Define una suite y un caso de prueba.",
+
+      "ejemplo": [
+        "describe('Login Suite', () => {",
+
+        "  it('debería iniciar sesión correctamente', () => {",
+
+        "    cy.visit('/login');",
+
+        "    cy.get('#username').type('admin');",
+
+        "    cy.get('#btn').click();",
+
+        "    cy.url().should('include', '/dashboard');",
+
+        "  });",
+
+        "});"
+      ],
+
+      "requerimientos": "Cypress",
+
+      "aplicaciones": ["Cypress"],
+
+      "tags": ["snippet", "sintaxis", "código", "js"]
+    },
+
+    {
+      "id": "playwright-basic-test",
+
+      "comando": "test('...', async ({ page }) => { ... })",
+
+      "nivel": "básico",
+
+      "descripcion": "Estructura base de un test en Playwright. Incluye la fixture 'page' automáticamente.",
+
+      "ejemplo": [
+        "import { test, expect } from '@playwright/test';",
+
+        "",
+
+        "test('homepage tiene el título correcto', async ({ page }) => {",
+
+        "  await page.goto('https://example.com');",
+
+        "  await expect(page).toHaveTitle(/Example/);",
+
+        "});"
+      ],
+
+      "requerimientos": "Playwright",
+
+      "aplicaciones": ["Playwright"],
+
+      "tags": ["snippet", "sintaxis", "código", "ts"]
+    },
+
+    {
+      "id": "supertest-get",
+
+      "comando": "request(app).get().expect()",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Snippet para probar un endpoint GET usando SuperTest (común en pruebas de API con Jest/Mocha).",
+
+      "ejemplo": [
+        "const request = require('supertest');",
+
+        "const app = require('../app');",
+
+        "",
+
+        "request(app)",
+
+        "  .get('/api/users')",
+
+        "  .set('Accept', 'application/json')",
+
+        "  .expect('Content-Type', /json/)",
+
+        "  .expect(200)",
+
+        "  .end(function(err, res) {",
+
+        "    if (err) throw err;",
+
+        "  });"
+      ],
+
+      "requerimientos": "Librería SuperTest",
+
+      "aplicaciones": ["SuperTest"],
+
+      "tags": ["api", "snippet", "backend", "código"]
+    },
+
+    {
+      "id": "cucumber-gherkin",
+
+      "comando": "Feature: / Scenario:",
+
+      "nivel": "básico",
+
+      "descripcion": "Sintaxis Gherkin para definir pruebas BDD. Se usa en archivos .feature.",
+
+      "ejemplo": [
+        "Feature: Login de Usuario",
+
+        "",
+
+        "  Scenario: Credenciales válidas",
+
+        "    Given que estoy en la página de login",
+
+        "    When ingreso el usuario 'admin' y clave '1234'",
+
+        "    Then debería ver el mensaje 'Bienvenido'"
+      ],
+
+      "requerimientos": "Cucumber / Gherkin",
+
+      "aplicaciones": ["Cucumber"],
+
+      "tags": ["bdd", "sintaxis", "gherkin", "teoría"]
+    },
+
+    {
+      "id": "api-status-codes",
+
+      "comando": "HTTP Status Codes",
+
+      "nivel": "básico",
+
+      "descripcion": "Referencia rápida de los códigos de estado HTTP más comunes en pruebas de API.",
+
+      "ejemplo": [
+        "200 OK: Petición exitosa.",
+
+        "201 Created: Recurso creado (POST).",
+
+        "400 Bad Request: Error del cliente (datos mal formados).",
+
+        "401 Unauthorized: Falta autenticación (token).",
+
+        "403 Forbidden: Autenticado pero sin permisos.",
+
+        "404 Not Found: Recurso no encontrado.",
+
+        "500 Internal Server Error: Fallo en el servidor."
+      ],
+
+      "requerimientos": "Conocimiento general REST",
+
+      "aplicaciones": ["API"],
+
+      "tags": ["teoría", "referencia", "rest", "backend"]
+    },
+
+    {
+      "id": "appium-capabilities",
+
+      "comando": "Desired Capabilities (JSON)",
+
+      "nivel": "intermedio",
+
+      "descripcion": "Ejemplo de configuración JSON necesaria para iniciar una sesión de Appium en Android.",
+
+      "ejemplo": [
+        "{",
+
+        "  \"platformName\": \"Android\",",
+
+        "  \"platformVersion\": \"11.0\",",
+
+        "  \"deviceName\": \"Android Emulator\",",
+
+        "  \"app\": \"/path/to/my.apk\",",
+
+        "  \"automationName\": \"UiAutomator2\"",
+
+        "}"
+      ],
+
+      "requerimientos": "Appium Server",
+
+      "aplicaciones": ["Appium"],
+
+      "tags": ["mobile", "configuración", "json", "android"]
+    },
+
+    {
+      "id": "git-ignore-qa",
+
+      "comando": ".gitignore (QA)",
+
+      "nivel": "básico",
+
+      "descripcion": "Archivos comunes que NO debes subir al repo en un proyecto de automatización.",
+
+      "ejemplo": [
+        "node_modules/",
+
+        "cypress/videos/",
+
+        "cypress/screenshots/",
+
+        "test-results/",
+
+        "playwright-report/",
+
+        ".env"
+      ],
+
+      "requerimientos": "Git",
+
+      "aplicaciones": ["Git"],
+
+      "tags": ["configuración", "buenas-prácticas", "qa"]
     }
   ]
 }
