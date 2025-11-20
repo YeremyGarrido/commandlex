@@ -20,9 +20,9 @@ import {
 import {
   SiKubernetes,
   SiHelm,
-  SiPowers, // CORREGIDO: Usamos el que te funciona a ti
+  SiPowers, // CORREGIDO
   SiCypress,
-  // SiPlaywright, // ELIMINADO: No existe en tu versión
+  // SiPlaywright, // ELIMINADO
   SiPostman,
   SiCucumber,
   SiAppium,
@@ -34,10 +34,16 @@ import {
   FaFilePowerpoint,
   FaQuestionCircle,
   FaFlask,
-  FaPlay, // AGREGADO: Reemplazo temporal para Playwright
+  FaPlay, // Reemplazo para Playwright
+  FaDatabase, // Nuevo para SQL
+  FaBug,      // Nuevo para QA General
+  FaInfinity, // Nuevo para CI/CD (DevOps loop)
 } from "react-icons/fa";
 
-import { TbApi } from "react-icons/tb";
+import { 
+  TbApi,
+  TbRegex // Nuevo para Regex
+} from "react-icons/tb";
 
 interface Props {
   appName: string;
@@ -62,7 +68,6 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
     case "terminal":
       return <DiTerminal size={size} className="text-cyan-400" aria-hidden="true" />;
     case "powershell":
-      // Usamos SiPowers como indicaste
       return <SiPowers size={size} className="text-sky-400" aria-hidden="true" />;
 
     case "node":
@@ -99,13 +104,12 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
     case "powerpoint":
       return <FaFilePowerpoint size={size} className="text-orange-600" aria-hidden="true" />;
 
-    // --- NUEVOS ICONOS DE QA AUTOMATION ---
+    // --- ICONOS DE QA AUTOMATION & EXTRAS ---
 
     case "cypress":
       return <SiCypress size={size} className="text-teal-400" aria-hidden="true" />;
 
     case "playwright":
-      // Usamos FaPlay (verde) porque SiPlaywright no existe en tu versión
       return <FaPlay size={size} className="text-green-500" aria-hidden="true" />;
 
     case "newman":
@@ -122,6 +126,20 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
 
     case "api":
       return <TbApi size={size} className="text-yellow-400" aria-hidden="true" />;
+
+    // --- NUEVOS ICONOS AGREGADOS ---
+    
+    case "ci/cd":
+      return <FaInfinity size={size} className="text-blue-400" aria-hidden="true" />; // Símbolo DevOps
+      
+    case "qa general":
+      return <FaBug size={size} className="text-red-500" aria-hidden="true" />; // Bicho/Bug
+      
+    case "sql":
+      return <FaDatabase size={size} className="text-blue-600" aria-hidden="true" />; // Base de datos
+      
+    case "regex":
+      return <TbRegex size={size} className="text-purple-400" aria-hidden="true" />; // Símbolo Regex
 
     default:
       return <FaQuestionCircle size={size} className="text-gray-500" aria-hidden="true" />;

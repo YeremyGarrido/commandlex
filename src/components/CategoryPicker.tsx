@@ -12,23 +12,37 @@ export const CategoryPicker = ({
   onSelectApp,
 }: CategoryPickerProps) => {
   const appDisplayList = [
-    "Git",
-    "Docker",
+    // --- Frameworks de Automatización ---
+    "Cypress",
+    "Playwright",
+    "Appium",
+    "Cucumber",
+    
+    // --- Lenguajes y Scripting ---
+    "JavaScript",
     "PowerShell",
     "cmd",
+    "Linux",
+    
+    // --- API Testing ---
+    "API",
+    "Newman",
+    "SuperTest",
+    
+    // --- DevOps & Contenedores ---
+    "Git",
+    "Docker",
+    "Kubernetes",
+    "Helm",
+    "CI/CD",
+    
+    // --- Ofimática y Teoría ---
     "Excel",
     "PowerPoint",
     "Word",
-    "Linux",
-    "Kubernetes",
-    "Helm",
-    "Cypress",
-    "Playwright",
-    "Newman",
-    "Cucumber",
-    "Appium",
-    "SuperTest",
-    "API",
+    "QA General",
+    
+    // --- Extras ---
     "SQL",
     "Regex"
   ];
@@ -36,7 +50,6 @@ export const CategoryPicker = ({
   const appsToShow = appDisplayList.filter((app) => applications.includes(app));
 
   return (
-    // CAMBIO: de my-12 a my-6 para reducir el espacio vertical
     <div className="animate-fadeIn max-w-3xl mx-auto my-6">
       <h2 className="text-center text-lg font-semibold text-gray-400 mb-8">
         Selecciona una categoría para empezar
