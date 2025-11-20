@@ -3,8 +3,9 @@ import React from "react";
 
 type TagProps = {
   label: string;
-  color?: "blue" | "green" | "yellow" | "gray";
-  onClick?: (label: string) => void; // NUEVO: Prop opcional
+  // 1. AGREGAMOS "red" AQUI
+  color?: "blue" | "green" | "yellow" | "gray" | "red";
+  onClick?: (label: string) => void;
 };
 
 export function Tag({ label, color = "gray", onClick }: TagProps) {
@@ -14,10 +15,14 @@ export function Tag({ label, color = "gray", onClick }: TagProps) {
     yellow:
       "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
     gray: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200",
+    // 2. DEFINIMOS EL ESTILO ROJO AQUI
+    red: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
   };
 
   // Clases comunes para ambos (span y button)
-  const commonClasses = `px-2 py-1 rounded-full text-xs font-medium ${colorClasses[color]}`;
+  // Nota: Usamos colorClasses[color] || colorClasses.gray por seguridad
+  const selectedColorClass = colorClasses[color] || colorClasses.gray;
+  const commonClasses = `px-2 py-1 rounded-full text-xs font-medium ${selectedColorClass}`;
 
   // Si 'onClick' existe, renderiza un <button> interactivo
   if (onClick) {

@@ -16,13 +16,28 @@ import {
   DiPython,
   DiAndroid,
 } from "react-icons/di";
-import { SiKubernetes, SiHelm, SiPowers } from "react-icons/si";
+
+import {
+  SiKubernetes,
+  SiHelm,
+  SiPowers, // CORREGIDO: Usamos el que te funciona a ti
+  SiCypress,
+  // SiPlaywright, // ELIMINADO: No existe en tu versión
+  SiPostman,
+  SiCucumber,
+  SiAppium,
+} from "react-icons/si";
+
 import {
   FaFileExcel,
   FaFileWord,
   FaFilePowerpoint,
   FaQuestionCircle,
+  FaFlask,
+  FaPlay, // AGREGADO: Reemplazo temporal para Playwright
 } from "react-icons/fa";
+
+import { TbApi } from "react-icons/tb";
 
 interface Props {
   appName: string;
@@ -33,6 +48,7 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
   const app = appName?.toLowerCase() || "default";
 
   switch (app) {
+    // --- TUS ICONOS EXISTENTES ---
     case "docker":
       return <DiDocker size={size} className="text-sky-500" />;
     case "linux":
@@ -46,6 +62,7 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
     case "terminal":
       return <DiTerminal size={size} className="text-cyan-400" />;
     case "powershell":
+      // Usamos SiPowers como indicaste
       return <SiPowers size={size} className="text-sky-400" />;
 
     case "node":
@@ -81,6 +98,30 @@ export const AppIcon = ({ appName, size = 24 }: Props) => {
       return <FaFileWord size={size} className="text-blue-700" />;
     case "powerpoint":
       return <FaFilePowerpoint size={size} className="text-orange-600" />;
+
+    // --- NUEVOS ICONOS DE QA AUTOMATION ---
+
+    case "cypress":
+      return <SiCypress size={size} className="text-teal-400" />;
+
+    case "playwright":
+      // Usamos FaPlay (verde) porque SiPlaywright no existe en tu versión
+      return <FaPlay size={size} className="text-green-500" />;
+
+    case "newman":
+      return <SiPostman size={size} className="text-orange-500" />;
+
+    case "cucumber":
+      return <SiCucumber size={size} className="text-green-500" />;
+
+    case "appium":
+      return <SiAppium size={size} className="text-purple-600" />;
+
+    case "supertest":
+      return <FaFlask size={size} className="text-pink-500" />;
+
+    case "api":
+      return <TbApi size={size} className="text-yellow-400" />;
 
     default:
       return <FaQuestionCircle size={size} className="text-gray-500" />;

@@ -129,9 +129,15 @@ function HomePage() {
     if (searchTerm) {
       result = search(result, searchTerm);
     }
-    if (!selectedCategory && !searchTerm) {
+    if (
+      !selectedCategory &&
+      !searchTerm &&
+      appliedApps.length === 0 &&
+      appliedLevels.length === 0
+    ) {
       return [];
     }
+
     return result;
   }, [allCommands, searchTerm, appliedApps, appliedLevels, selectedCategory]);
 
@@ -166,7 +172,11 @@ function HomePage() {
   }
 
   const activeFilterCount = appliedApps.length + appliedLevels.length;
-  const showCards = !!selectedCategory || !!searchTerm;
+  const showCards =
+    !!selectedCategory ||
+    !!searchTerm ||
+    appliedApps.length > 0 ||
+    appliedLevels.length > 0;
 
   return (
     <main className="text-gray-900 dark:text-gray-100">
@@ -213,7 +223,7 @@ function HomePage() {
             para todos tus comandos favoritos y atajos.
           </p>
 
-          <div className="flex justify-center mx-auto max-w-2xl mt-4 animate-fadeIn">
+          <div className="flex justify-center mx-auto max-w-2xl mt-4 animate-fadeIn relative z-30">
             <div className="flex flex-grow items-center gap-2">
               <div className="relative flex-grow rounded-xl border border-gray-800 bg-gray-900/60 shadow-lg backdrop-blur-sm focus-within:ring-2 focus-within:ring-purple-500/40 transition-all">
                 <SearchBox externalValue={searchTerm} onSearch={handleSearch} />
@@ -251,67 +261,89 @@ function HomePage() {
                     </span>
                   )}
                 </button>
+
+                {/* === INICIO DEL FIX DEL FILTRO === */}
                 {showFilters && (
                   <div
-                    className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-gray-800 
-                             border dark:border-gray-700 rounded-lg shadow-2xl z-50 p-4"
+                    className="absolute right-0 top-full mt-2 w-80 z-50 
+                               bg-gray-900 border border-gray-700 rounded-xl shadow-2xl 
+                               flex flex-col animate-fadeIn overflow-hidden
+                               max-h-[60vh]" /* 1. Altura máxima en el PADRE */
                   >
-                    <h3 className="font-semibold mb-2 text-gray-400 dark:text-gray-400">
-                      Aplicaciones
-                    </h3>
-                    <div className="max-h-40 overflow-y-auto border dark:border-gray-700 rounded-md p-2 mb-4">
-                      {aplicaciones.map((app) => (
-                        <label
-                          key={app}
-                          className="flex items-center gap-2 p-1 hover:bg-gray-700 rounded transition-colors cursor-pointer"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selectedApps.includes(app)}
-                            onChange={() => handleAppChange(app)}
-                            className="h-4 w-4 rounded border-gray-500 bg-gray-700 text-purple-500 focus:ring-purple-500 transition-colors"
-                          />
-                          <span className="text-sm text-gray-200">{app}</span>
-                        </label>
-                      ))}
+                    {/* --- CONTENIDO SCROLLABLE (Ocupa el espacio sobrante) --- */}
+                    <div className="flex-1 overflow-y-auto custom-scrollbar p-4">
+                      {/* Aplicaciones */}
+                      <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
+                        Aplicaciones
+                      </h3>
+                      <div className="space-y-1">
+                        {aplicaciones.map((app) => (
+                          <label
+                            key={app}
+                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800 cursor-pointer transition-colors group"
+                          >
+                            <div className="relative flex items-center">
+                              <input
+                                type="checkbox"
+                                checked={selectedApps.includes(app)}
+                                onChange={() => handleAppChange(app)}
+                                className="peer h-4 w-4 rounded border-gray-600 bg-gray-800 
+                                           text-purple-500 focus:ring-purple-500/20 focus:ring-offset-0"
+                              />
+                            </div>
+                            <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                              {app}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+
+                      {/* Separador */}
+                      <div className="my-4 border-t border-gray-800"></div>
+
+                      {/* Niveles */}
+                      <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
+                        Niveles
+                      </h3>
+                      <div className="space-y-1">
+                        {niveles.map((level) => (
+                          <label
+                            key={level}
+                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800 cursor-pointer transition-colors group"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={selectedLevels.includes(level)}
+                              onChange={() => handleLevelChange(level)}
+                              className="h-4 w-4 rounded border-gray-600 bg-gray-800 
+                                         text-purple-500 focus:ring-purple-500/20 focus:ring-offset-0"
+                            />
+                            <span className="text-sm text-gray-300 group-hover:text-white capitalize transition-colors">
+                              {level}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
                     </div>
-                    <h3 className="font-semibold mb-2 text-gray-400 dark:text-gray-400">
-                      Niveles
-                    </h3>
-                    <div className="border dark:border-gray-700 rounded-md p-2 mb-4">
-                      {niveles.map((level) => (
-                        <label
-                          key={level}
-                          className="flex items-center gap-2 p-1 hover:bg-gray-700 rounded transition-colors cursor-pointer"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selectedLevels.includes(level)}
-                            onChange={() => handleLevelChange(level)}
-                            className="h-4 w-4 rounded border-gray-500 bg-gray-700 text-purple-500 focus:ring-purple-500 transition-colors"
-                          />
-                          <span className="text-sm text-gray-200 capitalize">
-                            {level}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                    <div className="flex justify-end gap-2 border-t dark:border-gray-700 pt-4">
+
+                    {/* --- FOOTER (Siempre visible abajo) --- */}
+                    <div className="p-4 bg-gray-950 border-t border-gray-800 flex justify-end gap-3 shrink-0">
                       <button
                         onClick={handleCancelFilters}
-                        className="px-4 py-2 text-sm rounded-md text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                        className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
                       >
-                        Cancel
+                        Cancelar
                       </button>
                       <button
                         onClick={handleSaveFilters}
-                        className="px-4 py-2 text-sm bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+                        className="px-4 py-2 text-sm font-medium bg-purple-600 text-white rounded-lg hover:bg-purple-500 shadow-lg shadow-purple-500/20 transition-all"
                       >
-                        Save
+                        Aplicar
                       </button>
                     </div>
                   </div>
                 )}
+                {/* === FIN DEL FIX DEL FILTRO === */}
               </div>
             </div>
           </div>

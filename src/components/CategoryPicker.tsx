@@ -22,6 +22,13 @@ export const CategoryPicker = ({
     "Linux",
     "Kubernetes",
     "Helm",
+    "Cypress",
+    "Playwright",
+    "Newman",
+    "Cucumber",
+    "Appium",
+    "SuperTest",
+    "API",
   ];
 
   const appsToShow = appDisplayList.filter((app) => applications.includes(app));
