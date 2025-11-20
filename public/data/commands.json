@@ -2621,6 +2621,77 @@
       "aplicaciones": ["Git"],
 
       "tags": ["configuración", "buenas-prácticas", "qa"]
+    },
+    {
+      "id": "api-http-methods",
+      "comando": "HTTP Methods",
+      "nivel": "básico",
+      "descripcion": "Resumen de los verbos HTTP principales y su uso estándar en arquitecturas RESTful.",
+      "ejemplo": [
+        "GET:    Obtener recursos. (Idempotente, Safe)",
+        "POST:   Crear recursos nuevos. (No idempotente)",
+        "PUT:    Reemplazar un recurso completo. (Idempotente)",
+        "PATCH:  Actualizar parcialmente un recurso. (No necesariamente idempotente)",
+        "DELETE: Eliminar un recurso. (Idempotente)"
+      ],
+      "requerimientos": "Conceptos REST",
+      "aplicaciones": ["API"],
+      "tags": ["teoría", "rest", "backend", "entrevista"]
+    },
+    {
+      "id": "api-common-headers",
+      "comando": "Common Headers",
+      "nivel": "intermedio",
+      "descripcion": "Encabezados HTTP esenciales para la negociación de contenido y autenticación.",
+      "ejemplo": [
+        "Content-Type: application/json",
+        "Accept: application/json",
+        "Authorization: Bearer <token_jwt>",
+        "User-Agent: MyClient/1.0",
+        "Cache-Control: no-cache"
+      ],
+      "requerimientos": "Cliente HTTP",
+      "aplicaciones": ["API"],
+      "tags": ["teoría", "configuración", "http", "headers"]
+    },
+    {
+      "id": "postman-tests",
+      "comando": "pm.test() Snippets",
+      "nivel": "intermedio",
+      "descripcion": "Snippets comunes de JavaScript para validar respuestas dentro de Postman (Scripts de prueba).",
+      "ejemplo": [
+        "// Validar código de estado 200",
+        "pm.test(\"Status code is 200\", function () {",
+        "    pm.response.to.have.status(200);",
+        "});",
+        "",
+        "// Validar tiempo de respuesta",
+        "pm.test(\"Response time is less than 200ms\", function () {",
+        "    pm.expect(pm.response.responseTime).to.be.below(200);",
+        "});",
+        "",
+        "// Validar campo JSON",
+        "pm.test(\"Check JSON value\", function () {",
+        "    var jsonData = pm.response.json();",
+        "    pm.expect(jsonData.success).to.eql(true);",
+        "});"
+      ],
+      "requerimientos": "Postman / Newman",
+      "aplicaciones": ["API"],
+      "tags": ["snippet", "qa", "postman", "js", "código"]
+    },
+    {
+      "id": "curl-auth-bearer",
+      "comando": "curl (Auth Bearer)",
+      "nivel": "intermedio",
+      "descripcion": "Realiza una petición GET segura enviando un token de acceso (JWT) en el header.",
+      "ejemplo": [
+        "curl -H \"Authorization: Bearer <TU_TOKEN>\" https://api.ejemplo.com/perfil",
+        "curl -v -H \"Authorization: Bearer $TOKEN\" https://api.ejemplo.com/datos"
+      ],
+      "requerimientos": "Terminal",
+      "aplicaciones": ["Linux", "API"],
+      "tags": ["seguridad", "jwt", "token", "terminal"]
     }
   ]
 }

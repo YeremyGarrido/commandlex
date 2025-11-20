@@ -29,6 +29,8 @@ export const CategoryPicker = ({
     "Appium",
     "SuperTest",
     "API",
+    "SQL",
+    "Regex"
   ];
 
   const appsToShow = appDisplayList.filter((app) => applications.includes(app));
@@ -45,10 +47,10 @@ export const CategoryPicker = ({
           <button
             key={app}
             onClick={() => onSelectApp(app)}
-            className="flex flex-col items-center justify-center p-6 bg-gray-800/50 
-                       rounded-lg border border-gray-700/50
+            className="flex flex-col items-center justify-center p-6 bg-[var(--card)] 
+                       rounded-lg border border-[var(--border)]
                        transition-all duration-200
-                       hover:border-purple-500 hover:scale-105 hover:bg-gray-800"
+                       hover:border-purple-500 hover:scale-105 hover:bg-[var(--card)]"
             title={`Ver comandos de ${app}`}
           >
             <AppIcon appName={app} size={48} />
