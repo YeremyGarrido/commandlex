@@ -22,8 +22,32 @@ export const CommandModal = ({ comando, onClose }: Props) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  // --- HELPERS DE RENDERIZADO ---
+  // --- DETECCIÓN DE TIPO DE BLOQUE ---
+  // Detectamos si esto es un bloque de código multi-línea (JSON, JS, Snippet)
+  // o si son varios ejemplos de comandos separados.
+  const isMultiLineBlock = comando.tags.some((t) =>
+    ["snippet", "código", "js", "ts", "json", "gherkin"].includes(t)
+  );
 
+  // --- HELPERS DE ESTILO ---
+  const getStatusStyles = (code: string) => {
+    const c = code.toUpperCase();
+    if (c.startsWith("2") || c === "POST" || c === "OK") {
+      return { border: "border-green-500", text: "text-green-400" };
+    }
+    if (c.startsWith("3") || c === "GET") {
+      return { border: "border-blue-500", text: "text-blue-400" };
+    }
+    if (c.startsWith("4") || c === "PUT" || c === "PATCH") {
+      return { border: "border-yellow-500", text: "text-yellow-400" };
+    }
+    if (c.startsWith("5") || c === "DELETE" || c === "ERROR") {
+      return { border: "border-red-500", text: "text-red-400" };
+    }
+    return { border: "border-gray-600", text: "text-gray-400" };
+  };
+
+  // --- HELPERS DE RENDERIZADO ---
   const renderShortcut = (text: string) => {
     const parts = text.split("+");
     return (
@@ -44,23 +68,22 @@ export const CommandModal = ({ comando, onClose }: Props) => {
 
   const renderStatusCode = (text: string) => {
     const code = text.split(" ")[0];
-    let colorClass = "bg-gray-700 text-gray-300";
-
-    if (code.startsWith("2"))
-      colorClass = "bg-green-900/50 text-green-300 border-green-700";
-    if (code.startsWith("3"))
-      colorClass = "bg-blue-900/50 text-blue-300 border-blue-700";
-    if (code.startsWith("4"))
-      colorClass = "bg-yellow-900/50 text-yellow-300 border-yellow-700";
-    if (code.startsWith("5"))
-      colorClass = "bg-red-900/50 text-red-300 border-red-700";
+    const rest = text.substring(code.length).trim();
+    const styles = getStatusStyles(code);
 
     return (
       <div
-        className={`flex items-center px-3 py-2 rounded border ${colorClass} font-mono text-sm`}
+        className={`
+          relative flex items-center px-4 py-3 mb-3
+          bg-gray-950/50 rounded-r-lg rounded-l-sm
+          border border-gray-800/50
+          border-l-4 ${styles.border}
+          font-mono text-sm text-gray-300
+          hover:bg-gray-900 transition-colors
+        `}
       >
-        <span className="font-bold mr-2">{code}</span>
-        <span>{text.substring(code.length).trim()}</span>
+        <span className={`font-bold mr-3 ${styles.text}`}>{code}</span>
+        <span>{rest}</span>
       </div>
     );
   };
@@ -78,11 +101,8 @@ export const CommandModal = ({ comando, onClose }: Props) => {
       return renderStatusCode(example);
     }
 
-    const isCodeSnippet = comando.tags.some((t) =>
-      ["snippet", "código", "js", "ts", "json"].includes(t)
-    );
-
-    if (isCodeSnippet) {
+    // Usamos la misma detección de arriba para saber si renderizar Highlight
+    if (isMultiLineBlock) {
       return (
         <div className="rounded-md overflow-hidden border border-gray-700 text-sm">
           <Highlight theme={themes.vsDark} code={example} language="javascript">
@@ -147,25 +167,34 @@ export const CommandModal = ({ comando, onClose }: Props) => {
               </div>
 
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                Ejemplos
+                {isMultiLineBlock ? "Código" : "Ejemplos"}
                 <span className="text-xs font-normal text-gray-500 px-2 py-0.5 bg-gray-800 rounded-full border border-gray-700">
-                  {comando.ejemplo.length}
+                  {isMultiLineBlock ? 1 : comando.ejemplo.length}
                 </span>
               </h3>
+              
               <div className="flex flex-col gap-4">
-                {comando.ejemplo.map((ej, index) => (
-                  <div key={index} className="relative group">
-                    {renderExample(ej)}
+                {/* === LÓGICA CORREGIDA AQUÍ === */}
+                {isMultiLineBlock ? (
+                  // Si es JSON o Snippet, unimos todo el array con saltos de línea
+                  // y renderizamos UN SOLO bloque grande.
+                  <div className="relative group">
+                    {renderExample(comando.ejemplo.join("\n"))}
                   </div>
-                ))}
+                ) : (
+                  // Si son comandos normales, renderizamos cada uno por separado
+                  comando.ejemplo.map((ej, index) => (
+                    <div key={index} className="relative group">
+                      {renderExample(ej)}
+                    </div>
+                  ))
+                )}
               </div>
             </div>
 
-            {/* === COLUMNA DERECHA (Metadata Limpia) === */}
+            {/* === COLUMNA DERECHA (Metadata) === */}
             <div className="md:col-span-1">
-              {/* Quitamos bg-gray-800, border, p-5, etc. Solo dejamos sticky si quieres que persiga al scroll */}
               <div className="sticky top-0 space-y-6">
-                {/* Nivel */}
                 <div>
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
                     <FaLayerGroup /> Nivel
@@ -181,8 +210,6 @@ export const CommandModal = ({ comando, onClose }: Props) => {
                     }
                   />
                 </div>
-
-                {/* Requerimientos (Estilo limpio recuperado) */}
                 <div>
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
                     <FaTerminal /> Requerimientos
@@ -191,8 +218,6 @@ export const CommandModal = ({ comando, onClose }: Props) => {
                     {comando.requerimientos}
                   </p>
                 </div>
-
-                {/* Tags */}
                 <div>
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
                     <FaTags /> Tags
