@@ -1,7 +1,7 @@
 {
   "dataset": {
     "version": "3.0",
-    "updatedAt": "2025-11-05"
+    "updatedAt": "2025-11-20"
   },
   "niveles": ["básico", "intermedio", "avanzado"],
   "comandos": [
@@ -1746,6 +1746,464 @@
       "ejemplo": ["start powershell", "start powershell -NoExit"],
       "requerimientos": "Permisos estándar de usuario.",
       "tags": ["integración", "sistema", "shell"]
+    },
+    {
+      "id": "cmd-whoami",
+      "comando": "whoami",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra el usuario actual, grupos y privilegios.",
+      "ejemplo": ["whoami", "whoami /all"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["usuario", "identidad", "seguridad"]
+    },
+    {
+      "id": "cmd-getmac",
+      "comando": "getmac",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra la dirección MAC de los adaptadores de red.",
+      "ejemplo": ["getmac", "getmac /v"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["red", "hardware", "mac"]
+    },
+    {
+      "id": "cmd-hostname",
+      "comando": "hostname",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra el nombre del equipo en la red.",
+      "ejemplo": ["hostname"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["red", "sistema", "nombre"]
+    },
+    {
+      "id": "cmd-ver",
+      "comando": "ver",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra la versión del sistema operativo Windows.",
+      "ejemplo": ["ver"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["sistema", "versión", "info"]
+    },
+    {
+      "id": "cmd-winver",
+      "comando": "winver",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Abre una ventana con información detallada de la versión y compilación de Windows.",
+      "ejemplo": ["winver"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["sistema", "versión", "gui"]
+    },
+    {
+      "id": "cmd-nslookup",
+      "comando": "nslookup",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Consulta servidores DNS para resolver nombres de dominio o direcciones IP.",
+      "ejemplo": ["nslookup google.com", "nslookup 8.8.8.8"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["red", "dns", "diagnóstico"]
+    },
+    {
+      "id": "cmd-taskkill",
+      "comando": "taskkill",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Termina uno o más procesos en ejecución por ID o nombre de imagen.",
+      "ejemplo": ["taskkill /IM notepad.exe /F", "taskkill /PID 1234 /F"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["procesos", "administración", "terminar"]
+    },
+    {
+      "id": "cmd-format",
+      "comando": "format",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Formatea un disco para aceptar archivos de Windows. ¡Borra todos los datos!",
+      "ejemplo": ["format D: /fs:ntfs", "format E: /q"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["disco", "formatear", "sistema"]
+    },
+    {
+      "id": "cmd-xcopy",
+      "comando": "xcopy",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Copia archivos y árboles de directorios. Más avanzado que copy estándar.",
+      "ejemplo": [
+        "xcopy C:\\origen D:\\destino /E /I",
+        "xcopy *.txt D:\\Backup /Y"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["archivos", "copiar", "backup"]
+    },
+    {
+      "id": "cmd-dir",
+      "comando": "dir",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra una lista de archivos y subdirectorios en un directorio.",
+      "ejemplo": ["dir", "dir /a:h (ocultos)", "dir /s (recursivo)"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["archivos", "listar", "navegación"]
+    },
+    {
+      "id": "cmd-cd",
+      "comando": "cd",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra el nombre del directorio actual o cambia a otro directorio.",
+      "ejemplo": ["cd C:\\Windows", "cd ..", "cd \\"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["navegación", "directorios", "básico"]
+    },
+    {
+      "id": "cmd-rd",
+      "comando": "rd",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Elimina (remueve) un directorio.",
+      "ejemplo": ["rd CarpetaVacia", "rd /s /q CarpetaConArchivos"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["directorios", "borrar", "sistema"]
+    },
+    {
+      "id": "cmd-copy",
+      "comando": "copy",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Copia uno o más archivos a otra ubicación.",
+      "ejemplo": ["copy archivo.txt D:\\", "copy *.jpg D:\\Fotos"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["archivos", "copiar", "básico"]
+    },
+    {
+      "id": "cmd-move",
+      "comando": "move",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Mueve archivos y cambia el nombre a archivos y directorios.",
+      "ejemplo": ["move archivo.txt D:\\", "move viejo.txt nuevo.txt"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["archivos", "mover", "renombrar"]
+    },
+    {
+      "id": "cmd-ren",
+      "comando": "ren",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Cambia el nombre de uno o más archivos.",
+      "ejemplo": ["ren documento.txt documento_final.txt", "ren *.txt *.bak"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["archivos", "renombrar", "gestión"]
+    },
+    {
+      "id": "cmd-type",
+      "comando": "type",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Muestra el contenido de un archivo de texto.",
+      "ejemplo": ["type archivo.txt"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["archivos", "leer", "texto"]
+    },
+    {
+      "id": "cmd-find",
+      "comando": "find",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Busca una cadena de texto en uno o más archivos.",
+      "ejemplo": ["find \"error\" log.txt", "dir | find \"<DIR>\""],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["búsqueda", "texto", "archivos"]
+    },
+    {
+      "id": "cmd-findstr",
+      "comando": "findstr",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Busca cadenas de texto en archivos usando expresiones regulares simples.",
+      "ejemplo": ["findstr /s \"error\" *.log", "ipconfig | findstr \"IPv4\""],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["búsqueda", "regex", "texto"]
+    },
+    {
+      "id": "cmd-sort",
+      "comando": "sort",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Lee la entrada, ordena los datos y escribe el resultado en la pantalla o archivo.",
+      "ejemplo": ["sort lista.txt", "dir | sort"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["texto", "ordenar", "datos"]
+    },
+    {
+      "id": "cmd-comp",
+      "comando": "comp",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Compara el contenido de dos archivos o conjuntos de archivos byte por byte.",
+      "ejemplo": ["comp archivo1.bin archivo2.bin"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["archivos", "comparar", "binario"]
+    },
+    {
+      "id": "cmd-fc",
+      "comando": "fc",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Compara dos archivos o conjuntos de archivos y muestra las diferencias.",
+      "ejemplo": ["fc archivo1.txt archivo2.txt"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["archivos", "comparar", "texto"]
+    },
+    {
+      "id": "cmd-tree",
+      "comando": "tree",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra gráficamente la estructura de directorios de una unidad o ruta.",
+      "ejemplo": ["tree C:\\Proyectos", "tree /f (incluye archivos)"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["directorios", "estructura", "visual"]
+    },
+    {
+      "id": "cmd-attrib",
+      "comando": "attrib",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra o cambia los atributos de archivo (lectura, oculto, sistema, archivo).",
+      "ejemplo": ["attrib +r +h secreto.txt", "attrib -r archivo.txt"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["archivos", "atributos", "seguridad"]
+    },
+    {
+      "id": "cmd-cipher",
+      "comando": "cipher",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Muestra o altera el cifrado de directorios y archivos en particiones NTFS.",
+      "ejemplo": ["cipher /e CarpetaPrivada", "cipher /d ArchivoCifrado"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["seguridad", "cifrado", "archivos"]
+    },
+    {
+      "id": "cmd-compact",
+      "comando": "compact",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra o altera la compresión de archivos en particiones NTFS.",
+      "ejemplo": ["compact /c archivo.txt", "compact /u archivo.txt"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["archivos", "compresión", "almacenamiento"]
+    },
+    {
+      "id": "cmd-powercfg",
+      "comando": "powercfg",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Controla la configuración de energía del sistema (hibernación, suspensión, etc.).",
+      "ejemplo": ["powercfg /a", "powercfg /hibernate on"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["sistema", "energía", "configuración"]
+    },
+    {
+      "id": "cmd-gpupdate",
+      "comando": "gpupdate",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Actualiza la configuración de directivas de grupo locales y de Active Directory.",
+      "ejemplo": ["gpupdate /force"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["administración", "políticas", "red"]
+    },
+    {
+      "id": "cmd-gpresult",
+      "comando": "gpresult",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Muestra la información del conjunto resultante de directivas (RSoP) para un usuario o equipo.",
+      "ejemplo": ["gpresult /r"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["administración", "políticas", "diagnóstico"]
+    },
+    {
+      "id": "cmd-net-user",
+      "comando": "net user",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Agrega, modifica o muestra cuentas de usuario.",
+      "ejemplo": ["net user", "net user NuevoUsuario clave123 /add"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["usuarios", "administración", "seguridad"]
+    },
+    {
+      "id": "cmd-net-localgroup",
+      "comando": "net localgroup",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Modifica grupos locales (agrega/quita usuarios).",
+      "ejemplo": ["net localgroup Administradores NuevoUsuario /add"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["grupos", "permisos", "seguridad"]
+    },
+    {
+      "id": "cmd-net-start",
+      "comando": "net start",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Inicia un servicio de red o lista los servicios iniciados.",
+      "ejemplo": ["net start", "net start \"Cola de impresión\""],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["servicios", "administración", "red"]
+    },
+    {
+      "id": "cmd-net-stop",
+      "comando": "net stop",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Detiene un servicio de red que se está ejecutando.",
+      "ejemplo": ["net stop \"Cola de impresión\""],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["servicios", "administración", "red"]
+    },
+    {
+      "id": "cmd-netsh",
+      "comando": "netsh",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Utilidad de scripting para configurar y supervisar componentes de red (IP, firewall, Wi-Fi).",
+      "ejemplo": [
+        "netsh wlan show profiles",
+        "netsh advfirewall set allprofiles state off"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["red", "configuración", "firewall"]
+    },
+    {
+      "id": "cmd-sc",
+      "comando": "sc",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Comunica con el Administrador de control de servicios y los servicios.",
+      "ejemplo": ["sc query", "sc config servicio start= auto"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["servicios", "sistema", "administración"]
+    },
+    {
+      "id": "cmd-reg",
+      "comando": "reg",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Realiza operaciones en las subclaves e información del registro de Windows.",
+      "ejemplo": [
+        "reg query HKLM\\Software",
+        "reg add HKLM\\Software\\MiClave"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["registro", "configuración", "sistema"]
+    },
+    {
+      "id": "cmd-runas",
+      "comando": "runas",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Ejecuta herramientas y programas con permisos de otro usuario.",
+      "ejemplo": [
+        "runas /user:Administrador cmd",
+        "runas /user:Dominio\\Usuario notepad.exe"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["seguridad", "permisos", "ejecución"]
+    },
+    {
+      "id": "cmd-schtasks",
+      "comando": "schtasks",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Permite a un administrador crear, eliminar, consultar, cambiar, ejecutar y finalizar tareas programadas.",
+      "ejemplo": [
+        "schtasks /query",
+        "schtasks /create /tn \"Backup\" /tr c:\\backup.bat /sc daily"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["automatización", "tareas", "planificación"]
+    },
+    {
+      "id": "cmd-assoc",
+      "comando": "assoc",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Muestra o modifica las asociaciones de extensiones de nombre de archivo.",
+      "ejemplo": ["assoc .txt", "assoc .py=Python.File"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["sistema", "asociaciones", "configuración"]
+    },
+    {
+      "id": "cmd-ftype",
+      "comando": "ftype",
+      "aplicaciones": ["cmd"],
+      "nivel": "avanzado",
+      "descripcion": "Muestra o modifica los tipos de archivo usados en las asociaciones de extensión.",
+      "ejemplo": [
+        "ftype txtfile",
+        "ftype Python.File=\"C:\\Python\\python.exe\" \"%1\" %*"
+      ],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["sistema", "tipos", "configuración"]
+    },
+    {
+      "id": "cmd-driverquery",
+      "comando": "driverquery",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Muestra una lista de todos los controladores de dispositivo instalados y sus propiedades.",
+      "ejemplo": ["driverquery", "driverquery /v"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["drivers", "hardware", "sistema"]
+    },
+    {
+      "id": "cmd-msinfo32",
+      "comando": "msinfo32",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Abre la herramienta Información del sistema para mostrar una vista completa del hardware, componentes y entorno de software.",
+      "ejemplo": ["msinfo32"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["info", "sistema", "gui"]
+    },
+    {
+      "id": "cmd-mmc",
+      "comando": "mmc",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Abre la Microsoft Management Console, que aloja herramientas administrativas.",
+      "ejemplo": ["mmc"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["administración", "consola", "gui"]
+    },
+    {
+      "id": "cmd-eventvwr",
+      "comando": "eventvwr",
+      "aplicaciones": ["cmd"],
+      "nivel": "intermedio",
+      "descripcion": "Inicia el Visor de eventos de Windows para ver registros de sistema, seguridad y aplicación.",
+      "ejemplo": ["eventvwr"],
+      "requerimientos": "Permisos de Administrador recomendados.",
+      "tags": ["logs", "eventos", "diagnóstico"]
+    },
+    {
+      "id": "cmd-servicesmsc",
+      "comando": "services.msc",
+      "aplicaciones": ["cmd"],
+      "nivel": "básico",
+      "descripcion": "Abre la consola de Servicios para gestionar servicios en segundo plano.",
+      "ejemplo": ["services.msc"],
+      "requerimientos": "Permisos estándar de usuario.",
+      "tags": ["servicios", "gui", "administración"]
     }
   ]
 }
