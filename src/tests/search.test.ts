@@ -1,5 +1,6 @@
 import { search } from "@/lib/search";
 import type { Command } from "@/lib/data";
+import datasetJson from "../../public/data/commands.json";
 
 // Muestra representativa del dataset real con edge cases incluidos
 const mockCommands: Command[] = [
@@ -152,9 +153,7 @@ describe("search — boundary conditions", () => {
 });
 
 describe("search — con datos reales del dataset", () => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const dataset = require("../../public/data/commands.json");
-  const realCommands: Command[] = dataset.comandos;
+  const realCommands: Command[] = (datasetJson as { comandos: Command[] }).comandos;
 
   it("carga el dataset y tiene comandos", () => {
     expect(realCommands.length).toBeGreaterThan(100);
