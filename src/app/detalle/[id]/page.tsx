@@ -20,10 +20,11 @@ export const metadata = {
 export default async function DetallePage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const dataset = await loadDataset();
-  const cmd = dataset.comandos.find((c) => c.id === params.id);
+  const cmd = dataset.comandos.find((c) => c.id === id);
 
   if (!cmd) {
     return (
