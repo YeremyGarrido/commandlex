@@ -23,11 +23,19 @@ export const CommandModal = ({ comando, onClose }: Props) => {
   }, [onClose]);
 
   // --- DETECCIÓN DE TIPO DE BLOQUE ---
-  // Detectamos si esto es un bloque de código multi-línea (JSON, JS, Snippet)
-  // o si son varios ejemplos de comandos separados.
-  const isMultiLineBlock = comando.tags.some((t) =>
-    ["snippet", "código", "js", "ts", "json", "gherkin"].includes(t)
-  );
+  // Prioridad: campo renderMode explícito del JSON (DT-006).
+  // Fallback: inferencia por tags para comandos sin renderMode (compatibilidad hacia atrás).
+  const resolvedRenderMode: import("@/lib/data").RenderMode = (() => {
+    if (comando.renderMode) return comando.renderMode;
+    if (comando.tags.includes("atajo")) return "shortcut";
+    if (comando.tags.some((t) => ["snippet", "código", "js", "ts", "json", "gherkin"].includes(t)))
+      return "snippet";
+    if (comando.tags.includes("teoría") || (comando.ejemplo[0] ?? "").match(/^\d{3}\s/))
+      return "status-code";
+    return "command";
+  })();
+
+  const isMultiLineBlock = resolvedRenderMode === "snippet";
 
   // --- HELPERS DE ESTILO ---
   const getStatusStyles = (code: string) => {
@@ -89,7 +97,7 @@ export const CommandModal = ({ comando, onClose }: Props) => {
   };
 
   const renderExample = (example: string) => {
-    if (comando.tags.includes("atajo") && example.includes("+")) {
+    if (resolvedRenderMode === "shortcut" && example.includes("+")) {
       return (
         <div className="p-4 bg-gray-900 rounded-md border border-gray-700">
           {renderShortcut(example)}
@@ -97,7 +105,7 @@ export const CommandModal = ({ comando, onClose }: Props) => {
       );
     }
 
-    if (comando.tags.includes("teoría") || example.match(/^\d{3}\s/)) {
+    if (resolvedRenderMode === "status-code" || example.match(/^\d{3}\s/)) {
       return renderStatusCode(example);
     }
 

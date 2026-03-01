@@ -29,7 +29,7 @@ jobs:
         run: npm run lint
 
       - name: Run tests
-        run: npm test --if-present
+        run: npm test -- --coverage --coverageThreshold='{"global":{"lines":60,"functions":60,"branches":50}}'
 
       - name: Build static Next.js site
         run: npm run build

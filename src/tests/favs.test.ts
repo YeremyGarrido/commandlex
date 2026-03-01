@@ -1,65 +1,81 @@
 import * as favs from "@/lib/favs";
 
-describe("favs module", () => {
-  beforeEach(() => {
-    // Clear localStorage before each test
-    localStorage.clear();
+describe("favs — caminos felices", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("toggle añade un favorito", () => {
+    favs.toggle("ls");
+    expect(favs.has("ls")).toBe(true);
   });
 
-  describe("toggle", () => {
-    it("should add a favorite", () => {
-      favs.toggle("ls");
-      expect(favs.has("ls")).toBe(true);
-    });
-
-    it("should remove a favorite when toggled twice", () => {
-      favs.toggle("ls");
-      expect(favs.has("ls")).toBe(true);
-
-      favs.toggle("ls");
-      expect(favs.has("ls")).toBe(false);
-    });
+  it("toggle dos veces quita el favorito", () => {
+    favs.toggle("ls");
+    favs.toggle("ls");
+    expect(favs.has("ls")).toBe(false);
   });
 
-  describe("has", () => {
-    it("should return false for non-existent favorite", () => {
-      expect(favs.has("non-existent")).toBe(false);
-    });
-
-    it("should return true for existing favorite", () => {
-      favs.toggle("git-status");
-      expect(favs.has("git-status")).toBe(true);
-    });
+  it("has devuelve false para ID inexistente", () => {
+    expect(favs.has("non-existent")).toBe(false);
   });
 
-  describe("getAll", () => {
-    it("should return empty array when no favorites", () => {
-      expect(favs.get()).toEqual([]);
-    });
-
-    it("should return all favorites", () => {
-      favs.toggle("ls");
-      favs.toggle("git-status");
-      favs.toggle("docker-ps");
-
-      const all = favs.get();
-      expect(all).toHaveLength(3);
-      expect(all).toContain("ls");
-      expect(all).toContain("git-status");
-      expect(all).toContain("docker-ps");
-    });
+  it("get devuelve array vacío sin favoritos", () => {
+    expect(favs.get()).toEqual([]);
   });
 
-  describe("clear", () => {
-    it("should remove all favorites", () => {
-      favs.toggle("ls");
-      favs.toggle("git-status");
+  it("get devuelve todos los favoritos", () => {
+    favs.toggle("ls");
+    favs.toggle("git-status");
+    favs.toggle("docker-ps");
+    const all = favs.get();
+    expect(all).toHaveLength(3);
+    expect(all).toContain("ls");
+    expect(all).toContain("git-status");
+    expect(all).toContain("docker-ps");
+  });
 
-      expect(favs.get()).toHaveLength(2);
+  it("clear elimina todos los favoritos", () => {
+    favs.toggle("ls");
+    favs.toggle("git-status");
+    favs.clear();
+    expect(favs.get()).toHaveLength(0);
+  });
+});
 
-      favs.clear();
+describe("favs — boundary conditions", () => {
+  beforeEach(() => localStorage.clear());
 
-      expect(favs.get()).toHaveLength(0);
-    });
+  it("set deduplica IDs repetidos", () => {
+    favs.set(["ls", "ls", "git-status", "git-status"]);
+    expect(favs.get()).toHaveLength(2);
+  });
+
+  it("toggle sobre ID vacío no rompe el estado", () => {
+    expect(() => favs.toggle("")).not.toThrow();
+    expect(favs.has("")).toBe(true); // string vacío es un ID válido técnicamente
+    favs.toggle(""); // quitar
+    expect(favs.has("")).toBe(false);
+  });
+
+  it("has devuelve false tras clear", () => {
+    favs.toggle("ls");
+    favs.clear();
+    expect(favs.has("ls")).toBe(false);
+  });
+
+  it("get con localStorage corrupto devuelve array vacío (no lanza)", () => {
+    localStorage.setItem("favs", "INVALID_JSON{{{{");
+    expect(() => favs.get()).not.toThrow();
+    expect(favs.get()).toEqual([]);
+  });
+
+  it("múltiples toggles mantienen consistencia", () => {
+    favs.toggle("a");
+    favs.toggle("b");
+    favs.toggle("a"); // quitar a
+    favs.toggle("c");
+    const result = favs.get();
+    expect(result).toContain("b");
+    expect(result).toContain("c");
+    expect(result).not.toContain("a");
   });
 });

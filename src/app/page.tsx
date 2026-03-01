@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import { loadDataset } from "@/lib/data";
-import HomePage from "@/components/HomePage";
+import CodeWikiHome from "@/components/CodeWikiHome";
 
 export default async function Page() {
   const data = await loadDataset();
 
   return (
-    <Suspense fallback={<div className="p-8 text-gray-400">Cargando...</div>}>
-      <HomePage initialCommands={data.comandos} />
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Cargando...</div>}>
+      <CodeWikiHome initialCommands={data.comandos} />
     </Suspense>
   );
 }

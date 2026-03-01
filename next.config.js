@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === "production";
-
 const nextConfig = {
-  output: "export",
-  images: { unoptimized: true },
-
-  basePath: isProd ? "/commandlex" : "",
-  trailingSlash: true,
+  // output: "export" eliminado — ADR-006, migrando a Cloudflare Pages con servidor
+  images: {
+    // Cloudflare Pages no tiene Image Optimization nativo, usamos loader custom
+    unoptimized: true,
+  },
+  // basePath eliminado — Cloudflare Pages sirve desde raíz, no desde /commandlex
 };
 
 export default nextConfig;

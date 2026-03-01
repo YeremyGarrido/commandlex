@@ -11,7 +11,7 @@ function tokenize(text: string): string[] {
 }
 
 export function search(
-  commands: Command[],
+  commands: readonly Command[],
   query: string,
   filters?: { entorno?: string; nivel?: string }
 ): Command[] {

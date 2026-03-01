@@ -3,7 +3,7 @@
     "version": "3.1-optimized",
     "updatedAt": "2025-11-20"
   },
-  "niveles": ["básico", "intermedio", "avanzado"],
+  "niveles": ["básico", "intermedio", "avanzado", "teórico"],
   "comandos": [
     {
       "id": "docker-images",

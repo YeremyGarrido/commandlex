@@ -1,0 +1,155 @@
+# llms.txt — CommandLex
+> Mapa de navegación para agentes LLM. Leer antes de cualquier tarea.
+> Última actualización: 2026-02-22
+
+---
+
+## ¿Qué es este proyecto?
+
+CommandLex es una PWA de catálogo de comandos técnicos con búsqueda offline-first.
+- Stack: Next.js 14 (App Router, export estático) + TypeScript + CSS Custom + Tailwind CSS
+- Deploy: GitHub Pages via GitHub Actions
+- Sin backend. Sin base de datos. Sin API externa. Todo es estático.
+- 112 comandos en `public/data/commands.json`
+
+---
+
+## Leer PRIMERO antes de cualquier tarea
+
+| Archivo | Por qué |
+|---|---|
+| `.ai_state.md` | ADRs, deuda técnica activa, roadmap, contratos de tipos |
+| `gemini.md` | Perfiles de ingeniería, protocolo de respuesta, jerarquía de trade-offs |
+| `public/data/commands.json` | Fuente de verdad de todos los comandos |
+| `src/lib/data.ts` | Tipos TypeScript del dominio |
+
+---
+
+## Mapa de archivos por intención
+
+### "Quiero entender la UI principal"
+```
+src/app/page.tsx                    → Entry point (Server Component)
+src/components/CodeWikiHome.tsx     → God Component: toda la lógica de UI (⚠️ DT-001)
+src/app/globals-codewiki.css        → Sistema de estilos OFICIAL (variables --cw-*)
+src/app/layout.tsx                  → Root layout, metadata, fuente Roboto
+```
+
+### "Quiero entender el sistema de estilos"
+```
+src/app/globals-codewiki.css        → Variables --cw-*, clases .cw-*, dark mode via body.dark
+tailwind.config.ts                  → Configuración Tailwind (usado en CommandCard, CommandModal, Tag)
+```
+NOTA: Los estilos son híbridos. CodeWikiHome usa clases `.cw-*` del CSS custom.
+CommandCard, CommandModal y Tag usan clases utilitarias de Tailwind.
+
+### "Quiero entender la búsqueda"
+```
+src/lib/search.ts                   → Motor: normalización NFD (tildes), tokenización, filtros
+src/tests/search.test.ts            → Tests unitarios del motor
+```
+La búsqueda es client-side pura. El estado vive en la URL: `?q=texto&category=Docker`.
+
+### "Quiero entender los datos"
+```
+public/data/commands.json           → Dataset v3.1 (112 comandos)
+src/lib/data.ts                     → Tipo Command + función loadDataset()
+```
+El JSON se importa como módulo TypeScript en build time. No hay fetch en runtime.
+
+### "Quiero entender los favoritos"
+```
+src/lib/favs.ts                     → Gateway Pattern sobre localStorage. API: get/set/toggle/has/clear
+src/tests/favs.test.ts              → Tests unitarios
+```
+Los favoritos son IDs (`string[]`) guardados en `localStorage["favs"]`.
+⚠️ DT-007: `favs.has()` hace JSON.parse en cada llamada. Con 112 cards = 112 parses.
+
+### "Quiero añadir o modificar un componente"
+```
+src/components/AppIcon.tsx          → Iconos SVG por nombre de aplicación (switch/case)
+src/components/Tag.tsx              → Chip de etiqueta. Props: label, color, onClick
+src/components/CommandCard.tsx      → Tarjeta en el grid. Usa Tailwind. Props: command, onClick, onToggleFav, isFav, onTagClick
+src/components/CommandModal.tsx     → Modal de detalle. Renderiza markdown, snippets, shortcuts, status codes
+src/components/CopyBlock.tsx        → Bloque de código con botón de copiar
+src/components/SearchBox.tsx        → Input con debounce. Props: onSearch, externalValue, delay
+src/components/EmptyState.tsx       → Estado vacío genérico
+src/components/ServiceWorkerProvider.tsx → Registra el SW. Renderiza null.
+```
+
+### "Quiero entender las páginas"
+```
+src/app/page.tsx                    → / (home) — Server Component, pasa datos a CodeWikiHome
+src/app/favoritos/page.tsx          → /favoritos — Client Component, lee localStorage
+src/app/detalle/[id]/page.tsx       → /detalle/:id — Server Component, SSG con generateStaticParams
+```
+
+### "Quiero entender el deploy"
+```
+.github/workflows/deploy.yml        → lint → test → build → deploy a gh-pages
+next.config.js                      → output: export, basePath: /commandlex en producción
+public/sw.js                        → Service Worker manual (cache offline)
+public/manifest.json                → PWA manifest
+```
+
+### "Quiero entender qué hay que limpiar (deuda técnica)"
+Ver `.ai_state.md` sección 3. Resumen rápido:
+
+```
+✅ YA ELIMINADOS (ADR-001, 2026-02-22):
+MaterialHomePage.tsx, MaterialLayout.tsx, MaterialCommandCard.tsx
+MaterialCategoryPicker.tsx, HomePage.tsx
+globals-material.css, globals.css
+migrate-to-material.sh, FAQ-MATERIAL.md
+```
+
+```
+⚠️ REFACTORIZAR — God Component (DT-001 — próximo en roadmap):
+src/components/CodeWikiHome.tsx      → extraer hooks y subcomponentes
+```
+
+---
+
+## Convenciones del proyecto
+
+### Código
+- Lenguaje de código: **inglés** (nombres de variables, comentarios técnicos, tipos)
+- Lenguaje de respuestas: **español**
+- Formato: TypeScript estricto, sin `any`
+- Componentes Client: `"use client"` en la primera línea
+- Componentes Server: sin directiva (son server por defecto en App Router)
+
+### Estilos
+- Sistema oficial: **CSS Custom con variables `--cw-*`** para layout/estructura/tema
+- **Tailwind CSS** para componentes de UI granular (CommandCard, Tag, CommandModal)
+- Dark mode: clase `dark` en `document.body`. NO usar `dark:` de Tailwind en componentes que usan `.cw-*`
+- NO mezclar los dos sistemas en el mismo componente sin necesidad
+
+### Git
+- Conventional Commits: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`
+- Push a `main` dispara deploy automático
+
+---
+
+## Dependencias clave y su rol
+
+| Paquete | Rol | Nota |
+|---|---|---|
+| `next` 14.2 | Framework | App Router, SSG, export estático |
+| `react-icons` | Iconos | Di*, Si*, Fa*, Tb* según la lib |
+| `react-markdown` | Parser MD | Solo en CommandModal para descripciones |
+| `prism-react-renderer` | Syntax highlight | Solo en CommandModal para snippets |
+| `framer-motion` | Animaciones | ❌ Sin usar. Pendiente eliminar (DT-008) |
+| `jest` + `@testing-library/react` | Testing | 3 suites actuales |
+| `tailwindcss` | Estilos utilitarios | Para componentes granulares |
+
+---
+
+## Anti-patrones conocidos a evitar
+
+1. **No leer `window` o `localStorage` fuera de `useEffect`** — el build es SSR/SSG, `window` no existe en el servidor.
+2. **No añadir features sobre componentes `Material*`** — están descartados por ADR-001.
+3. **No crear estado local para búsqueda/categoría** — la fuente de verdad es la URL (`useSearchParams`).
+4. **No llamar `favs.has()` en render loops** — lee localStorage en cada llamada. Ver DT-007.
+5. **No añadir nuevas dependencias pesadas sin revisar el bundle** — el proyecto es estático y debe cargar rápido.
+6. **No usar `renderMode` implícito via tags** — el sistema de detección por Magic Array (`["snippet","código","js"...]`) es deuda conocida (DT-006). La solución es el campo `renderMode` en el tipo.
