@@ -17,6 +17,10 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-expressions": "off",
     },
   },
+  {
+    // Los archivos de test no se lintean en el build de producción
+    ignores: ["src/tests/**", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts"],
+  },
 ];
 
 export default eslintConfig;
