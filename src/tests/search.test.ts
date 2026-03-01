@@ -152,7 +152,7 @@ describe("search — boundary conditions", () => {
 });
 
 describe("search — con datos reales del dataset", () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const dataset = require("../../public/data/commands.json");
   const realCommands: Command[] = dataset.comandos;
 
