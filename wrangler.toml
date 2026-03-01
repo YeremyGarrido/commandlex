@@ -1,8 +1,8 @@
-# wrangler.toml — usado para preview local con `npm run cf:preview`
-# El deploy en producción lo maneja Cloudflare Pages desde el dashboard.
+# wrangler.toml — Cloudflare Pages + OpenNext
 name = "commandlex"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next/assets"
 
 [assets]
 directory = ".open-next/assets"

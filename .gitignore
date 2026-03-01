@@ -52,3 +52,4 @@ llms.txt
 restart-dev.bat
 CHANGELOG_v2.0.md
 CHANGELOG_v2.0.1.md
+.env.local.example
