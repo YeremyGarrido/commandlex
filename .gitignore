@@ -13,6 +13,11 @@
 /.next/
 /out/
 
+# opennext / cloudflare build output
+/.open-next/
+/.wrangler/
+.vercel
+
 # production
 /build
 
@@ -28,10 +33,22 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
-.vercel
+# supabase
+supabase/.temp/
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-node_modules
+
+# AI / agentes — contexto local, no necesario en el repo
+.agent/
+.agents/
+.claude/
+.ai_state.md
+gemini.md
+llms.txt
+
+# Archivos locales de conveniencia
+restart-dev.bat
+CHANGELOG_v2.0.md
+CHANGELOG_v2.0.1.md
